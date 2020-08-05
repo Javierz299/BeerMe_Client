@@ -1,10 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+import Header from './functional/Header'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
        test
+       <Header />
     </div>
   );
 }
