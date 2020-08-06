@@ -6,7 +6,7 @@ import Route from './routes/routes'
 const App = () => {
   return (
     <div className="App">
-       header
+      BeerMe
        <Route />
     </div>
   );

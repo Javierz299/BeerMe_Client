@@ -10,6 +10,8 @@ export default class Auth {
         scope: 'openid profile email'
     })
 
+userProfile = {}
+
 login = () => {
       console.log('login reached')
     this.auth0.authorize()
@@ -32,11 +34,12 @@ handleAuth = () => {
             let expiresAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
             localStorage.setItem('expiresAt',expiresAt)
 
+            this.getProfile()
+
             setTimeout(() => {
                 history.replace('/authcheck')
             }, 1000)
 
-            //this.getProfile()
         } else {
             console.log(err)
         }
@@ -46,6 +49,27 @@ handleAuth = () => {
 isAuthenticated = () => {
     let expiresAt = JSON.parse(localStorage.getItem('expiresAt'))
     return new Date().getTime() < expiresAt
+}
+
+getAccessToken = () => {
+    if(localStorage.getItem('access_token')){
+        const accessToken = localStorage.getItem('access_token')
+        return accessToken
+    } else {
+        return null
+    }
+}
+
+getProfile = () => {
+    let access_token = this.getAccessToken()
+
+    if(access_token){
+        this.auth0.client.userInfo(access_token, (err,profile) => {
+            if(profile){
+                this.userProfile = { profile }
+            }
+        })
+    }
 }
 
 

@@ -9,25 +9,26 @@ export class AuthLogin extends Component {
     auth = new Auth()
 
 
-    renderAuthButton = () => (
-        <div>
-         <button onClick={() => this.auth.login()} >Login</button>
-        </div>
-    )
+    renderAuthButton = () => {
+        return this.props.is_authenticated ?
+        <button onClick={() => this.auth.logout()} >Logout</button> :
+        <button onClick={() => this.auth.login()} >LOGIN</button>
+
+}
 
     render() {
         return (
             <div>
-                {this.renderAuthButton()}
+               {this.renderAuthButton()}
             </div>
         )
     }
 }
 
 function mapStateToProps(state){
-    //console.log(state.auth_reducer)
+    console.log(state.auth_reducer.is_authenticated)
     return {
-      // isSignedIn: state.auth_reducer.isSignedIn,
+      is_authenticated: state.auth_reducer.is_authenticated,
     }
 }
 

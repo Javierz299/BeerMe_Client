@@ -10,11 +10,11 @@ export class AuthCheck extends Component {
 
         if(this.props.auth.isAuthenticated()){
             console.log('isauthenticated: success')
-            this.props.login_success()
-            //this.props.add_profile(this.auth.userProfile)
+            this.props.login_success()//redux props
+            this.props.add_profile(this.props.auth.userProfile)//react props comming from routes.js
             histroy.replace('/')
         } else {
-            console.log('isauntenticated: failed')
+            console.log('isauthenticated: failed')
             this.props.login_failure()
             this.props.remove_profile()
             histroy.replace('/')
