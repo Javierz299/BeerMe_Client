@@ -1,11 +1,11 @@
 import React from 'react'
-import GoogleAuth from '../container/GoogleAuth'
+import AuthLogin from '../container/AuthLogin'
 
 const Header = () => {
     
         return (
             <div>
-                <GoogleAuth />
+                <AuthLogin />
             </div>
         )
 
