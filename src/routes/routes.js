@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Home from '../container/Home'
+import Header from '../functional/Header'
 
 import AuthCheck from '../utils/authcheck'
 import Callback from '../functional/Callback'
@@ -34,11 +35,12 @@ export class routes extends Component {
         return (
             <div>
                 <Router history={history}>
+                <Header />
                     <Switch>
                         <Route exact path='/' component={Home} />
-                        <Route path="/callback" render={(props) => { handleAuthentication(props); return <Callback />}} />
                         <Route path='/authcheck' render={() =>  <AuthCheck auth={auth}/>} />
-                        <Route  path='/redirect' component={UnauthRedirect} />
+                        <Route path='/redirect' component={UnauthRedirect} />
+                        <Route path="/callback" render={(props) => { handleAuthentication(props); return <Callback />}} />
 
                         <PrivateRoute path='/privateroute' auth={auth} component={ProtectedRoute} />
                     </Switch>
