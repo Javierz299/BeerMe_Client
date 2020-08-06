@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 
 class ProtectedRoute extends Component {
 
+RenderProfile = (props) => (
+    <div>
+        <h2>{this.props.profile.profile.name}</h2>
+    </div>
+)
     
 
 
@@ -10,8 +15,8 @@ class ProtectedRoute extends Component {
         return (
             <div>
             Welcome
-            {console.log(this.props.user_profile)}
-            {/* <h2>{this.props.user_profile.name}</h2> */}
+            {console.log(this.props.profile)}
+            {this.RenderProfile()}
         </div>
         )
     }
@@ -20,7 +25,7 @@ class ProtectedRoute extends Component {
 
 function mapStateToProps(state){
     return{
-        user_profile: state.auth_reducer.profile
+        profile: state.auth_reducer.profile
     }
 }
 
