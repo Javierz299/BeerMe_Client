@@ -4,25 +4,29 @@ import * as ACTION_TYPES from '../../actions/action_types'
 const initialState = {
     is_authenticated: false,
     isSignedIn: false,
-    userProfile: null,
+    profile: null,
 
 }
 
-export default (state = initialState, action) => {
+const AuthReducer = (state = initialState, action) => {
     switch(action.type){
-        case ACTION_TYPES.SIGN_IN:
+        case ACTION_TYPES.SUCCESS:
             return {
                 ...state,
+                is_authenticated: true,
                 isSignedIn: true,
-                userProfile: action.payload,
+                profile: action.payload,
             }
-        case ACTION_TYPES.SIGN_OUT:
+        case ACTION_TYPES.FAILURE:
             return {
                 ...state,
+                is_authenticated: false,
                 isSignedIn: false,
-                userProfile: null
+                profile: null
             }
         default:
             return state
     }
 }
+
+export default AuthReducer
