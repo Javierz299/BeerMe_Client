@@ -4,13 +4,13 @@ import './App.css'
 import Context from './context/ProfileContext'
 
 import * as ACTIONS from './store/actions/actions'
-import AuthReducer from './store/actions/reducers/auth_reducer'
+import * as ProfileHook from './store/actions/hooks/profile_hook'
 
 import Route from './routes/routes'
 
 const App = () => {
 
-  const [stateProfile,dispatchProfile] = useReducer(AuthReducer.AuthReducer,AuthReducer.initialState)
+  const [stateProfile,dispatchProfile] = useReducer(ProfileHook.ProfileHook, ProfileHook.initialState)
 
 
 
