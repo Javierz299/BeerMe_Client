@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Router, Route, Redirect } from 'react-router-dom'
 import history from '../utils/history'
 

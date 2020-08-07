@@ -15,6 +15,7 @@ export class AuthLogin extends Component {
 
 }
 
+
     render() {
         return (
             <div>
@@ -31,11 +32,6 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        // signIn: (profile) => dispatch(ACTIONS.signIn(profile)),
-        // signOut: () => dispatch(ACTIONS.signOut()),
-    }
-}
 
-export default connect(mapStateToProps,mapDispatchToProps)(AuthLogin)
+
+export default connect(mapStateToProps)(AuthLogin)

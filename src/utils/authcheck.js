@@ -19,8 +19,6 @@ export class AuthCheck extends Component {
             this.props.remove_profile()
             histroy.replace('/')
         }
-
-
     }
 
 
