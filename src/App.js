@@ -9,12 +9,11 @@ import * as ProfileHook from './store/actions/hooks/profile_hook'
 import Route from './routes/routes'
 
 const App = () => {
-
-  const [stateProfile,dispatchProfile] = useReducer(ProfileHook.ProfileHook, ProfileHook.initialState)
+  const [profileGlobal, setProfileGlobal] = useState(null)
 
   const dispatchContextProfile = (profile) => {
-    console.log('globalcontext',profile)
-    dispatchProfile(ACTIONS.add_profile(profile))
+    console.log('REACHED globalcontext',profile)
+    setProfileGlobal(profile)
   }
 
 
@@ -23,7 +22,7 @@ const App = () => {
     <div className="App">
       BeerMe
       <Context.Provider value={{
-        globalProfile: stateProfile,
+        globalProfile: profileGlobal,
         globalDispatchProfile: (profile) => dispatchContextProfile(profile),
       }}>
           <Route />

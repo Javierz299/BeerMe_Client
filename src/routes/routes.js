@@ -18,6 +18,8 @@ import { connect } from 'react-redux'
 
 import { Router, Route, Switch } from 'react-router'
 
+import Context from '../context/ProfileContext'
+
 
 const auth = new Auth()
 
@@ -29,7 +31,10 @@ const handleAuthentication = (props) => {
 
 export class routes extends Component {
 
+    static contextType = Context
+
     componentDidMount(){
+        console.log('mounted')
         if(auth.isAuthenticated()){
             console.log('isauthenticated: success')
             this.props.login_success()//redux props
@@ -39,10 +44,15 @@ export class routes extends Component {
             this.props.login_failure()
             this.props.remove_profile()
         }
+        
     }
+
+    
 
 
     render() {
+        console.log('rendered from routes',this.context)
+        console.log(this.context.globalProfile)
         return (
             <div>
                 <Router history={history}>
@@ -61,6 +71,13 @@ export class routes extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    return {
+        profile: state.auth_reducer.profile
+    }
+}
+
 function mapDispatchToProps(dispatch){
     return{
         login_success: () => dispatch(ACTIONS.login_success()),
@@ -70,4 +87,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(null, mapDispatchToProps)(routes)
+export default connect(mapStateToProps, mapDispatchToProps)(routes)

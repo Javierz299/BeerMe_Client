@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 
 class ProtectedRoute extends Component {
 
+
+
 RenderProfile = (props) => (
+    
     <div>
         <h2>{this.props.profile.profile.name}</h2>
     </div>
@@ -12,10 +15,10 @@ RenderProfile = (props) => (
 
 
     render(){
+        //console.log('protected context', this.context)
         return (
             <div>
             Welcome
-            {console.log(this.props.profile)}
             {this.RenderProfile()}
         </div>
         )

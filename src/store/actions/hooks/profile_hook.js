@@ -2,7 +2,7 @@ import * as ACTION_TYPES from '../../actions/action_types'
 
 
 export const initialState = {
-    profile: null,
+    profile: 'no name',
 }
 
 export const ProfileHook = (state = initialState, action) => {

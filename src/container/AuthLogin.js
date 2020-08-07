@@ -8,10 +8,10 @@ import Context from '../context/ProfileContext'
 export class AuthLogin extends Component {
 
     static contextType = Context
+
     auth = new Auth()
 
 
-    
     renderAuthButton = () => {
         return this.props.is_authenticated ?
         <button onClick={() => this.auth.logout()} >Logout</button> :
@@ -22,7 +22,7 @@ export class AuthLogin extends Component {
 
     render() {
 
-        console.log(this.context.globalProfile)
+        
         return (
             <div>
                {this.renderAuthButton()}
