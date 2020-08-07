@@ -12,7 +12,10 @@ const App = () => {
 
   const [stateProfile,dispatchProfile] = useReducer(ProfileHook.ProfileHook, ProfileHook.initialState)
 
-
+  const dispatchContextProfile = (profile) => {
+    console.log('globalcontext',profile)
+    dispatchProfile(ACTIONS.add_profile(profile))
+  }
 
 
 
@@ -21,6 +24,7 @@ const App = () => {
       BeerMe
       <Context.Provider value={{
         globalProfile: stateProfile,
+        globalDispatchProfile: (profile) => dispatchContextProfile(profile),
       }}>
           <Route />
        </Context.Provider>

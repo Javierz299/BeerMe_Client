@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import histroy from './history'
 import * as ACTIONS from '../store/actions/actions'
+import Context from '../context/ProfileContext'
 
 import { connect } from 'react-redux'
 export class AuthCheck extends Component {
+
+    static contextType = Context
 
     componentDidMount(){
         console.log(this.props)
@@ -12,6 +15,7 @@ export class AuthCheck extends Component {
             console.log('isauthenticated: success')
             this.props.login_success()//redux props
             this.props.add_profile(this.props.auth.userProfile)//react props comming from routes.js
+            this.context.globalDispatchProfile(this.props.auth.userProfile)
             histroy.replace('/')
         } else {
             console.log('isauthenticated: failed')
@@ -23,6 +27,7 @@ export class AuthCheck extends Component {
 
 
     render() {
+        console.log(this.context)
         return (
             <div>
             </div>
@@ -31,9 +36,9 @@ export class AuthCheck extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("authcheck",state)
+    console.log("authcheck",state.auth_reducer.profile)
     return {
-
+        profile: state.auth_reducer.profile
     }
 }
 

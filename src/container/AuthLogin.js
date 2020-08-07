@@ -22,7 +22,7 @@ export class AuthLogin extends Component {
 
     render() {
 
-        console.log(this.context)
+        console.log(this.context.globalProfile)
         return (
             <div>
                {this.renderAuthButton()}
