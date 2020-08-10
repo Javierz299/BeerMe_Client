@@ -2,8 +2,20 @@ import React, { Component } from 'react'
 import histroy from './history'
 import * as ACTIONS from '../store/actions/actions'
 
+import axios from 'axios'
+import config from '../config'
+
 import { connect } from 'react-redux'
 export class AuthCheck extends Component {
+
+    send_profile_to_db = (profile)=> {
+        let data = profile.profile
+        console.log('data',data)
+        axios.post(`${config.API_ENDPOINT}/post/userprofile`,data)
+            .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`), {params: {email: profile.profile.email}})
+                .then(res => this.props.set_db_profile(res.data))
+                .then(histroy.replace('/')  )  
+            }
 
 
     componentDidMount(){
@@ -13,6 +25,7 @@ export class AuthCheck extends Component {
             console.log('isauthenticated: success')
             this.props.login_success()//redux props
             this.props.add_profile(this.props.auth.userProfile)//react props comming from routes.js
+            this.send_profile_to_db(this.props.auth.userProfile)
             histroy.replace('/')
         } else {
             console.log('isauthenticated: failed')
@@ -43,7 +56,9 @@ function mapDispatchToProps(dispatch){
         login_success: () => dispatch(ACTIONS.login_success()),
         login_failure: () => dispatch(ACTIONS.login_failure()),
         add_profile: (profile) => dispatch(ACTIONS.add_profile(profile)),
-        remove_profile: () => dispatch(ACTIONS.remove_profile())
+        remove_profile: () => dispatch(ACTIONS.remove_profile()),
+        set_db_profile: (profile) => dispatch(ACTIONS.set_db_profile(profile)),
+        remove_db_profile: () => dispatch(ACTIONS.remove_db_profile())
     }
 }
 

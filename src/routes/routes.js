@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import config from '../config'
 
 import Home from '../container/Home'
 import Header from '../functional/Header'
@@ -19,6 +20,7 @@ import { connect } from 'react-redux'
 import { Router, Route, Switch } from 'react-router'
 
 import Context from '../context/ProfileContext'
+import axios from 'axios'
 
 
 const auth = new Auth()
@@ -33,21 +35,39 @@ export class routes extends Component {
 
     static contextType = Context
 
-    componentDidMount(){
+    // DateFormat = () => {
+    //     const d = new Date(),
+    //     month = '' + (d.getMonth() + 1),
+    //     day = '' + d.getDate(),
+    //     year = d.getFullYear();
+
+    // if (month.length < 2) 
+    //     month = '0' + month;
+    // if (day.length < 2) 
+    //     day = '0' + day;
+
+    // return [year, month, day].join('-');
+    // }
+
+    componentDidMount(){        
+
         console.log('mounted')
         if(auth.isAuthenticated()){
             console.log('isauthenticated: success')
             this.props.login_success()//redux props
             this.props.add_profile(auth.userProfile)//react props comming from routes.js
+
         } else {
             console.log('isauthenticated: failed')
             this.props.login_failure()
             this.props.remove_profile()
         }
+
+    
         
     }
 
-    
+
 
 
     render() {
