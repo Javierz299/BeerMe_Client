@@ -5,7 +5,8 @@ const initialState = {
     is_authenticated: false,
     isSignedIn: false,
     profile: null,
-    db_profile: null
+    db_profile: null,
+    authCheck: null,
 
 }
 
@@ -44,6 +45,11 @@ const AuthReducer = (state = initialState, action) => {
             return{
                 ...state,
                 db_profile: null,
+            }
+        case ACTION_TYPES.AUTH_CHECK:
+            return {
+                ...state,
+                authCheck: action.payload,
             }
         default:
             return state

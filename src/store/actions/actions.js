@@ -72,3 +72,10 @@ export const remove_db_profile = () => {
   }
 }
 
+export const auth_check = (authCheck) => {
+  return { 
+    type: ACTION_TYPES.AUTH_CHECK,
+    payload: authCheck
+  }
+}
+

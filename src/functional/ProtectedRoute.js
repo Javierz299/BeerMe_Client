@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import config from '../config'
+
+import axios from 'axios'
 
 class ProtectedRoute extends Component {
 
-
+componentDidMount(){
+    // let profile = this.props.profile.profile.email            //,,{params: {email: profile.profile.email}}
+    // axios.get(`${config.API_ENDPOINT}/get/userprofile/${profile}`)
+    //  .then(res => console.log('get profile',res))
+}
 
 RenderProfile = (props) => (
     
     <div>
-        <h2>{this.props.profile.profile.name}</h2>
+        {/* <h2>{this.props.profile.profile.name}</h2> */}
     </div>
 )
     
@@ -19,7 +26,7 @@ RenderProfile = (props) => (
         return (
             <div>
             Welcome
-            {this.RenderProfile()}
+            {/* {this.RenderProfile()} */}
         </div>
         )
     }
@@ -28,7 +35,7 @@ RenderProfile = (props) => (
 
 function mapStateToProps(state){
     return{
-        profile: state.auth_reducer.profile
+       profile: state.auth_reducer.profile
     }
 }
 

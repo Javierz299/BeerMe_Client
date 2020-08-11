@@ -35,45 +35,26 @@ export class routes extends Component {
 
     static contextType = Context
 
-    // DateFormat = () => {
-    //     const d = new Date(),
-    //     month = '' + (d.getMonth() + 1),
-    //     day = '' + d.getDate(),
-    //     year = d.getFullYear();
-
-    // if (month.length < 2) 
-    //     month = '0' + month;
-    // if (day.length < 2) 
-    //     day = '0' + day;
-
-    // return [year, month, day].join('-');
-    // }
-
-    send_profile_to_db = (profile)=> {
-        let data = profile.profile
-        console.log('data',data)
-        axios.post(`${config.API_ENDPOINT}/post/userprofile`,data)      //,{params: {email: profile.profile.email}}
-            .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`),{params: {email: profile.profile.email}})
-            .then(res => this.props.set_db_profile(res.data))
-                .then(history.replace('/')  )  
-            }
-
     componentDidMount(){        
        // let profile = auth.userProfile.profile.profile
-        console.log('mounted')
+        console.log('mounted',auth)
         if(auth.isAuthenticated()){
             console.log('isauthenticated: success')
             this.props.login_success()//redux props
             this.props.add_profile(auth.userProfile)//react props comming from routes.js
-            this.send_profile_to_db(this.props.auth.userProfile)
 
+            // let profile = auth.userProfile.profile.email 
+            // console.log('profile from routes',profile)
+            // axios.get(`${config.API_ENDPOINT}/get/userprofile/${profile}`)
+            //     .then(res => console.log('get profile',res))
         } else {
             console.log('isauthenticated: failed')
             this.props.login_failure()
             this.props.remove_profile()
         }
        
-    
+        auth.silentAuth()
+        this.forceUpdate()
         
     }
 
@@ -82,7 +63,7 @@ export class routes extends Component {
 
     render() {
         console.log('database profile',this.props.dbProfile)
-        console.log(this.context.globalProfile)
+        console.log("routes",auth)
         return (
             <div>
                 <Router history={history}>
@@ -103,7 +84,7 @@ export class routes extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state.auth_reducer.set_db_profile)
+    console.log(state.auth_reducer.dbProfile)
     return {
         profile: state.auth_reducer.profile,
         dbProfile: state.auth_reducer.set_db_profile
@@ -112,6 +93,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return{
+        set_auth: (authCheck) => dispatch(ACTIONS.auth_check),
         login_success: () => dispatch(ACTIONS.login_success()),
         login_failure: () => dispatch(ACTIONS.login_failure()),
         add_profile: (profile) => dispatch(ACTIONS.add_profile(profile)),

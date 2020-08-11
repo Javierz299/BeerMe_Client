@@ -23,3 +23,5 @@ export const USER_INPUT_SUBMIT = "USER_INPUT_SUBMIT"
 export const SET_DB_PROFILE = "SET_DB PROFILE"
 
 export const REMOVE_DB_PROFILE = "REMOVE_DB_PROFILE"
+
+export const AUTH_CHECK = "AUTH_CHECK"

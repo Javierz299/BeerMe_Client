@@ -12,6 +12,7 @@ export default class Auth {
 
 userProfile = {}
 
+
 login = () => {
       console.log('login reached')
     this.auth0.authorize()
@@ -22,15 +23,18 @@ logout = () => {
     localStorage.removeItem('access_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expiresAt')
+    history.replace('/')
 }
 
 handleAuth = () => {
     this.auth0.parseHash((err,authResult) => {
+       
         console.log('auhtresult',authResult)
         if(authResult){
             localStorage.setItem('access_token', authResult.accessToken)
             localStorage.setItem('id_token',authResult.id_token)
-        
+            localStorage.setItem('profile', authResult.userProfile)
+            localStorage.setItem('idTokenPayoad',authResult.idTokenPayload)
             let expiresAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
             localStorage.setItem('expiresAt',expiresAt)
 
@@ -43,6 +47,24 @@ handleAuth = () => {
         } else {
             console.log(err)
         }
+    })
+}
+
+setSession(authResult){
+    console.log('this',this)
+    this.idToken = authResult.idToken
+    this.profile = authResult.idTokenPayload
+    let expAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
+    this.expiresAt = authResult.idTokenPayload.exp * expAt
+}
+
+silentAuth(){
+    return new Promise((resolve,reject) => {
+        this.auth0.checkSession({}, (err,authResult) => {
+            if(err) return reject(err)
+            this.setSession(authResult)
+            resolve()
+        })
     })
 }
 
@@ -67,6 +89,7 @@ getProfile = () => {
         this.auth0.client.userInfo(access_token, (err,profile) => {
             if(profile){
                 this.userProfile = { profile }
+                return this.userProfile
             }
         })
     }

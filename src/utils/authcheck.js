@@ -12,9 +12,10 @@ export class AuthCheck extends Component {
         let data = profile.profile
         console.log('data',data)
         axios.post(`${config.API_ENDPOINT}/post/userprofile`,data)      //,{params: {email: profile.profile.email}}
-            .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`),{params: {email: profile.profile.email}})
-            .then(res => this.props.set_db_profile(res.data))
-                .then(history.replace('/')  )  
+            .then(res => console.log('response from post request',res.config.data["email"]))
+            // .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`),{params: {email: profile.profile.email}})
+            // .then(res => this.props.set_db_profile(res.data))
+            //     .then(history.replace('/')  )  
             }
 
 
