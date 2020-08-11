@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import histroy from './history'
+import history from './history'
 import * as ACTIONS from '../store/actions/actions'
 
 import axios from 'axios'
@@ -11,10 +11,10 @@ export class AuthCheck extends Component {
     send_profile_to_db = (profile)=> {
         let data = profile.profile
         console.log('data',data)
-        axios.post(`${config.API_ENDPOINT}/post/userprofile`,data)
-            .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`), {params: {email: profile.profile.email}})
-                .then(res => this.props.set_db_profile(res.data))
-                .then(histroy.replace('/')  )  
+        axios.post(`${config.API_ENDPOINT}/post/userprofile`,data)      //,{params: {email: profile.profile.email}}
+            .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`),{params: {email: profile.profile.email}})
+            .then(res => this.props.set_db_profile(res.data))
+                .then(history.replace('/')  )  
             }
 
 
@@ -26,12 +26,12 @@ export class AuthCheck extends Component {
             this.props.login_success()//redux props
             this.props.add_profile(this.props.auth.userProfile)//react props comming from routes.js
             this.send_profile_to_db(this.props.auth.userProfile)
-            histroy.replace('/')
+            history.replace('/')
         } else {
             console.log('isauthenticated: failed')
             this.props.login_failure()
             this.props.remove_profile()
-            histroy.replace('/')
+            history.replace('/')
         }
     }
 

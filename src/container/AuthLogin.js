@@ -33,8 +33,11 @@ export class AuthLogin extends Component {
 
 function mapStateToProps(state){
     console.log(state.auth_reducer.is_authenticated)
+    console.log(state.auth_reducer.db_profile)
+
     return {
       is_authenticated: state.auth_reducer.is_authenticated,
+      dbProfile: state.auth_reducer.db_profile
     }
 }
 
