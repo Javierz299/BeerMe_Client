@@ -9,19 +9,20 @@ import { prettyDOM } from '@testing-library/react'
 class ProtectedRoute extends Component {
 
 
-componentDidMount(){
+async componentDidMount(){
     console.log('from private',auth0Client.getProfile())
-      let profile = auth0Client.getProfile()    
-      let profileEmail = profile.email
+      let profile = await auth0Client.getProfile()    
+      let profileEmail = await profile.email
       console.log('profileEmail',profileEmail)                          //,,{params: {email: profile.profile.email}}
     axios.get(`${config.API_ENDPOINT}/get/userprofile/${profileEmail}`)
-      .then(res => console.log('get profile by email',res))
+      .then(res => this.RenderProfile(res.data.username))//console.log('get profile by email',res.data.username)
 }
 
-RenderProfile = (props) => (
+RenderProfile = (profileUsername) => (
     
     <div>
-        {/* <h2>{this.props.profile.profile.name}</h2> */}
+    {console.log('username',profileUsername)}
+        <h2>{profileUsername}</h2>
     </div>
 )
     
@@ -31,7 +32,7 @@ RenderProfile = (props) => (
         return (
             <div>
             Welcome
-            {/* {this.RenderProfile()} */}
+            {this.RenderProfile()}
         </div>
         )
     }
@@ -40,7 +41,7 @@ RenderProfile = (props) => (
 
 function mapStateToProps(state){
     return{
-       profile: state.auth_reducer.profile
+       
     }
 }
 
