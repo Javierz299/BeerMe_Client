@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import config from '../config'
+import auth0Client from '../utils/auth'
 
 import axios from 'axios'
+import { prettyDOM } from '@testing-library/react'
 
 class ProtectedRoute extends Component {
 
+
 componentDidMount(){
-    // let profile = this.props.profile.profile.email            //,,{params: {email: profile.profile.email}}
-    // axios.get(`${config.API_ENDPOINT}/get/userprofile/${profile}`)
-    //  .then(res => console.log('get profile',res))
+    console.log('from private',auth0Client.getProfile())
+      let profile = auth0Client.getProfile()    
+      let profileEmail = profile.email
+      console.log('profileEmail',profileEmail)                          //,,{params: {email: profile.profile.email}}
+    axios.get(`${config.API_ENDPOINT}/get/userprofile/${profileEmail}`)
+      .then(res => console.log('get profile by email',res))
 }
 
 RenderProfile = (props) => (
@@ -22,7 +28,6 @@ RenderProfile = (props) => (
 
 
     render(){
-        //console.log('protected context', this.context)
         return (
             <div>
             Welcome

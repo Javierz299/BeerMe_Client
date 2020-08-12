@@ -12,7 +12,7 @@ export class AuthCheck extends Component {
         let data = profile.profile
         console.log('data',data)
         axios.post(`${config.API_ENDPOINT}/post/userprofile`,data)      //,{params: {email: profile.profile.email}}
-            .then(res => console.log('response from post request',res.config.data["email"]))
+            .then(res => console.log('response from post request',res.config.data))
             // .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile`),{params: {email: profile.profile.email}})
             // .then(res => this.props.set_db_profile(res.data))
             //     .then(history.replace('/')  )  
@@ -25,8 +25,8 @@ export class AuthCheck extends Component {
         if(this.props.auth.isAuthenticated()){
             console.log('isauthenticated: success')
             this.props.login_success()//redux props
-            this.props.add_profile(this.props.auth.userProfile)//react props comming from routes.js
-            this.send_profile_to_db(this.props.auth.userProfile)
+            this.props.add_profile(this.props.auth.profile)//react props comming from routes.js
+            this.send_profile_to_db(this.props.auth.profile)
             history.replace('/')
         } else {
             console.log('isauthenticated: failed')
@@ -48,7 +48,7 @@ export class AuthCheck extends Component {
 function mapStateToProps(state){
     console.log("authcheck",state.auth_reducer.profile)
     return {
-        profile: state.auth_reducer.profile
+        stateProfile: state.auth_reducer.profile
     }
 }
 

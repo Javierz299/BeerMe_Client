@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js'
 import history from './history'
 
-export default class Auth {
+ class Auth {
     auth0 = new auth0.WebAuth({
         domain: 'dev-u9j3svni.auth0.com',
         clientID: 'nYqsYc5H4Pqc0THAin0O9wr8CcGTzlhn',
@@ -10,23 +10,54 @@ export default class Auth {
         scope: 'openid profile email'
     })
 
-userProfile = {}
+
+    getProfile = () => {
+        return this.profile
+    }
+
+    getIdToken = () => {
+        return this.idToken
+    }
+
+    isAuthenticated = () => {
+        return new Date().getTime() < this.expiresAt
+    }
+
+    signIn = () => {
+        this.auth0.authorize()
+    }
 
 
-login = () => {
-      console.log('login reached')
-    this.auth0.authorize()
-}
 
-logout = () => {
-    console.log('logout reached')
-    localStorage.removeItem('access_token')
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('expiresAt')
-    history.replace('/')
-}
+// login = () => {
+//       console.log('login reached')
+//     this.auth0.authorize()
+// }
 
-handleAuth = () => {
+// logout = () => {
+//     console.log('logout reached')
+//     localStorage.removeItem('access_token')
+//     localStorage.removeItem('id_token')
+//     localStorage.removeItem('expiresAt')
+//     history.replace('/')
+// }
+
+handleAuthentication = () => {
+    return new Promise((resolve, reject) => {
+        this.auth0.parseHash((err, authResult) => {
+          if (err) return reject(err);
+          if (!authResult || !authResult.idToken) {
+            return reject(err);
+          }
+          this.idToken = authResult.idToken;
+          this.profile = authResult.idTokenPayload;
+          let expAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
+          this.expiresAt = authResult.idTokenPayload.exp * expAt;
+          resolve();
+        });
+      })
+
+
     this.auth0.parseHash((err,authResult) => {
        
         console.log('auhtresult',authResult)
@@ -38,8 +69,10 @@ handleAuth = () => {
             let expiresAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
             localStorage.setItem('expiresAt',expiresAt)
 
-            this.getProfile()
+            this.setSession(authResult)
 
+            // this.getProfile()
+             console.log('userProfile from auth',this.userProfile)
             setTimeout(() => {
                 history.replace('/authcheck')
             }, 1000)
@@ -49,13 +82,23 @@ handleAuth = () => {
         }
     })
 }
-
+signOut = () => {
+    // this.idToken = null
+    // this.profile = null
+    // this.expiresAt = null
+    this.auth0.logout({
+        returnTo: 'http://localhost:3000',
+        clientID: 'nYqsYc5H4Pqc0THAin0O9wr8CcGTzlhn',
+    })
+}
+///////////
 setSession(authResult){
-    console.log('this',this)
+    //this.accessToken = authResult.accessToken
     this.idToken = authResult.idToken
     this.profile = authResult.idTokenPayload
     let expAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
     this.expiresAt = authResult.idTokenPayload.exp * expAt
+    console.log('this',this.profile)
 }
 
 silentAuth(){
@@ -68,32 +111,35 @@ silentAuth(){
     })
 }
 
-isAuthenticated = () => {
-    let expiresAt = JSON.parse(localStorage.getItem('expiresAt'))
-    return new Date().getTime() < expiresAt
+// isAuthenticated = () => {
+//     let expiresAt = JSON.parse(localStorage.getItem('expiresAt'))
+//     return new Date().getTime() < expiresAt
+// }
+
+// getAccessToken = () => {
+//     if(localStorage.getItem('access_token')){
+//         const accessToken = localStorage.getItem('access_token')
+//         return accessToken
+//     } else {
+//         return null
+//     }
+// }
+
+// getProfile = () => {
+   
+//     let access_token = this.getAccessToken()
+
+//     if(access_token){
+//         this.auth0.client.userInfo(access_token, (err,profile) => {
+//             if(profile){
+//                 this.userProfile = { profile }
+//                 return this.userProfile
+//             }
+//         })
+//     }
+// }
+
 }
+const auth0Client = new Auth()
 
-getAccessToken = () => {
-    if(localStorage.getItem('access_token')){
-        const accessToken = localStorage.getItem('access_token')
-        return accessToken
-    } else {
-        return null
-    }
-}
-
-getProfile = () => {
-    let access_token = this.getAccessToken()
-
-    if(access_token){
-        this.auth0.client.userInfo(access_token, (err,profile) => {
-            if(profile){
-                this.userProfile = { profile }
-                return this.userProfile
-            }
-        })
-    }
-}
-
-
-}
+export default auth0Client

@@ -1,31 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Auth from '../utils/auth'
+import auth0Client from '../utils/auth'
 
 import Context from '../context/ProfileContext'
 
 
 export class AuthLogin extends Component {
 
-    static contextType = Context
+ signOut = () => {
+     auth0Client.signOut()
+     this.props.history.replace('/')
+ }
 
-    auth = new Auth()
-
-
-    renderAuthButton = () => {
-        return this.props.is_authenticated ?
-        <button onClick={() => this.auth.logout()} >Logout</button> :
-        <button onClick={() => this.auth.login()} >LOGIN</button>
-
-}
-
+ renderButtons = () =>{
+     console.log('button clicked')
+     return !auth0Client.isAuthenticated ?
+     <button onClick={() => auth0Client.signOut()}>Sign Out</button> :
+     <button onClick={() => auth0Client.signIn()}>Sign In</button>
+ }
 
     render() {
-
-        
         return (
             <div>
-               {this.renderAuthButton()}
+               {this.renderButtons()}
             </div>
         )
     }
