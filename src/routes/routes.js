@@ -37,12 +37,18 @@ export class routes extends Component {
 
         if(auth0Client.isAuthenticated()){
             let userProfile = auth0Client.getProfile()
+            this.props.add_profile(userProfile)
             axios.post(`${config.API_ENDPOINT}/post/userprofile`,userProfile)
                 .then(res => console.log('post res', res))
+                //this.props.set_db_profile(JSON.parse(res.config.data))
+                //console.log('post res', JSON.parse(res.config.data))
         }
     }
 
     render() {
+        console.log('add profile routes', this.props.profile)
+        console.log('add profile routes', this.props.dbProfile)
+
         return (
             <div>
                 <Router history={history}>
@@ -63,7 +69,8 @@ export class routes extends Component {
 }
 
 function mapStateToProps(state){
-    console.log('auth reducer/state',state.auth_reducer.profile)
+    console.log('reducer/state client',state.auth_reducer.profile)
+    console.log('reducer/state server',state.auth_reducer.dbProfile)
     return {
         profile: state.auth_reducer.profile,
         dbProfile: state.auth_reducer.set_db_profile
@@ -72,9 +79,6 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return{
-        set_auth: (authCheck) => dispatch(ACTIONS.auth_check),
-        login_success: () => dispatch(ACTIONS.login_success()),
-        login_failure: () => dispatch(ACTIONS.login_failure()),
         add_profile: (profile) => dispatch(ACTIONS.add_profile(profile)),
         remove_profile: () => dispatch(ACTIONS.remove_profile()),
         set_db_profile: (profile) => dispatch(ACTIONS.set_db_profile(profile)),

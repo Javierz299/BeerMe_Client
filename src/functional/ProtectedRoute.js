@@ -1,38 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import config from '../config'
+import * as ACTIONS from '../store/actions/actions'
+
 import auth0Client from '../utils/auth'
 
 import axios from 'axios'
-import { prettyDOM } from '@testing-library/react'
 
 class ProtectedRoute extends Component {
 
-
+ 
 async componentDidMount(){
     console.log('from private',auth0Client.getProfile())
       let profile = await auth0Client.getProfile()    
       let profileEmail = await profile.email
       console.log('profileEmail',profileEmail)                          //,,{params: {email: profile.profile.email}}
     axios.get(`${config.API_ENDPOINT}/get/userprofile/${profileEmail}`)
-      .then(res => this.RenderProfile(res.data.username))//console.log('get profile by email',res.data.username)
+      .then(res => this.props.set_db_profile(res.data))//console.log('get profile by email',res.data.username)
+
 }
-
-RenderProfile = (profileUsername) => (
-    
-    <div>
-    {console.log('username',profileUsername)}
-        <h2>{profileUsername}</h2>
-    </div>
-)
-    
-
 
     render(){
         return (
             <div>
             Welcome
-            {this.RenderProfile()}
+            <h2>Client {this.props.profile.name}</h2>
+            <h3>Server {this.props.dbProfile.username}</h3>
         </div>
         )
     }
@@ -40,9 +33,19 @@ RenderProfile = (profileUsername) => (
 }
 
 function mapStateToProps(state){
+    console.log('profile reducer/state',state.auth_reducer.profile)
+    console.log('dbprofile reducer/state',state.auth_reducer.dbProfile)
+
+    return {
+        profile: state.auth_reducer.profile,
+        dbProfile: state.auth_reducer.set_db_profile
+    }
+}
+function mapDispatchToProps(dispatch){
     return{
-       
+        set_db_profile: (profile) => dispatch(ACTIONS.set_db_profile(profile)),
     }
 }
 
-export default connect(mapStateToProps)(ProtectedRoute)
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProtectedRoute)
