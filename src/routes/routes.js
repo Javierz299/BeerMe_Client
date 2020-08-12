@@ -39,7 +39,9 @@ export class routes extends Component {
             let userProfile = auth0Client.getProfile()
             this.props.add_profile(userProfile)
             axios.post(`${config.API_ENDPOINT}/post/userprofile`,userProfile)
-                .then(res => console.log('post res', res))
+                .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile/${userProfile.email}`))
+                    .then(res => this.props.set_db_profile(res))
+                //console.log('get request data',res)
                 //this.props.set_db_profile(JSON.parse(res.config.data))
                 //console.log('post res', JSON.parse(res.config.data))
         }

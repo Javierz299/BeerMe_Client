@@ -25,7 +25,7 @@ async componentDidMount(){
             <div>
             Welcome
             <h2>Client {this.props.profile.name}</h2>
-            <h3>Server {this.props.dbProfile.username}</h3>
+            {/* <h3>Server {this.props.dbProfile.username}</h3> */}
         </div>
         )
     }
