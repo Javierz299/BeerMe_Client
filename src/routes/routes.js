@@ -25,6 +25,8 @@ import axios from 'axios'
 
 export class routes extends Component {
 
+    static contextType = Context
+
     async componentDidMount(){    
         //console.log('props from routes',props)    
         //if (this.location.pathname === '/callback') return;
@@ -39,15 +41,15 @@ export class routes extends Component {
             let userProfile = auth0Client.getProfile()
             this.props.add_profile(userProfile)
             axios.post(`${config.API_ENDPOINT}/post/userprofile`,userProfile)
-                .then(() => axios.get(`${config.API_ENDPOINT}/get/userprofile/${userProfile.email}`))
-                    .then(res => this.props.set_db_profile(res))
-                //console.log('get request data',res)
+                .then(res => this.context.globalDispatchProfile(JSON.parse(res.config.data)))
+
                 //this.props.set_db_profile(JSON.parse(res.config.data))
                 //console.log('post res', JSON.parse(res.config.data))
         }
     }
 
     render() {
+        console.log('global',this.context.globalProfile)
         console.log('add profile routes', this.props.profile)
         console.log('add profile routes', this.props.dbProfile)
 
