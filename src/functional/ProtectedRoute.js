@@ -24,6 +24,8 @@ async componentDidMount(){
             Welcome
             <h2>Client {this.props.profile.name}</h2>
             <h3>Server {this.context.globalProfile.username}</h3>
+            
+            {/* {drink form} */}
         </div>
         )
     }
@@ -31,9 +33,6 @@ async componentDidMount(){
 }
 
 function mapStateToProps(state){
-    console.log('profile reducer/state',state.auth_reducer.profile)
-    console.log('dbprofile reducer/state',state.auth_reducer.dbProfile)
-
     return {
         profile: state.auth_reducer.profile,
         dbProfile: state.auth_reducer.set_db_profile

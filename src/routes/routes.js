@@ -51,7 +51,6 @@ export class routes extends Component {
                         .then(res => this.context.dispatchGlobalProfile(res.data))
                     }
                 })
-
                 //this.props.set_db_profile(JSON.parse(res.config.data))
                 //console.log('post res', JSON.parse(res.config.data))
         }
@@ -78,8 +77,6 @@ export class routes extends Component {
 }
 
 function mapStateToProps(state){
-    console.log('reducer/state client',state.auth_reducer.profile)
-    console.log('reducer/state server',state.auth_reducer.dbProfile)
     return {
         profile: state.auth_reducer.profile,
         dbProfile: state.auth_reducer.set_db_profile
