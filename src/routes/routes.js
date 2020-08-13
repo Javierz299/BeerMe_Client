@@ -10,7 +10,6 @@ import UnauthRedirect from '../functional/UnAuthRedirect'
 
 import PrivateRoute from '../routes/PrivateRoute'
 
-import AuthCheck from '../utils/authcheck'
 import history from '../utils/history'
 import auth0Client from '../utils/auth'
 
@@ -63,7 +62,6 @@ export class routes extends Component {
                 <Header />
                     <Switch>
                         <Route exact path='/' component={Home} />
-                        <Route path='/authcheck' render={() =>  <AuthCheck />} />
                         <Route path='/redirect' component={UnauthRedirect} />
                         <Route path="/callback" render={(props) => <Callback  props={props}/>} />
 

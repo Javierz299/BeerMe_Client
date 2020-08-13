@@ -4,6 +4,8 @@ import config from '../config'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 
+import DrinkForm from '../container/DrinkForm'
+
 import auth0Client from '../utils/auth'
 
 import axios from 'axios'
@@ -25,7 +27,7 @@ async componentDidMount(){
             <h2>Client {this.props.profile.name}</h2>
             <h3>Server {this.context.globalProfile.username}</h3>
             
-            {/* {drink form} */}
+           {<DrinkForm />}
         </div>
         )
     }

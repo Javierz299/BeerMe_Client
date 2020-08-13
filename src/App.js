@@ -3,9 +3,6 @@ import './App.css'
 
 import Context from './context/ProfileContext'
 
-import * as ACTIONS from './store/actions/actions'
-import * as ProfileHook from './store/actions/hooks/profile_hook'
-
 import Route from './routes/routes'
 
 const App = () => {
