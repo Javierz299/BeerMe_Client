@@ -83,9 +83,9 @@ handleAuthentication = () => {
     })
 }
 signOut = () => {
-    // this.idToken = null
-    // this.profile = null
-    // this.expiresAt = null
+    this.idToken = null
+    this.profile = null
+    this.expiresAt = null
     this.auth0.logout({
         returnTo: 'http://localhost:3000',
         clientID: 'nYqsYc5H4Pqc0THAin0O9wr8CcGTzlhn',

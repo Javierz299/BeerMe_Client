@@ -2,22 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import config from '../config'
 import * as ACTIONS from '../store/actions/actions'
+import Context from '../context/ProfileContext'
 
 import auth0Client from '../utils/auth'
 
 import axios from 'axios'
 
 class ProtectedRoute extends Component {
-
+    static contextType = Context
  
 async componentDidMount(){
-    console.log('from private',auth0Client.getProfile())
       let profile = await auth0Client.getProfile()    
       let profileEmail = await profile.email
-      console.log('profileEmail',profileEmail)                          //,,{params: {email: profile.profile.email}}
     axios.get(`${config.API_ENDPOINT}/get/userprofile/${profileEmail}`)
       .then(res => this.props.set_db_profile(res.data))//console.log('get profile by email',res.data.username)
-
 }
 
     render(){
@@ -25,7 +23,7 @@ async componentDidMount(){
             <div>
             Welcome
             <h2>Client {this.props.profile.name}</h2>
-            {/* <h3>Server {this.props.dbProfile.username}</h3> */}
+            {/* <h3>Server {this.context.globalProfile.username}</h3> */}
         </div>
         )
     }

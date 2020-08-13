@@ -40,8 +40,17 @@ export class routes extends Component {
         if(auth0Client.isAuthenticated()){
             let userProfile = auth0Client.getProfile()
             this.props.add_profile(userProfile)
+            console.log('post/get,',userProfile.email)
             axios.post(`${config.API_ENDPOINT}/post/userprofile`,userProfile)
-                .then(res => this.context.globalDispatchProfile(JSON.parse(res.config.data)))
+                .then(res => {
+                    //console.log('post res',res)
+                   let parsed = JSON.parse(res.config.data)
+                    //console.log('res data',parsed.email)
+                    if(res.config.data){
+                        axios.get(`${config.API_ENDPOINT}/get/userprofile/${parsed.email}`)
+                        .then(res => this.context.dispatchGlobalProfile(res.data))
+                    }
+                })
 
                 //this.props.set_db_profile(JSON.parse(res.config.data))
                 //console.log('post res', JSON.parse(res.config.data))
@@ -49,10 +58,6 @@ export class routes extends Component {
     }
 
     render() {
-        console.log('global',this.context.globalProfile)
-        console.log('add profile routes', this.props.profile)
-        console.log('add profile routes', this.props.dbProfile)
-
         return (
             <div>
                 <Router history={history}>

@@ -23,7 +23,7 @@ const App = () => {
       BeerMe
       <Context.Provider value={{
         globalProfile: profileGlobal,
-        globalDispatchProfile: (profile) => dispatchContextProfile(profile),
+        dispatchGlobalProfile: (profile) => dispatchContextProfile(profile),
       }}>
           <Route />
        </Context.Provider>
