@@ -7,13 +7,17 @@ import Route from './routes/routes'
 
 const App = () => {
   const [profileGlobal, setProfileGlobal] = useState(null)
+  const [statsGlobal, setStatsGlobal ] = useState(null)
 
   const dispatchContextProfile = (profile) => {
     console.log('REACHED globalcontext',profile)
     setProfileGlobal(profile)
   }
 
-
+  const dispatchStatsProfile = (proStats) => {
+    console.log('proState reached',proStats)
+    setStatsGlobal(proStats)
+  }
 
   return (
     <div className="App">
@@ -21,6 +25,8 @@ const App = () => {
       <Context.Provider value={{
         globalProfile: profileGlobal,
         dispatchGlobalProfile: (profile) => dispatchContextProfile(profile),
+        globalStats: statsGlobal,
+        dispatchStatsProfile: (proStats) => dispatchStatsProfile(proStats),
       }}>
           <Route />
        </Context.Provider>

@@ -11,6 +11,7 @@ const DrinkForm = () => {
     const context = useContext(Context)
 
 
+
     const handleBeerMeForm = (e) => {
         e.preventDefault()
         getDateOnly()
@@ -38,6 +39,7 @@ const DrinkForm = () => {
             cocktail: Number(Cocktail_Me.value),
             date: getDateOnly()
         }
+
         axios.post(`${config.API_ENDPOINT}/post/userdrink`,BeerMe)
 
         console.log('drinks',BeerMe)
@@ -47,7 +49,7 @@ const DrinkForm = () => {
     
         return (
             <div>
-                <form onSubmit={handleBeerMeForm}>
+                <form onSubmit={handleBeerMeForm} id="form_hide form_show">
                     <fieldset>
                     <legend>BeerMe</legend>
                 <div>

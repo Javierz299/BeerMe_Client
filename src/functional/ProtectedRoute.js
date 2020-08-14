@@ -13,15 +13,34 @@ import axios from 'axios'
 
 class ProtectedRoute extends Component {
     static contextType = Context
+
+     result = () => {axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+      .then(res => {
+
+          console.log('get response',res.data)
+          this.context.dispatchStatsProfile(res.data)
+          return res.data
+        })
+    }
  
 async componentDidMount(){
-      let profile = await auth0Client.getProfile()    
-      let profileEmail = await profile.email
-    axios.get(`${config.API_ENDPOINT}/get/userprofile/${profileEmail}`)
-      .then(res => this.props.set_db_profile(res.data))//console.log('get profile by email',res.data.username)
+      //let profile = await auth0Client.getProfile()    
+      //let profileEmail = await profile.email
+    //  let result = axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+    //   .then(res => {
+    //       console.log('get response',res.data)
+    //       if(res.data === ""){
+    //           console.log('no data, show form')
+    //       } else {
+    //           this.context.dispatchStatsProfile(res.data)
+    //           console.log('found data dont show form')
+    //           return <DrinkForm />
+    //       }
+      //})//console.log('get profile by email',res.data.username)
 }
 
     render(){
+        console.log(this.context.globalStats)
         return (
             <div>
             Welcome
@@ -30,7 +49,7 @@ async componentDidMount(){
             this.context.globalProfile.username
             }</h3>
             
-           <DrinkForm />
+           {this.result === "" ? <DrinkForm /> : <div>contional test</div>}
            {/* {get request/list of all drinks user has submitted; total} */}
         </div>
         )
