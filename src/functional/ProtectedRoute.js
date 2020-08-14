@@ -5,6 +5,7 @@ import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 
 import DrinkForm from '../container/DrinkForm'
+//import get all drinks
 
 import auth0Client from '../utils/auth'
 
@@ -24,10 +25,13 @@ async componentDidMount(){
         return (
             <div>
             Welcome
-            <h2>Client {this.props.profile.name}</h2>
-            <h3>Server {this.context.globalProfile.username}</h3>
+            <h3> {this.context.globalProfile.username === null ? 
+            this.props.profile.name : 
+            this.context.globalProfile.username
+            }</h3>
             
-           {<DrinkForm />}
+           <DrinkForm />
+           {/* {get request/list of all drinks user has submitted; total} */}
         </div>
         )
     }
