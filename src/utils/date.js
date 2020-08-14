@@ -1,4 +1,4 @@
-const getDate  = () => {
+export const getDateOnly  = () => {
 let today = new Date();
 let dd = today.getDate();
 
@@ -15,12 +15,20 @@ if(mm<10)
 } 
 today = yyyy+'-'+mm+'-'+dd
 console.log(today);
-today = mm+'/'+dd+'/'+yyyy;
-console.log(today);
-today = dd+'-'+mm+'-'+yyyy;
-console.log(today);
-today = dd+'/'+mm+'/'+yyyy;
-console.log(today);
+return today
 }
 
-export default getDate
+export const getDate_Time = () => {
+let date = new Date();
+let dateStr =
+  ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+  ("00" + date.getDate()).slice(-2) + "-" +
+  date.getFullYear() + " " +
+  ("00" + date.getHours()).slice(-2) + ":" +
+  ("00" + date.getMinutes()).slice(-2) + ":" +
+  ("00" + date.getSeconds()).slice(-2);
+console.log(dateStr);
+return dateStr
+}
+
+

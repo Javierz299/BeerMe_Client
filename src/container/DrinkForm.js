@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import axios from 'axios'
+import config from '../config'
 
-import GetDateFormat from '../utils/date'
+import {getDateOnly,getDate_Time} from '../utils/date'
 
 import Context from '../context/ProfileContext'
-import getDate from '../utils/date'
 
 const DrinkForm = () => {
 
@@ -13,15 +13,32 @@ const DrinkForm = () => {
 
     const handleBeerMeForm = (e) => {
         e.preventDefault()
-        GetDateFormat()
+        getDateOnly()
+        getDate_Time()
         const { Beer_Me,Wine_Me,Shot_Me,Cocktail_Me } = e.target
 
-        const BeerMe = {
-            BeerMe: Beer_Me.value,
-            WineMe: Wine_Me.value,
-            ShotMe: Shot_Me.value,
-            CocktailMe: Cocktail_Me.value
+        if(Beer_Me.value === ""){
+            Beer_Me.value = 0
         }
+        if(Wine_Me.value === ""){
+            Wine_Me.value = 0
+        }
+        if(Shot_Me.value === ""){
+            Shot_Me.value = 0
+        }
+        if(Cocktail_Me.value === ""){
+            Cocktail_Me.value = 0
+        }
+        
+        const BeerMe = {
+            user_id: context.globalProfile.id,
+            beer: Number(Beer_Me.value),
+            wine: Number(Wine_Me.value),
+            shots: Number(Shot_Me.value),
+            cocktail: Number(Cocktail_Me.value),
+            date: getDateOnly()
+        }
+        axios.post(`${config.API_ENDPOINT}/post/userdrink`,BeerMe)
 
         console.log('drinks',BeerMe)
     }
