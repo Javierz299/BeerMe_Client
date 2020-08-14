@@ -15,8 +15,13 @@ const App = () => {
   }
 
   const dispatchStatsProfile = (proStats) => {
-    console.log('proState reached',proStats)
-    setStatsGlobal(proStats)
+    if(proStats === ''){
+        setStatsGlobal('Empty')
+    } else {
+      console.log('proState reached',proStats)
+      setStatsGlobal(proStats)
+    }
+
   }
 
   return (

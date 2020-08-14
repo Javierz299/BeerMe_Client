@@ -5,18 +5,24 @@ import config from '../config'
 import {getDateOnly,getDate_Time} from '../utils/date'
 
 import Context from '../context/ProfileContext'
+/////////change to class/uncontrolled compnent
+
 
 const DrinkForm = () => {
 
     const context = useContext(Context)
 
-
+    const handleDrinkChange = (e) => {
+        const {drink_select } = e.target
+        console.log('drink value',drink_select)
+    }
 
     const handleBeerMeForm = (e) => {
         e.preventDefault()
         getDateOnly()
         getDate_Time()
-        const { Beer_Me,Wine_Me,Shot_Me,Cocktail_Me } = e.target
+        const { Beer_Me,Wine_Me,Shot_Me,Cocktail_Me, drink_select} = e.target
+        //console.log('select value',drink_select.value)
 
         if(Beer_Me.value === ""){
             Beer_Me.value = 0
@@ -49,7 +55,16 @@ const DrinkForm = () => {
     
         return (
             <div>
+                
                 <form onSubmit={handleBeerMeForm} id="form_hide form_show">
+                <label htmlFor="drink_select">Choose a Beverage:</label>
+                    <select name="BeerMe" id="drink_select" onChange={handleDrinkChange}>
+                         <option value="">--Please choose an option--</option>
+                         <option value="beer">Beer</option>
+                         <option value="wine">Wine</option>
+                         <option value="shot">Shots</option>
+                         <option value="cocktail">Cocktail</option>
+                    </select>
                     <fieldset>
                     <legend>BeerMe</legend>
                 <div>

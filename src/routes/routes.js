@@ -52,9 +52,12 @@ export class routes extends Component {
                 })
                 //this.props.set_db_profile(JSON.parse(res.config.data))
                 //console.log('post res', JSON.parse(res.config.data))
+                setTimeout(() => {
+                    axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+                    .then(res => this.context.dispatchStatsProfile(res.data))
+                },200)
+            
         }
-
-        
     }
 
     render() {

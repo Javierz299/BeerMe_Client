@@ -14,15 +14,6 @@ import axios from 'axios'
 class ProtectedRoute extends Component {
     static contextType = Context
 
-     result = () => {axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
-      .then(res => {
-
-          console.log('get response',res.data)
-          this.context.dispatchStatsProfile(res.data)
-          return res.data
-        })
-    }
- 
 async componentDidMount(){
       //let profile = await auth0Client.getProfile()    
       //let profileEmail = await profile.email
@@ -49,7 +40,7 @@ async componentDidMount(){
             this.context.globalProfile.username
             }</h3>
             
-           {this.result === "" ? <DrinkForm /> : <div>contional test</div>}
+           {!this.props.globalStats === 'Empty' ? <div>Display results and edit</div> : <DrinkForm />}
            {/* {get request/list of all drinks user has submitted; total} */}
         </div>
         )
