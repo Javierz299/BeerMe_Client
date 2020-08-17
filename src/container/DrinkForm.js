@@ -27,10 +27,12 @@ class DrinkForm extends Component{
             date: getDateOnly()
         }
 
-        if(this.context.globalStats === 'null'){
+        if(this.context.globalStats === 'Empty'){
+            console.log('stats came back null/empty',this.context.globalStats)
             axios.post(`${config.API_ENDPOINT}/post/userdrink`,BeerMe)
             .then(res => console.log('response from post/form',res))
-        } else if(this.context.globalStats !== 'null'){
+        } else if(this.context.globalStats !== 'Empty'){
+            console.log('founds stats',this.context.globalStats)
             setTimeout(() => {
                 axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
                 .then(res => this.context.dispatchStatsProfile(res.data))
@@ -40,19 +42,22 @@ class DrinkForm extends Component{
      }
 
      increment_beer = () => {
-         console.log('increment')
         this.props.inc_beer(this.props.beer + 1)
+        console.log('increment',this.props.beer)
      }
      decrement_beer = () => {
-         console.log('decrement')
          this.props.inc_beer(this.props.beer - 1)
+         console.log('decrement',this.props.beer)
+
 
     }
 
      handleBeerMeForm = (e) => {
          e.preventDefault()
-         console.log('e',e)
-        
+         console.log('beer',this.props.beer)
+        let beerMe = {beer: this.props.beer}
+        console.log('beerMe patch',beerMe)
+        //axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${id}`)
     }
 
 
@@ -62,10 +67,10 @@ class DrinkForm extends Component{
             <div>
            {/* {!this.props.globalStats === 'Empty' ? <div>Display results and edit</div> : <DrinkForm />} */}
 
-                <form onSubmit={(e) => this.handleBeerMeForm(e)}>
+                <form onSubmit={this.handleBeerMeForm}>
                 <h2>Beer:  <span>{this.props.beer}</span></h2>
-                    <button onClick={() => this.decrement_beer()}>-</button>
-                    <button onClick={() => this.increment_beer()}>+</button>
+                    <button type="button" onClick={() => this.decrement_beer()}>-</button>
+                    <button type="button" onClick={() => this.increment_beer()}>+</button>
                     <div>
                     <button type="submit" >Beer Me</button>
                     </div>
