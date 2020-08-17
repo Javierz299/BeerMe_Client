@@ -1,94 +1,118 @@
-import React, { useContext } from 'react'
+import React, { useContext, Component } from 'react'
 import axios from 'axios'
 import config from '../config'
+import * as ACTIONS from '../store/actions/actions'
+
+import { connect } from 'react-redux'
 
 import {getDateOnly,getDate_Time} from '../utils/date'
 
 import Context from '../context/ProfileContext'
+import { prettyDOM } from '@testing-library/react'
 /////////change to class/uncontrolled compnent
 
 
-const DrinkForm = () => {
+class DrinkForm extends Component{
 
-    const context = useContext(Context)
+     static contextType = Context
 
-    const handleDrinkChange = (e) => {
-        const {drink_select } = e.target
-        console.log('drink value',drink_select)
-    }
+     componentDidMount(){
 
-    const handleBeerMeForm = (e) => {
-        e.preventDefault()
-        getDateOnly()
-        getDate_Time()
-        const { Beer_Me,Wine_Me,Shot_Me,Cocktail_Me, drink_select} = e.target
-        //console.log('select value',drink_select.value)
-
-        if(Beer_Me.value === ""){
-            Beer_Me.value = 0
-        }
-        if(Wine_Me.value === ""){
-            Wine_Me.value = 0
-        }
-        if(Shot_Me.value === ""){
-            Shot_Me.value = 0
-        }
-        if(Cocktail_Me.value === ""){
-            Cocktail_Me.value = 0
-        }
-        
         const BeerMe = {
-            user_id: context.globalProfile.id,
-            beer: Number(Beer_Me.value),
-            wine: Number(Wine_Me.value),
-            shots: Number(Shot_Me.value),
-            cocktail: Number(Cocktail_Me.value),
+            user_id: this.context.globalProfile.id,
+            beer: 0,
+            wine: 0,
+            shots: 0,
+            cocktail: 0,
             date: getDateOnly()
         }
 
-        axios.post(`${config.API_ENDPOINT}/post/userdrink`,BeerMe)
+        if(this.context.globalStats === 'null'){
+            axios.post(`${config.API_ENDPOINT}/post/userdrink`,BeerMe)
+            .then(res => console.log('response from post/form',res))
+        } else if(this.context.globalStats !== 'null'){
+            setTimeout(() => {
+                axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+                .then(res => this.context.dispatchStatsProfile(res.data))
+            },200)
+        }
 
-        console.log('drinks',BeerMe)
+     }
+
+     increment_beer = () => {
+         console.log('increment')
+        this.props.inc_beer(this.props.beer + 1)
+     }
+     decrement_beer = () => {
+         console.log('decrement')
+         this.props.inc_beer(this.props.beer - 1)
+
+    }
+
+     handleBeerMeForm = (e) => {
+         e.preventDefault()
+         console.log('e',e)
+        
     }
 
 
-    
+
+    render(){
         return (
             <div>
-                
-                <form onSubmit={handleBeerMeForm} id="form_hide form_show">
-                <label htmlFor="drink_select">Choose a Beverage:</label>
-                    <select name="BeerMe" id="drink_select" onChange={handleDrinkChange}>
-                         <option value="">--Please choose an option--</option>
-                         <option value="beer">Beer</option>
-                         <option value="wine">Wine</option>
-                         <option value="shot">Shots</option>
-                         <option value="cocktail">Cocktail</option>
-                    </select>
-                    <fieldset>
-                    <legend>BeerMe</legend>
-                <div>
-                    <label htmlFor="Beer_Me" >Beer</label>
-                    <input id="Beer_Me" type="number" min="0" max="1" placeholder="0"/>
+           {/* {!this.props.globalStats === 'Empty' ? <div>Display results and edit</div> : <DrinkForm />} */}
 
-                    <label htmlFor="Wine_Me" >Wine</label>
-                    <input id="Wine_Me" type="number" min="0" max="1" placeholder="0"/>
-                </div>    
-                <div>
-                    <label htmlFor="Shot_Me" >Shots</label>
-                    <input id="Shot_Me" type="number" min="0" max="1" placeholder="0"/>
+                <form onSubmit={(e) => this.handleBeerMeForm(e)}>
+                <h2>Beer:  <span>{this.props.beer}</span></h2>
+                    <button onClick={() => this.decrement_beer()}>-</button>
+                    <button onClick={() => this.increment_beer()}>+</button>
+                    <div>
+                    <button type="submit" >Beer Me</button>
+                    </div>
+                </form>
+                <form>
+                    <h2>Wine:  {this.props.wine}</h2>
+                    <button>-</button><button>+</button>
+                    <button>Wine Me</button>
+                </form>
+                <form>
+                    <h2>Shots:  {this.props.shots}</h2>
+                    <button>-</button><button>+</button>
+                    <button>Shot Me</button>
+                </form>
+                <form>
+                    <h2>Cocktail:  {this.props.cocktail}</h2>
+                    <button>-</button><button>+</button>
+                    <button>Cocktail Me</button>
 
-                    <label htmlFor="Cocktail_Me" >Cocktails</label>
-                    <input id="Cocktail_Me" type="number" min="0" max="1" placeholder="0"/>
-                </div>
-                <button>BeerMe</button>
-                    </fieldset>
-                
-                    
                 </form>
             </div>
         )
     
 }
+}
 
-export default DrinkForm
+function mapStatToProps(state){
+    return {
+        beer: state.user_reducer.beer,
+        wine: state.user_reducer.wine,
+        shots: state.user_reducer.shots,
+        cocktail: state.user_reducer.cocktail,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        inc_beer: (beer) => dispatch(ACTIONS.increment_beer(beer)),
+        inc_wine: (wine) => dispatch(ACTIONS.increment_wine(wine)),
+        inc_shots: (shots) => dispatch(ACTIONS.increment_shots(shots)),
+        inc_cocktail: (cocktail) => dispatch(ACTIONS.increment_cocktail(cocktail)),
+        dec_beer: (beer) => dispatch(ACTIONS.decrement_beer(beer)),
+        dec_wine: (wine) => dispatch(ACTIONS.decrement_wine(wine)),
+        dec_shots: (shots) => dispatch(ACTIONS.decrement_shots(shots)),
+        dec_cocktail: (cocktail) => dispatch(ACTIONS.decrement_cocktail(cocktail))
+
+    }
+}
+
+export default connect(mapStatToProps,mapDispatchToProps)(DrinkForm)

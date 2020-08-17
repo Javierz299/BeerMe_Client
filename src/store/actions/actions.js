@@ -79,3 +79,73 @@ export const auth_check = (authCheck) => {
   }
 }
 
+export const increment_beer = (beer) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER,
+    payload: beer
+  }
+}
+
+export const increment_wine = (wine) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_WINE,
+    payload: wine
+  }
+}
+
+export const increment_shots = (shots) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SHOTS,
+    payload: shots
+  }
+}
+
+export const increment_cocktail = (cocktail) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_COCKTAIL,
+    payload: cocktail
+  }
+}
+
+export const decrement_beer = (beer) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER,
+    payload: beer
+  }
+}
+
+export const decrement_wine = (wine) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_WINE,
+    payload: wine
+  }
+}
+
+export const decrement_shots = (shots) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SHOTS,
+    payload: shots
+  }
+}
+
+export const decrement_cocktail = (cocktail) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_COCKTAIL,
+    payload: cocktail
+  }
+}
+
+export const submit_drink = (submit) => {
+  return {
+    type: ACTION_TYPES.SUBMIT_DRINK,
+    payload: submit
+  }
+}
+
+
+
+
+
+
+
+

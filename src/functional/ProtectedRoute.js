@@ -15,19 +15,7 @@ class ProtectedRoute extends Component {
     static contextType = Context
 
 async componentDidMount(){
-      //let profile = await auth0Client.getProfile()    
-      //let profileEmail = await profile.email
-    //  let result = axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
-    //   .then(res => {
-    //       console.log('get response',res.data)
-    //       if(res.data === ""){
-    //           console.log('no data, show form')
-    //       } else {
-    //           this.context.dispatchStatsProfile(res.data)
-    //           console.log('found data dont show form')
-    //           return <DrinkForm />
-    //       }
-      //})//console.log('get profile by email',res.data.username)
+
 }
 
     render(){
@@ -39,8 +27,13 @@ async componentDidMount(){
             this.props.profile.name : 
             this.context.globalProfile.username
             }</h3>
+            <span>Beer: {this.context.globalStats.beer}</span>
+            <span>Wine: {this.context.globalStats.wine}</span>
+            <span>Shots: {this.context.globalStats.shots}</span>
+            <span>Cocktail: {this.context.globalStats.cocktail}</span>
+
             
-           {!this.props.globalStats === 'Empty' ? <div>Display results and edit</div> : <DrinkForm />}
+           {<DrinkForm />}
            {/* {get request/list of all drinks user has submitted; total} */}
         </div>
         )
