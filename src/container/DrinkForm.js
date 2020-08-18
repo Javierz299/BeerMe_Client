@@ -8,8 +8,6 @@ import { connect } from 'react-redux'
 import {getDateOnly,getDate_Time} from '../utils/date'
 
 import Context from '../context/ProfileContext'
-import { prettyDOM } from '@testing-library/react'
-/////////change to class/uncontrolled compnent
 
 
 class DrinkForm extends Component{
@@ -41,16 +39,33 @@ class DrinkForm extends Component{
 
      }
 
-     increment_beer = () => {
-        this.props.inc_beer(this.props.beer + 1)
-        console.log('increment',this.props.beer)
+     handleIncrementClick = (e) => {
+         //this.increment_beer(e.target.id)
+         let id = e.target.id
+         console.log('incClick',id)
+
+            if(id === "beer"){
+                console.log('reached')
+               this.props.inc_beer(this.props.beer + 1)
+               console.log('increment',this.props.beer)
+            } else if(id === "wine"){
+               this.props.inc_wine(this.props.wine + 1)
+               console.log('increment',this.props.wine)
+            }
      }
-     decrement_beer = () => {
-         this.props.inc_beer(this.props.beer - 1)
-         console.log('decrement',this.props.beer)
-
-
-    }
+     handleDecrementClick = (e) => {
+         //this.decrement_beer(e.target.id)
+         let id = e.target.id
+         console.log('decClick',id)
+         
+            if(id === "beer"){
+                this.props.dec_beer(this.props.beer - 1)
+                console.log('decrement',this.props.beer)
+             } else if(id === "wine"){
+                this.props.dec_wine(this.props.wine - 1)
+                console.log('decrement',this.props.wine)
+             }
+     }
 
      handleBeerMeForm = (e) => {
          e.preventDefault()
@@ -70,26 +85,29 @@ class DrinkForm extends Component{
 
                 <form onSubmit={this.handleBeerMeForm}>
                 <h2>Beer:  <span>{this.props.beer}</span></h2>
-                    <button type="button" onClick={() => this.decrement_beer()}>-</button>
-                    <button type="button" onClick={() => this.increment_beer()}>+</button>
+                    <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
+                    <button id="beer" type="button" onClick={this.handleIncrementClick}>+</button>
                     <div>
-                    <button type="submit" >Beer Me</button>
+                        <button type="submit" >Beer Me</button>
                     </div>
                 </form>
-                <form>
+                <form  >
                     <h2>Wine:  {this.props.wine}</h2>
-                    <button>-</button><button>+</button>
-                    <button>Wine Me</button>
+                    <button id="wine" type="button" onClick={this.handleDecrementClick}>-</button>
+                    <button id="wine" type="button" onClick={this.handleIncrementClick}>+</button>
+                    <div>
+                        <button type="submit">Wine Me</button>
+                    </div>
                 </form>
                 <form>
                     <h2>Shots:  {this.props.shots}</h2>
                     <button>-</button><button>+</button>
-                    <button>Shot Me</button>
+                    <div><button>Shot Me</button></div>
                 </form>
                 <form>
                     <h2>Cocktail:  {this.props.cocktail}</h2>
                     <button>-</button><button>+</button>
-                    <button>Cocktail Me</button>
+                    <div><button>Cocktail Me</button></div>
 
                 </form>
             </div>

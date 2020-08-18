@@ -55,7 +55,7 @@ export class routes extends Component {
                 setTimeout(() => {
                     axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
                     .then(res => this.context.dispatchStatsProfile(res.data))
-                },200)
+                },400)
             
         }
     }
