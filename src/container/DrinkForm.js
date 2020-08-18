@@ -57,7 +57,8 @@ class DrinkForm extends Component{
          console.log('beer',this.props.beer)
         let beerMe = {beer: this.props.beer}
         console.log('beerMe patch',beerMe)
-        //axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${id}`)
+        axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
+            .then(res => console.log('patch respone',res))
     }
 
 
