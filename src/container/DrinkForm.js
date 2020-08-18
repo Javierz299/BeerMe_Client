@@ -51,6 +51,12 @@ class DrinkForm extends Component{
             } else if(id === "wine"){
                this.props.inc_wine(this.props.wine + 1)
                console.log('increment',this.props.wine)
+            } else if(id === "shots"){
+                this.props.inc_shots(this.props.shots + 1)
+                console.log('inc',this.props.shots)
+            } else if(id === "cocktail"){
+                this.props.inc_cocktail(this.props.cocktail + 1)
+                console.log('inc',this.props.cocktail)
             }
      }
      handleDecrementClick = (e) => {
@@ -64,13 +70,24 @@ class DrinkForm extends Component{
              } else if(id === "wine"){
                 this.props.dec_wine(this.props.wine - 1)
                 console.log('decrement',this.props.wine)
-             }
+             } else if(id === "shots"){
+                this.props.dec_shots(this.props.shots - 1)
+                console.log('dec',this.props.shots)
+            } else if(id === "cocktail"){
+                this.props.dec_cocktail(this.props.cocktail - 1)
+                console.log('dec',this.props.cocktail)
+            }
      }
 
      handleBeerMeForm = (e) => {
          e.preventDefault()
          console.log('beer',this.props.beer)
-        let beerMe = {beer: this.props.beer}
+        let beerMe = {
+            beer: this.props.beer,
+            wine: this.props.wine,
+            shots: this.props.shots,
+            cocktail: this.props.cocktail,
+        }
         console.log('beerMe patch',beerMe)
         axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
             .then(res => console.log('patch respone',res))
@@ -84,31 +101,29 @@ class DrinkForm extends Component{
            {/* {!this.props.globalStats === 'Empty' ? <div>Display results and edit</div> : <DrinkForm />} */}
 
                 <form onSubmit={this.handleBeerMeForm}>
-                <h2>Beer:  <span>{this.props.beer}</span></h2>
+                    <div>
+                    <h2>Beer:  <span>{this.props.beer}</span></h2>
                     <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
                     <button id="beer" type="button" onClick={this.handleIncrementClick}>+</button>
-                    <div>
-                        <button type="submit" >Beer Me</button>
                     </div>
-                </form>
-                <form  >
+                    <div>
                     <h2>Wine:  {this.props.wine}</h2>
                     <button id="wine" type="button" onClick={this.handleDecrementClick}>-</button>
                     <button id="wine" type="button" onClick={this.handleIncrementClick}>+</button>
-                    <div>
-                        <button type="submit">Wine Me</button>
                     </div>
-                </form>
-                <form>
+                    <div>
                     <h2>Shots:  {this.props.shots}</h2>
-                    <button>-</button><button>+</button>
-                    <div><button>Shot Me</button></div>
-                </form>
-                <form>
+                    <button id="shots" type="button" onClick={this.handleDecrementClick}>-</button>
+                    <button id="shots" type="button" onClick={this.handleIncrementClick}>+</button>
+                    </div>
+                    <div>
                     <h2>Cocktail:  {this.props.cocktail}</h2>
-                    <button>-</button><button>+</button>
-                    <div><button>Cocktail Me</button></div>
-
+                    <button id="cocktail" type="button" onClick={this.handleDecrementClick}>-</button>
+                    <button id="cocktail" type="button" onClick={this.handleIncrementClick}>+</button>
+                    </div>
+                    <div>
+                        <button type="submit" >Beer Me</button>
+                    </div>
                 </form>
             </div>
         )
