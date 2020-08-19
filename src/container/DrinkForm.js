@@ -91,6 +91,12 @@ class DrinkForm extends Component{
         console.log('beerMe patch',beerMe)
         axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
             .then(res => console.log('patch respone',res))
+
+            this.props.dec_beer(0)
+            this.props.dec_wine(0)
+            this.props.dec_shots(0)
+            this.props.dec_cocktail(0)
+
     }
 
 
@@ -98,8 +104,6 @@ class DrinkForm extends Component{
     render(){
         return (
             <div>
-           {/* {!this.props.globalStats === 'Empty' ? <div>Display results and edit</div> : <DrinkForm />} */}
-
                 <form onSubmit={this.handleBeerMeForm}>
                     <div>
                     <h2>Beer:  <span>{this.props.beer}</span></h2>

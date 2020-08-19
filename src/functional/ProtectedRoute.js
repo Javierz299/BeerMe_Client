@@ -5,11 +5,6 @@ import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 
 import DrinkForm from '../container/DrinkForm'
-//import get all drinks
-
-import auth0Client from '../utils/auth'
-
-import axios from 'axios'
 
 class ProtectedRoute extends Component {
     static contextType = Context
