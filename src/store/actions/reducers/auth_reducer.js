@@ -36,16 +36,6 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 profile: null
             }
-            case ACTION_TYPES.SET_DB_PROFILE:
-            return{
-                ...state,
-                db_profile: action.payload
-            }
-        case ACTION_TYPES.REMOVE_DB_PROFILE:
-            return{
-                ...state,
-                db_profile: null,
-            }
         case ACTION_TYPES.AUTH_CHECK:
             return {
                 ...state,

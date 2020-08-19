@@ -59,10 +59,10 @@ export const remove_profile = () => {
   }
 }
 
-export const set_db_profile = (profile) => {
+export const set_profile_stats = (stats) => {
   return{
-      type: ACTION_TYPES.SET_DB_PROFILE,
-      payload: profile,
+      type: ACTION_TYPES.SET_PROFILE_STATS,
+      payload: stats,
   }
 }
 

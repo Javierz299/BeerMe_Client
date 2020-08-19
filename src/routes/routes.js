@@ -55,6 +55,7 @@ export class routes extends Component {
                 setTimeout(() => {
                     axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
                     .then(res => this.context.dispatchStatsProfile(res.data))
+                    .then(() => this.props.set_profile_stats(this.context.globalStats))
                 },400)
             
         }
@@ -82,7 +83,8 @@ export class routes extends Component {
 function mapStateToProps(state){
     return {
         profile: state.auth_reducer.profile,
-        dbProfile: state.auth_reducer.set_db_profile
+        dbProfile: state.auth_reducer.set_db_profile,
+        profileStats: state.user_reducer.profileStats
     }
 }
 
@@ -90,7 +92,7 @@ function mapDispatchToProps(dispatch){
     return{
         add_profile: (profile) => dispatch(ACTIONS.add_profile(profile)),
         remove_profile: () => dispatch(ACTIONS.remove_profile()),
-        set_db_profile: (profile) => dispatch(ACTIONS.set_db_profile(profile)),
+        set_profile_stats: (stats) => dispatch(ACTIONS.set_profile_stats(stats)),
     }
 }
 

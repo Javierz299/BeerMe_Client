@@ -14,7 +14,9 @@ async componentDidMount(){
 }
 
     render(){
-        console.log(this.context.globalStats)
+        console.log("globalstats",this.context.globalStats)
+        console.log("locallstats",this.props.profileStats)
+
         return (
             <div>
             Welcome
@@ -26,7 +28,7 @@ async componentDidMount(){
             <span>Wine: {this.context.globalStats.wine}</span>
             <span>Shots: {this.context.globalStats.shots}</span>
             <span>Mixed: {this.context.globalStats.cocktail}</span>
-
+    
            {<DrinkForm />}
         </div>
         )
@@ -37,12 +39,12 @@ async componentDidMount(){
 function mapStateToProps(state){
     return {
         profile: state.auth_reducer.profile,
-        dbProfile: state.auth_reducer.set_db_profile
+        profileStats: state.user_reducer.profileStats
     }
 }
 function mapDispatchToProps(dispatch){
     return{
-        set_db_profile: (profile) => dispatch(ACTIONS.set_db_profile(profile)),
+        set_profile_stats: (profile) => dispatch(ACTIONS.set_profile_stats(profile)),
     }
 }
 

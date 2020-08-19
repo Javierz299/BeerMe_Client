@@ -2,7 +2,7 @@ import * as ACTION_TYPES from '../../actions/action_types'
 
 
 const initialState = {
-    userProfile: null,
+    profileStats: null,
     beer: 0,
     wine: 0,
     shots: 0,
@@ -13,6 +13,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type){
+        case ACTION_TYPES.SET_PROFILE_STATS:
+            return{
+                ...state,
+                profileStats: action.payload
+            }
         case ACTION_TYPES.INCREMENT_BEER:
             return {
             ...state,
