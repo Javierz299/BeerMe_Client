@@ -42,19 +42,18 @@ class DrinkForm extends Component{
      handleIncrementClick = (e) => {
          //this.increment_beer(e.target.id)
          let id = e.target.id
-         console.log('incClick',id)
-
-            if(id === "beer"){
+         
+            if(id === "beer" && this.props.beer != 2){
                 console.log('reached')
                this.props.inc_beer(this.props.beer + 1)
                console.log('increment',this.props.beer)
-            } else if(id === "wine"){
+            } else if(id === "wine" && this.props.wine != 2){
                this.props.inc_wine(this.props.wine + 1)
                console.log('increment',this.props.wine)
-            } else if(id === "shots"){
+            } else if(id === "shots" && this.props.shots != 2){
                 this.props.inc_shots(this.props.shots + 1)
                 console.log('inc',this.props.shots)
-            } else if(id === "cocktail"){
+            } else if(id === "cocktail" && this.props.cocktail != 2){
                 this.props.inc_cocktail(this.props.cocktail + 1)
                 console.log('inc',this.props.cocktail)
             }
@@ -62,18 +61,17 @@ class DrinkForm extends Component{
      handleDecrementClick = (e) => {
          //this.decrement_beer(e.target.id)
          let id = e.target.id
-         console.log('decClick',id)
          
-            if(id === "beer"){
+            if(id === "beer" && this.props.beer != 0){
                 this.props.dec_beer(this.props.beer - 1)
                 console.log('decrement',this.props.beer)
-             } else if(id === "wine"){
+             } else if(id === "wine" && this.props.wine != 0){
                 this.props.dec_wine(this.props.wine - 1)
                 console.log('decrement',this.props.wine)
-             } else if(id === "shots"){
+             } else if(id === "shots" && this.props.shots != 0){
                 this.props.dec_shots(this.props.shots - 1)
                 console.log('dec',this.props.shots)
-            } else if(id === "cocktail"){
+            } else if(id === "cocktail" && this.props.cocktail != 0){
                 this.props.dec_cocktail(this.props.cocktail - 1)
                 console.log('dec',this.props.cocktail)
             }
@@ -91,7 +89,7 @@ class DrinkForm extends Component{
         console.log('beerMe patch',beerMe)
         axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
             .then(res => console.log('patch respone',res))
-
+            //revert form values back to zero
             this.props.dec_beer(0)
             this.props.dec_wine(0)
             this.props.dec_shots(0)
@@ -121,7 +119,7 @@ class DrinkForm extends Component{
                     <button id="shots" type="button" onClick={this.handleIncrementClick}>+</button>
                     </div>
                     <div>
-                    <h2>Cocktail:  {this.props.cocktail}</h2>
+                    <h2>Mixed Drink:  {this.props.cocktail}</h2>
                     <button id="cocktail" type="button" onClick={this.handleDecrementClick}>-</button>
                     <button id="cocktail" type="button" onClick={this.handleIncrementClick}>+</button>
                     </div>

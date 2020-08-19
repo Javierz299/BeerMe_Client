@@ -25,11 +25,9 @@ async componentDidMount(){
             <span>Beer: {this.context.globalStats.beer}</span>
             <span>Wine: {this.context.globalStats.wine}</span>
             <span>Shots: {this.context.globalStats.shots}</span>
-            <span>Cocktail: {this.context.globalStats.cocktail}</span>
+            <span>Mixed: {this.context.globalStats.cocktail}</span>
 
-            
            {<DrinkForm />}
-           {/* {get request/list of all drinks user has submitted; total} */}
         </div>
         )
     }
