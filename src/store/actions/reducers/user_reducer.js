@@ -56,7 +56,7 @@ export default (state = initialState, action) => {
         case ACTION_TYPES.SUBMIT_DRINK:
             return {
                 ...state,
-                submit: true
+                submit: action.payload
             }
         default:
             return state

@@ -77,32 +77,52 @@ class DrinkForm extends Component{
             }
      }
 
+     closeConfirmationWindow = () => {
+        this.props.submit_drink(false)
+        console.log('submitvalue cancel',this.props.submitValue)
+        this.props.dec_beer(0)
+        this.props.dec_wine(0)
+        this.props.dec_shots(0)
+        this.props.dec_cocktail(0)
+     }
+
+    openConfirmationModal = () => {
+            this.props.submit_drink(true)
+     }
+
      handleBeerMeForm = (e) => {
          e.preventDefault()
-         console.log('beer',this.props.beer)
-        let beerMe = {
-            beer: this.props.beer,
-            wine: this.props.wine,
-            shots: this.props.shots,
-            cocktail: this.props.cocktail,
-        }
-        console.log('beerMe patch',beerMe)
-        axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
-            .then(res => console.log('patch respone',res))
-            //revert form values back to zero
-            this.props.dec_beer(0)
-            this.props.dec_wine(0)
-            this.props.dec_shots(0)
-            this.props.dec_cocktail(0)
+        console.log('submitValue',this.props.submitValue)
+            let datePosted = {
+                date: getDate_Time()
+            }
+            console.log('datePosted',datePosted)
+            let beerMe = {
+                beer: this.props.beer,
+                wine: this.props.wine,
+                shots: this.props.shots,
+                cocktail: this.props.cocktail,
+            }
+            console.log('beerMe patch',beerMe)
+            axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
+                .then(() => axios.post(`${config.API_ENDPOINT}/post/drinkdate/${this.context.globalProfile.id}`,datePosted))
+                        .then(res => console.log('date res',res))
+                //revert form values back to zero
+                this.props.dec_beer(0)
+                this.props.dec_wine(0)
+                this.props.dec_shots(0)
+                this.props.dec_cocktail(0)
 
+                this.props.submit_drink(false)
+        
+        console.log('submitValue',this.props.submitValue)
     }
 
-
-
     render(){
+        console.log('render submitValue',this.props.submitValue)
         return (
             <div>
-                <form onSubmit={this.handleBeerMeForm}>
+                <form onSubmit={this.openConfirmationModal}>
                     <div>
                     <h2>Beer:  <span>{this.props.beer}</span></h2>
                     <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
@@ -124,7 +144,19 @@ class DrinkForm extends Component{
                     <button id="cocktail" type="button" onClick={this.handleIncrementClick}>+</button>
                     </div>
                     <div>
-                        <button type="submit" >Beer Me</button>
+                    <div>
+                        <br/>
+                        <button id="submit" type="button" onClick={this.openConfirmationModal} >Beer Me</button>
+                    </div>
+                    {
+                    this.props.submitValue === false ?
+                    <div></div> :
+                    <div>
+                        <br/>
+                        <button id="cancel" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
+                        <button id="confirm" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
+                     </div>
+                    }
                     </div>
                 </form>
             </div>
@@ -139,6 +171,7 @@ function mapStatToProps(state){
         wine: state.user_reducer.wine,
         shots: state.user_reducer.shots,
         cocktail: state.user_reducer.cocktail,
+        submitValue: state.user_reducer.submit,
     }
 }
 
@@ -151,7 +184,8 @@ function mapDispatchToProps(dispatch){
         dec_beer: (beer) => dispatch(ACTIONS.decrement_beer(beer)),
         dec_wine: (wine) => dispatch(ACTIONS.decrement_wine(wine)),
         dec_shots: (shots) => dispatch(ACTIONS.decrement_shots(shots)),
-        dec_cocktail: (cocktail) => dispatch(ACTIONS.decrement_cocktail(cocktail))
+        dec_cocktail: (cocktail) => dispatch(ACTIONS.decrement_cocktail(cocktail)),
+        submit_drink: (submit) => dispatch(ACTIONS.submit_drink(submit))
 
     }
 }
