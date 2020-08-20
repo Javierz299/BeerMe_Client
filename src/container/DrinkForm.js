@@ -43,17 +43,17 @@ class DrinkForm extends Component{
          //this.increment_beer(e.target.id)
          let id = e.target.id
          
-            if(id === "beer" && this.props.beer != 2){
+            if(id === "beer" && this.props.beer !== 2){
                 console.log('reached')
                this.props.inc_beer(this.props.beer + 1)
                console.log('increment',this.props.beer)
-            } else if(id === "wine" && this.props.wine != 2){
+            } else if(id === "wine" && this.props.wine !== 2){
                this.props.inc_wine(this.props.wine + 1)
                console.log('increment',this.props.wine)
-            } else if(id === "shots" && this.props.shots != 2){
+            } else if(id === "shots" && this.props.shots !== 2){
                 this.props.inc_shots(this.props.shots + 1)
                 console.log('inc',this.props.shots)
-            } else if(id === "cocktail" && this.props.cocktail != 2){
+            } else if(id === "cocktail" && this.props.cocktail !== 2){
                 this.props.inc_cocktail(this.props.cocktail + 1)
                 console.log('inc',this.props.cocktail)
             }
@@ -62,16 +62,16 @@ class DrinkForm extends Component{
          //this.decrement_beer(e.target.id)
          let id = e.target.id
          
-            if(id === "beer" && this.props.beer != 0){
+            if(id === "beer" && this.props.beer !== 0){
                 this.props.dec_beer(this.props.beer - 1)
                 console.log('decrement',this.props.beer)
-             } else if(id === "wine" && this.props.wine != 0){
+             } else if(id === "wine" && this.props.wine !== 0){
                 this.props.dec_wine(this.props.wine - 1)
                 console.log('decrement',this.props.wine)
-             } else if(id === "shots" && this.props.shots != 0){
+             } else if(id === "shots" && this.props.shots !== 0){
                 this.props.dec_shots(this.props.shots - 1)
                 console.log('dec',this.props.shots)
-            } else if(id === "cocktail" && this.props.cocktail != 0){
+            } else if(id === "cocktail" && this.props.cocktail !== 0){
                 this.props.dec_cocktail(this.props.cocktail - 1)
                 console.log('dec',this.props.cocktail)
             }

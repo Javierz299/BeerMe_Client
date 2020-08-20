@@ -10,6 +10,16 @@ import DrinkForm from '../container/DrinkForm'
 class ProtectedRoute extends Component {
     static contextType = Context
 
+     
+    componentDidMount(){
+        axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
+              .then(res => {
+                console.log('last entry',res.data)
+               let lastPosted = res.data.date.slice(0,10)
+                console.log('lasted posted',lastPosted)
+              })
+    }
+
 refreshStats = () => {
     axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
             .then(res => this.context.dispatchStatsProfile(res.data))
@@ -17,9 +27,6 @@ refreshStats = () => {
 }
 
     render(){
-        console.log("globalstats",this.context.globalStats)
-        console.log("locallstats",this.props.profileStats)
-
         return (
             <div>
             Welcome
