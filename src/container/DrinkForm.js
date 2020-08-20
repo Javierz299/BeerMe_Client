@@ -122,7 +122,7 @@ class DrinkForm extends Component{
         console.log('render submitValue',this.props.submitValue)
         return (
             <div>
-                <form onSubmit={this.openConfirmationModal}>
+                <form id="drink_form" onSubmit={this.openConfirmationModal}>
                     <div>
                     <h2>Beer:  <span>{this.props.beer}</span></h2>
                     <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
@@ -151,10 +151,10 @@ class DrinkForm extends Component{
                     {
                     this.props.submitValue === false ?
                     <div></div> :
-                    <div>
+                    <div id="confirmation_box">
                         <br/>
-                        <button id="cancel" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
-                        <button id="confirm" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
+                        <button id="cancel" className="confirmation_buttons" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
+                        <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
                      </div>
                     }
                     </div>
