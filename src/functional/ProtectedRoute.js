@@ -3,14 +3,17 @@ import { connect } from 'react-redux'
 import config from '../config'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
+import axios from 'axios'
 
 import DrinkForm from '../container/DrinkForm'
 
 class ProtectedRoute extends Component {
     static contextType = Context
 
-async componentDidMount(){
-
+refreshStats = () => {
+    axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+            .then(res => this.context.dispatchStatsProfile(res.data))
+            .then(() => this.props.set_profile_stats(this.context.globalStats))
 }
 
     render(){
@@ -24,10 +27,13 @@ async componentDidMount(){
             this.props.profile.name : 
             this.context.globalProfile.username
             }</h3>
+            <div>
             <span>Beer: {this.context.globalStats.beer}</span>
             <span>Wine: {this.context.globalStats.wine}</span>
             <span>Shots: {this.context.globalStats.shots}</span>
             <span>Mixed: {this.context.globalStats.cocktail}</span>
+            <button type="button" onClick={() => this.refreshStats()}>refresh</button>
+            </div>
     
            {<DrinkForm />}
         </div>

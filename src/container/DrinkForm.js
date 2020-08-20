@@ -122,12 +122,6 @@ class DrinkForm extends Component{
         console.log('render submitValue',this.props.submitValue)
         return (
             <div>
-                <div>
-            <span>Beer: {(this.props.profileStats.beer + this.props.beer)}</span>
-            <span>Wine: {this.props.profileStats.wine}</span>
-            <span>Shots: {this.props.profileStats.shots}</span>
-            <span>Mixed: {this.props.profileStats.cocktail}</span>
-            </div>
                 <form onSubmit={this.openConfirmationModal}>
                     <div>
                     <h2>Beer:  <span>{this.props.beer}</span></h2>
