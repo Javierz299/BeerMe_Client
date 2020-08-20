@@ -16,7 +16,9 @@ class ProtectedRoute extends Component {
               .then(res => {
                 console.log('last entry',res.data)
                let lastPosted = res.data.date.slice(0,10)
+               let timestamp = res.data.date.slice(11,16)
                 console.log('lasted posted',lastPosted)
+                console.log('timestamp',timestamp)
               })
     }
 
