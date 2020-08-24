@@ -8,6 +8,8 @@ import Callback from '../functional/Callback'
 import ProtectedRoute from '../functional/ProtectedRoute'
 import UnauthRedirect from '../functional/UnAuthRedirect'
 
+import FriendsRoute from '../container/FriendsList'
+
 import PrivateRoute from '../routes/PrivateRoute'
 
 import history from '../utils/history'
@@ -70,8 +72,10 @@ export class routes extends Component {
                         <Route exact path='/' component={Home} />
                         <Route path='/redirect' component={UnauthRedirect} />
                         <Route path="/callback" render={(props) => <Callback  props={props}/>} />
+                        <Route path="/public" />
 
                         <PrivateRoute path='/privateroute'  component={ProtectedRoute} />
+                        <PrivateRoute path='/friends' component={FriendsRoute} /> 
                     </Switch>
 
                 </Router>

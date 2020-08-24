@@ -26,7 +26,6 @@ const App = () => {
 
   return (
     <div className="App">
-      BeerMe
       <Context.Provider value={{
         globalProfile: profileGlobal,
         dispatchGlobalProfile: (profile) => dispatchContextProfile(profile),

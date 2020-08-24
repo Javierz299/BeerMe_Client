@@ -3,6 +3,7 @@ import * as ACTION_TYPES from '../../actions/action_types'
 
 const initialState = {
     profileStats: null,
+    friendsList: [],
     beer: 0,
     wine: 0,
     shots: 0,

@@ -4,6 +4,7 @@ import config from '../config'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 import DrinkForm from '../container/DrinkForm'
 
@@ -31,7 +32,13 @@ refreshStats = () => {
     render(){
         return (
             <div>
-            Welcome
+            {/* {render compnent that returns below} */}
+            <div>
+            following: 0, followers: 0
+            <h3>
+            <Link to="/friends">Friends List</Link>
+            </h3>
+            </div>
             <h3> {this.context.globalProfile.username === null ? 
             this.props.profile.name : 
             this.context.globalProfile.username

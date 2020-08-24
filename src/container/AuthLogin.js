@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import auth0Client from '../utils/auth'
 
-import Context from '../context/ProfileContext'
-
 
 export class AuthLogin extends Component {
 
-    static contextType = Context
 
  signOut = () => {
      auth0Client.signOut()
@@ -16,7 +13,6 @@ export class AuthLogin extends Component {
 
 
     render() {
-        //this.context.globalDispatchProfile(this.props.dbProfile)
         return (
             <div>
                {
