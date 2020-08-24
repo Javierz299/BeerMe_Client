@@ -13,7 +13,7 @@ class Header extends Component {
                 <h2>BeerMe</h2>
                 <AuthLogin />
                 <Link to="/">home  </Link>
-                <Link to="/public">public</Link>
+                {/* <Link to="/public">public</Link> */}
                 <Link to="/privateroute">profile</Link>
             </div>
         )
