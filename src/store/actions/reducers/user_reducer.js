@@ -4,6 +4,7 @@ import * as ACTION_TYPES from '../../actions/action_types'
 const initialState = {
     profileStats: null,
     friendsList: [],
+    friend_search: null,
     beer: 0,
     wine: 0,
     shots: 0,
@@ -63,6 +64,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 submit: action.payload
+            }
+        case ACTION_TYPES.FRIEND_SEARCH:
+            return {
+                ...state,
+                friend_search: action.payload
             }
         default:
             return state

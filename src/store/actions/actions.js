@@ -142,7 +142,12 @@ export const submit_drink = (submit) => {
   }
 }
 
-
+export const friend_search = (friend) => {
+  return {
+    type: ACTION_TYPES.FRIEND_SEARCH,
+    payload: friend
+  }
+}
 
 
 

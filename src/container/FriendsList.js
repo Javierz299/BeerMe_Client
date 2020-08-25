@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import config from '../config'
 
+import { connect } from 'react-redux'
+import * as ACTIONS from '../store/actions/actions'
+
 import Context from '../context/ProfileContext'
 
 import axios from 'axios'
@@ -15,8 +18,8 @@ export class FriendsList extends Component {
         let friend_email = find_friend.value
         
         console.log(friend_email)        
-    axios.get(`${config.API_ENDPOINT}/get/friendid/${friend_email}`,)
-            .then(res => console.log('get friend id',res.data))
+        axios.get(`${config.API_ENDPOINT}/get/friendid/${friend_email}`,)
+            .then(res => this.props.friend_search(res.data))
 
     }
 
@@ -29,10 +32,26 @@ export class FriendsList extends Component {
                     <input id="find_friend" type="text" placeholder="name123@email.com"/>
                     <button type="submit" >search</button>
                 </form>
-                <h3>... no results</h3>
+                <div>
+                {this.props.friend === null || this.props.friend.error === 'no friend id' ? 
+                <span>...no result found</span> :
+                <span>{this.props.friend.username}</span>
+            }
+                </div>
             </div>
         )
     }
 }
+function mapStatToProps(state){
+    return {
+        friend: state.user_reducer.friend_search
+    }
+}
 
-export default FriendsList
+function mapDispatchToProps(dispatch){
+    return {
+        friend_search: (friend) => dispatch(ACTIONS.friend_search(friend))
+    }
+}
+
+export default connect(mapStatToProps,mapDispatchToProps)(FriendsList)
