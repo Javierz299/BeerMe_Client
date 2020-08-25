@@ -10,6 +10,16 @@ import axios from 'axios'
 
 export class FriendsList extends Component {
 
+    friendRequest = (e) => {
+        let friend = e.target.id
+        console.log('add friend clicked',friend)
+
+        // axios.post(`${config.API_ENDPOINT}`)
+
+
+        this.props.friend_search(null)
+    }
+
     static contextType = Context
     handleSearchFriend = (e) => {
         e.preventDefault()
@@ -33,13 +43,20 @@ export class FriendsList extends Component {
                     <button type="submit" >search</button>
                 </form>
                 <div>
-                {this.props.friend === null || this.props.friend.error === 'no friend id' ? 
-                <span>...no result found</span> :
+                {this.props.friend === null ? <span></span> :
+                this.props.friend.error === 'no friend id' ?
+                <span>...no user with that email found. check spelling.</span> :
                 <div>
                 {this.props.friend.username}
-                <button onClick={() => console.log('add friend button')}>add friend</button>
+                <button id={JSON.stringify(this.props.friend.id)} 
+                        onClick={this.friendRequest}>
+                    add friend
+                </button>
                 </div>
             }
+                <div>
+                    render list of friends
+                </div>
                 </div>
             </div>
         )
