@@ -35,7 +35,10 @@ export class FriendsList extends Component {
                 <div>
                 {this.props.friend === null || this.props.friend.error === 'no friend id' ? 
                 <span>...no result found</span> :
-                <span>{this.props.friend.username}</span>
+                <div>
+                {this.props.friend.username}
+                <button onClick={() => console.log('add friend button')}>add friend</button>
+                </div>
             }
                 </div>
             </div>
