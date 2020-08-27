@@ -9,6 +9,7 @@ import ProtectedRoute from '../functional/ProtectedRoute'
 import UnauthRedirect from '../functional/UnAuthRedirect'
 
 import FriendsRoute from '../container/FriendsList'
+import PendingRequest from '../container/PendingRequest'
 
 import PrivateRoute from '../routes/PrivateRoute'
 
@@ -73,7 +74,8 @@ export class routes extends Component {
                         <Route path='/redirect' component={UnauthRedirect} />
                         <Route path="/callback" render={(props) => <Callback  props={props}/>} />
                         <Route path="/public" />
-                        {/* <Route path="/pending" /> */}
+
+                        <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/privateroute'  component={ProtectedRoute} />
                         <PrivateRoute path='/friends' component={FriendsRoute} /> 
                     </Switch>
