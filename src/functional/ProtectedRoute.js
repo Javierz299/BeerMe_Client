@@ -36,7 +36,7 @@ refreshStats = () => {
             <div>
             following: 0, followers: 0
             <h3>
-            <Link to="/friends">Friends List</Link>
+            <Link to="/friends">Friends</Link>
             </h3>
             </div>
             <h3> {this.context.globalProfile.username === null ? 
