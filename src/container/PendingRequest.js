@@ -12,8 +12,13 @@ export class PendingRequest extends Component {
     static contextType = Context
 
 
-//if user declines request patch that request from db
-//so user who initiated the request can make a request again
+    accept_request = (e) => {
+        console.log('add',e.target.id)
+    }
+
+    decline_request = (e) => {
+        console.log('decline',e.target.id)
+    }
 
     render(){
         console.log('pending',this.props.pending_requests)
@@ -23,7 +28,11 @@ export class PendingRequest extends Component {
                 {this.props.pending_requests === null ?
                 <h3>no friend requests</h3> :
                 <ul>{this.props.pending_requests.map(user => (
-                   <li key={user[1]}>{user[0]}</li>
+                    <div key={user[1]}>
+                        <li>{user[0]}</li>
+                        <button id={user[1]} onClick={this.accept_request}>add</button>
+                        <button id={user[1]} onClick={this.decline_request}>decline</button>
+                   </div>
                 ))}</ul>
 
                 }
