@@ -21,6 +21,14 @@ class ProtectedRoute extends Component {
                 console.log('lasted posted',lastPosted)
                 console.log('timestamp',timestamp)
               })
+        
+        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
+              .then(res => {
+                  console.log('res',res)
+                  let names = []
+                  res.data.forEach((user) => names.push([user[0].username,user[1]]))
+                 this.props.pending(names)
+              })
     }
 
 refreshStats = () => {
@@ -70,6 +78,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return{
         set_profile_stats: (profile) => dispatch(ACTIONS.set_profile_stats(profile)),
+        pending: (pending) => dispatch(ACTIONS.pending_requests(pending))
     }
 }
 

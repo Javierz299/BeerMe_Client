@@ -11,31 +11,22 @@ export class PendingRequest extends Component {
 
     static contextType = Context
 
-    RenderRequests = (friendRequest) => {
-        if(friendRequest.length === 0){
-            console.log('no pending requests')
-        } else {
-            console.log('requests',friendRequest)
-        }
-    }
-
-    componentDidMount(){
-        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
-            .then(res => {
-                console.log('res',res)
-                let names = []
-                res.data.forEach((user) => names.push(user[0].username))
-               console.log('names',names)
-            })
-    }
 
 //if user declines request patch that request from db
 //so user who initiated the request can make a request again
 
     render(){
+        console.log('pending',this.props.pending_requests)
         return (
             <div>
                 Pending friend Requests
+                {this.props.pending_requests === null ?
+                <h3>no friend requests</h3> :
+                <ul>{this.props.pending_requests.map(user => (
+                   <li key={user[1]}>{user[0]}</li>
+                ))}</ul>
+
+                }
             </div>
         )
     }
@@ -43,14 +34,8 @@ export class PendingRequest extends Component {
 
 function mapStateToProps(state){
     return {
-
+        pending_requests: state.user_reducer.pending_requests,
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        pending: (pending) => dispatch(ACTIONS.pending_requests(pending))
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(PendingRequest)
+export default connect(mapStateToProps)(PendingRequest)
