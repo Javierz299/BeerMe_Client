@@ -5,6 +5,7 @@ const initialState = {
     profileStats: null,
     friendsList: [],
     friend_search: null,
+    pending_requests: null,
     beer: 0,
     wine: 0,
     shots: 0,
@@ -69,6 +70,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 friend_search: action.payload
+            }
+        case ACTION_TYPES.PENDING_REQUESTS:
+            return {
+                ...state,
+                pending_requests: action.payload,
             }
         default:
             return state

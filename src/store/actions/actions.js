@@ -149,6 +149,13 @@ export const friend_search = (friend) => {
   }
 }
 
+export const pending_requests = (pending) => {
+  return {
+    type: ACTION_TYPES.PENDING_REQUESTS,
+    payload: pending
+  }
+}
+
 
 
 

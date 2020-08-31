@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import config from '../config'
+import { connect } from 'react-redux'
+import * as ACTIONS from '../store/actions/actions'
 
 import axios from 'axios'
 
@@ -10,17 +12,21 @@ export class PendingRequest extends Component {
     static contextType = Context
 
     RenderRequests = (friendRequest) => {
-        if(friendRequest.message){
-            console.log(friendRequest.message)
+        if(friendRequest.length === 0){
+            console.log('no pending requests')
         } else {
             console.log('requests',friendRequest)
-            console.log('filtered',friendRequest.filter(item => item.accepted === null && item.declined === null))
         }
     }
 
     componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
-            .then(res => this.RenderRequests(res.data))
+            .then(res => {
+                console.log('res',res)
+                let names = []
+                res.data.forEach((user) => names.push(user[0].username))
+               console.log('names',names)
+            })
     }
 
 //if user declines request patch that request from db
@@ -35,4 +41,16 @@ export class PendingRequest extends Component {
     }
 }
 
-export default PendingRequest
+function mapStateToProps(state){
+    return {
+
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        pending: (pending) => dispatch(ACTIONS.pending_requests(pending))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PendingRequest)
