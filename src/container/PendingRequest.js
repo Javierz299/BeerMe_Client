@@ -28,8 +28,14 @@ export class PendingRequest extends Component {
     decline_request = (e) => {
         console.log('decline',e.target.id)
         let requestFrom = e.target.id
-        axios.patch(`${config.API_ENDPOINT}/patch/delclinefriend/${requestFrom}`)
+        let currentUser = {
+            sent_request_to: this.context.globalProfile.id,
+        }
+        axios.patch(`${config.API_ENDPOINT}/patch/declinefriend/${requestFrom}`,currentUser)
             .then(res => console.log('patch',res))
+
+        let filtered = this.props.pending_requests.filter(user => user[1] != requestFrom)
+        this.props.pending(filtered)
     }
 
     render(){
