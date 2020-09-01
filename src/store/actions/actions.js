@@ -163,7 +163,12 @@ export const remove_from_pending = (id) => {
   }
 }
 
-
+export const following = (following) => {
+  return {
+    type: ACTION_TYPES.FOLLOWING,
+    payload: following
+  }
+}
 
 
 

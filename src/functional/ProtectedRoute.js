@@ -13,7 +13,9 @@ class ProtectedRoute extends Component {
 
      
     componentDidMount(){
-        axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
+        let id = this.context.globalProfile.id
+
+        axios.get(`${config.API_ENDPOINT}/get/lastestentry/${id}`)
               .then(res => {
                 console.log('last entry',res.data)
                let lastPosted = res.data.date.slice(0,10)
@@ -22,12 +24,17 @@ class ProtectedRoute extends Component {
                 console.log('timestamp',timestamp)
               })
         
-        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
+        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${id}`)
               .then(res => {
                   console.log('res',res)
                   let names = []
                   res.data.forEach((user) => names.push([user[0].username,user[1]]))
                  this.props.pending(names)
+              })
+
+        axios.get(`${config.API_ENDPOINT}/get/following/${id}`)
+              .then(res => {
+                  console.log('friends following',res)
               })
     }
 
@@ -78,7 +85,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return{
         set_profile_stats: (profile) => dispatch(ACTIONS.set_profile_stats(profile)),
-        pending: (pending) => dispatch(ACTIONS.pending_requests(pending))
+        pending: (pending) => dispatch(ACTIONS.pending_requests(pending)),
+        friends: (following) => dispatch(ACTIONS.following(following)),
     }
 }
 

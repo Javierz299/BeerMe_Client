@@ -3,7 +3,7 @@ import * as ACTION_TYPES from '../../actions/action_types'
 
 const initialState = {
     profileStats: null,
-    friendsList: [],
+    friendsList: null,
     friend_search: null,
     pending_requests: null,
     beer: 0,
@@ -76,10 +76,10 @@ export default (state = initialState, action) => {
                 ...state,
                 pending_requests: action.payload,
             }
-        case ACTION_TYPES.REMOVE_FROM_PENDING:
+        case ACTION_TYPES.FOLLOWING:
             return {
                 ...state,
-                pending_requests: action.payload
+                friendsList: action.payload,
             }
         default:
             return state
