@@ -156,6 +156,13 @@ export const pending_requests = (pending) => {
   }
 }
 
+export const remove_from_pending = (id) => {
+  return {
+    type: ACTION_TYPES.REMOVE_FROM_PENDING,
+    payload: id
+  }
+}
+
 
 
 

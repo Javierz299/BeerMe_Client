@@ -76,6 +76,11 @@ export default (state = initialState, action) => {
                 ...state,
                 pending_requests: action.payload,
             }
+        case ACTION_TYPES.REMOVE_FROM_PENDING:
+            return {
+                ...state,
+                pending_requests: action.payload
+            }
         default:
             return state
     }

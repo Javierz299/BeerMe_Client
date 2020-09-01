@@ -14,10 +14,22 @@ export class PendingRequest extends Component {
 
     accept_request = (e) => {
         console.log('add',e.target.id)
+        let requestFrom = e.target.id
+        let currentUser = {
+            sent_request_to: this.context.globalProfile.id,
+        }
+        console.log('currentuser',currentUser)
+        axios.patch(`${config.API_ENDPOINT}/patch/addfriend/${requestFrom}`,currentUser)
+
+        let filtered = this.props.pending_requests.filter(user => user[1] != requestFrom)
+        this.props.pending(filtered)
     }
 
     decline_request = (e) => {
         console.log('decline',e.target.id)
+        let requestFrom = e.target.id
+        axios.patch(`${config.API_ENDPOINT}/patch/delclinefriend/${requestFrom}`)
+            .then(res => console.log('patch',res))
     }
 
     render(){
@@ -27,7 +39,7 @@ export class PendingRequest extends Component {
                 Pending friend Requests
                 {this.props.pending_requests === null ?
                 <h3>no friend requests</h3> :
-                <ul>{this.props.pending_requests.map(user => (
+                <ul>{[...this.props.pending_requests].map(user => (
                     <div key={user[1]}>
                         <li>{user[0]}</li>
                         <button id={user[1]} onClick={this.accept_request}>add</button>
@@ -47,4 +59,10 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(PendingRequest)
+function mapDispatchToProps(dispatch){
+    return {
+        pending: (pending) => dispatch(ACTIONS.pending_requests(pending))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PendingRequest)
