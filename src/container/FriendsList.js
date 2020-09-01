@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import config from '../config'
+import Following from '../container/Following'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from '../store/actions/actions'
@@ -69,6 +70,7 @@ export class FriendsList extends Component {
             }
                 <div>
                     render list of friends
+                    <Following />
                 </div>
                 </div>
             </div>
