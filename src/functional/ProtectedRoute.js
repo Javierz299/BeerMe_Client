@@ -36,7 +36,7 @@ class ProtectedRoute extends Component {
 
         axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
               .then(res => {
-                  if(res.data === []){
+                  if(res.data.length === 0){
                       console.log("empty array, no friends have accepted")
                       return
                   }

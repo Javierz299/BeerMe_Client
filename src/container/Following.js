@@ -14,11 +14,16 @@ class Following extends Component {
                 Following
                 {this.props.friends === null ?
                 <div>no friends yet</div>:
-                this.props.friends.map(friend => <li key={friend[0].id}>{
+                this.props.friends.map(friend => <div key={friend[0].id}><li>{
                     friend[0].username}
                     </li>
+                <span>
+                    Total Drinks: {friend[0].beer + friend[0].wine + 
+                        friend[0].shots + friend[0].cocktail}
+                </span>
+                    </div>
                     )
-            }
+                }
 
             </div>
         )
