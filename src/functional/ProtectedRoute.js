@@ -16,6 +16,10 @@ class ProtectedRoute extends Component {
         axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
                 console.log('last entry',res.data)
+                if(res.data.message){
+                    console.log("empty array")
+                    return
+                }
                let lastPosted = res.data.date.slice(0,10)
                let timestamp = res.data.date.slice(11,16)
                 console.log('lasted posted',lastPosted)
@@ -32,6 +36,10 @@ class ProtectedRoute extends Component {
 
         axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
               .then(res => {
+                  if(res.data === []){
+                      console.log("empty array, no friends have accepted")
+                      return
+                  }
                   console.log('friends following',res)
                   this.props.friends(res.data)
                   
