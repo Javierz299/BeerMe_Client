@@ -13,9 +13,7 @@ class ProtectedRoute extends Component {
 
      
     componentDidMount(){
-        let id = this.context.globalProfile.id
-
-        axios.get(`${config.API_ENDPOINT}/get/lastestentry/${id}`)
+        axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
                 console.log('last entry',res.data)
                let lastPosted = res.data.date.slice(0,10)
@@ -24,7 +22,7 @@ class ProtectedRoute extends Component {
                 console.log('timestamp',timestamp)
               })
         
-        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${id}`)
+        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
               .then(res => {
                   console.log('res',res)
                   let names = []
@@ -32,9 +30,11 @@ class ProtectedRoute extends Component {
                  this.props.pending(names)
               })
 
-        axios.get(`${config.API_ENDPOINT}/get/following/${id}`)
+        axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
               .then(res => {
                   console.log('friends following',res)
+                  this.props.friends(res.data)
+                  
               })
     }
 
