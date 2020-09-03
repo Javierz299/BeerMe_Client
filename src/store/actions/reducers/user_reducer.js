@@ -12,6 +12,7 @@ const initialState = {
     wine: 0,
     shots: 0,
     cocktail: 0,
+    friend_click: false,
     submit: false
 
 }
@@ -98,6 +99,16 @@ export default (state = initialState, action) => {
                 ...state,
                 total_friends: action.payload
             }
+        case ACTION_TYPES.FRIEND_CLICK_ON:
+            return {
+                ...state,
+                friend_click: true
+            }
+            case ACTION_TYPES.FRIEND_CLICK_OFF:
+                return {
+                    ...state,
+                    friend_click: false
+                }
         default:
             return state
     }

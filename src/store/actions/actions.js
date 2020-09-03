@@ -189,3 +189,15 @@ export const total_friends = (total) => {
     payload: total
   }
 }
+
+export const friend_click_on = () => {
+  return {
+    type: ACTION_TYPES.FRIEND_CLICK_ON,
+  }
+}
+
+export const friend_click_off = () => {
+  return {
+    type: ACTION_TYPES.FRIEND_CLICK_OFF,
+  }
+}
