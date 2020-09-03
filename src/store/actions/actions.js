@@ -86,6 +86,20 @@ export const increment_beer = (beer) => {
   }
 }
 
+export const increment_seltzer = (seltzer) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SELTZER,
+    payload: seltzer
+  }
+}
+
+export const increment_craft = (craft) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_CRAFT,
+    payload: craft
+  }
+}
+
 export const increment_wine = (wine) => {
   return {
     type: ACTION_TYPES.INCREMENT_WINE,
@@ -111,6 +125,20 @@ export const decrement_beer = (beer) => {
   return {
     type: ACTION_TYPES.INCREMENT_BEER,
     payload: beer
+  }
+}
+
+export const decrement_seltzer = (seltzer) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SELTZER,
+    payload: seltzer
+  }
+}
+
+export const decrement_craft = (craft) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_CRAFT,
+    payload: craft
   }
 }
 

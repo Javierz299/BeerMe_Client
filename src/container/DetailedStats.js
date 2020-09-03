@@ -16,6 +16,8 @@ export class DetailedStats extends Component {
                  <div onClick={() => this.hide_friend_stats()}>
                     <h3>{this.props.friend_stats[0].username}</h3>
                         <h4>Beer: {this.props.friend_stats[0].beer}</h4>
+                        <h4>Seltzer: {this.props.friend_stats[0].seltzer}</h4>
+                        <h4>Craft: {this.props.friend_stats[0].craft_beer}</h4>
                         <h4>Wine: {this.props.friend_stats[0].wine}</h4>
                         <h4>Shots: {this.props.friend_stats[0].shots}</h4>
                         <h4>Mixed: {this.props.friend_stats[0].cocktail}</h4>

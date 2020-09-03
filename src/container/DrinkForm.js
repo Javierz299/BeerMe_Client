@@ -22,7 +22,9 @@ class DrinkForm extends Component{
             wine: 0,
             shots: 0,
             cocktail: 0,
-            date: getDateOnly()
+            date: getDateOnly(),
+            seltzer: 0,
+            craft_beer: 0,
         }
 
         if(this.context.globalStats === 'Empty'){
@@ -47,7 +49,12 @@ class DrinkForm extends Component{
                 console.log('reached')
                this.props.inc_beer(this.props.beer + 1)
                console.log('increment',this.props.beer)
-            } else if(id === "wine" && this.props.wine !== 2){
+            } else if(id === "seltzer" && this.props.seltzer !== 2){
+                console.log('increment',this.props.craft)
+                this.props.inc_seltzer(this.props.seltzer + 1)
+             } else if(id === "craft" && this.props.craft !== 2){
+                this.props.inc_craft(this.props.craft + 1)
+             }else if(id === "wine" && this.props.wine !== 2){
                this.props.inc_wine(this.props.wine + 1)
                console.log('increment',this.props.wine)
             } else if(id === "shots" && this.props.shots !== 2){
@@ -65,7 +72,11 @@ class DrinkForm extends Component{
             if(id === "beer" && this.props.beer !== 0){
                 this.props.dec_beer(this.props.beer - 1)
                 console.log('decrement',this.props.beer)
-             } else if(id === "wine" && this.props.wine !== 0){
+             } else if(id === "seltzer" && this.props.seltzer !== 0){
+                this.props.dec_seltzer(this.props.seltzer - 1)
+             } else if(id === "craft" && this.props.craft !== 0){
+                this.props.dec_craft(this.props.craft - 1)
+             }else if(id === "wine" && this.props.wine !== 0){
                 this.props.dec_wine(this.props.wine - 1)
                 console.log('decrement',this.props.wine)
              } else if(id === "shots" && this.props.shots !== 0){
@@ -81,6 +92,8 @@ class DrinkForm extends Component{
         this.props.submit_drink(false)
         console.log('submitvalue cancel',this.props.submitValue)
         this.props.dec_beer(0)
+        this.props.dec_seltzer(0)
+        this.props.dec_craft(0)
         this.props.dec_wine(0)
         this.props.dec_shots(0)
         this.props.dec_cocktail(0)
@@ -99,6 +112,8 @@ class DrinkForm extends Component{
             console.log('datePosted',datePosted)
             let beerMe = {
                 beer: this.props.beer,
+                seltzer: this.props.seltzer,
+                craft_beer: this.props.craft,
                 wine: this.props.wine,
                 shots: this.props.shots,
                 cocktail: this.props.cocktail,
@@ -109,6 +124,8 @@ class DrinkForm extends Component{
                         .then(res => console.log('date res',res))
                 //revert form values back to zero
                 this.props.dec_beer(0)
+                this.props.dec_seltzer(0)
+                this.props.dec_craft(0)
                 this.props.dec_wine(0)
                 this.props.dec_shots(0)
                 this.props.dec_cocktail(0)
@@ -127,6 +144,16 @@ class DrinkForm extends Component{
                     <h2>Beer:  <span>{this.props.beer}</span></h2>
                     <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
                     <button id="beer" type="button" onClick={this.handleIncrementClick}>+</button>
+                    </div>
+                    <div>
+                    <h2>Seltzer:  {this.props.seltzer}</h2>
+                    <button id="seltzer" type="button" onClick={this.handleDecrementClick}>-</button>
+                    <button id="seltzer" type="button" onClick={this.handleIncrementClick}>+</button>
+                    </div>
+                    <div>
+                    <h2>Craft:  {this.props.craft}</h2>
+                    <button id="craft" type="button" onClick={this.handleDecrementClick}>-</button>
+                    <button id="craft" type="button" onClick={this.handleIncrementClick}>+</button>
                     </div>
                     <div>
                     <h2>Wine:  {this.props.wine}</h2>
@@ -168,6 +195,8 @@ class DrinkForm extends Component{
 function mapStatToProps(state){
     return {
         beer: state.user_reducer.beer,
+        seltzer: state.user_reducer.seltzer,
+        craft: state.user_reducer.craft,
         wine: state.user_reducer.wine,
         shots: state.user_reducer.shots,
         cocktail: state.user_reducer.cocktail,
@@ -179,10 +208,15 @@ function mapStatToProps(state){
 function mapDispatchToProps(dispatch){
     return {
         inc_beer: (beer) => dispatch(ACTIONS.increment_beer(beer)),
+        inc_seltzer: (seltzer) => dispatch(ACTIONS.increment_seltzer(seltzer)),
+        inc_craft: (craft) => dispatch(ACTIONS.increment_craft(craft)),
         inc_wine: (wine) => dispatch(ACTIONS.increment_wine(wine)),
         inc_shots: (shots) => dispatch(ACTIONS.increment_shots(shots)),
         inc_cocktail: (cocktail) => dispatch(ACTIONS.increment_cocktail(cocktail)),
+
         dec_beer: (beer) => dispatch(ACTIONS.decrement_beer(beer)),
+        dec_seltzer: (seltzer) => dispatch(ACTIONS.decrement_seltzer(seltzer)),
+        dec_craft: (craft) => dispatch(ACTIONS.decrement_craft(craft)),
         dec_wine: (wine) => dispatch(ACTIONS.decrement_wine(wine)),
         dec_shots: (shots) => dispatch(ACTIONS.decrement_shots(shots)),
         dec_cocktail: (cocktail) => dispatch(ACTIONS.decrement_cocktail(cocktail)),

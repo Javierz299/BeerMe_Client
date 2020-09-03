@@ -9,6 +9,8 @@ const initialState = {
     show_friend_stats: null,
     pending_requests: null,
     beer: 0,
+    seltzer: 0,
+    craft: 0,
     wine: 0,
     shots: 0,
     cocktail: 0,
@@ -29,6 +31,16 @@ export default (state = initialState, action) => {
             ...state,
             beer: action.payload,
         }
+        case ACTION_TYPES.INCREMENT_SELTZER:
+            return {
+            ...state,
+            seltzer: action.payload,
+        }
+        case ACTION_TYPES.INCREMENT_CRAFT:
+            return {
+            ...state,
+            craft: action.payload,
+        }
         case ACTION_TYPES.INCREMENT_WINE:
             return {
             ...state,
@@ -40,26 +52,6 @@ export default (state = initialState, action) => {
                 shots: action.payload,
             }
         case ACTION_TYPES.INCREMENT_COCKTAIL:
-            return {
-                ...state,
-                cocktail: action.payload,
-            }
-            case ACTION_TYPES.DECREMENT_BEER:
-            return {
-            ...state,
-            beer: action.payload,
-        }
-        case ACTION_TYPES.DECREMENT_WINE:
-            return {
-            ...state,
-            wine: action.payload,
-        }
-        case ACTION_TYPES.DECREMENT_SHOTS:
-            return {
-                ...state,
-                shots: action.payload,
-            }
-        case ACTION_TYPES.DECREMENT_COCKTAIL:
             return {
                 ...state,
                 cocktail: action.payload,

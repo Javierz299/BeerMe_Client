@@ -12,6 +12,8 @@ class ComparisonStats extends Component {
 
         let profileTotal = (
             profileStats.beer +
+            profileStats.seltzer +
+            profileStats.craft_beer +
             profileStats.wine +
             profileStats.shots +
             profileStats.cocktail
@@ -19,6 +21,8 @@ class ComparisonStats extends Component {
 
         let friendTotal = (
             friendStats[0].beer +
+            friendStats[0].seltzer +
+            friendStats[0].craft_beer +
             friendStats[0].wine +
             friendStats[0].shots +
             friendStats[0].cocktail

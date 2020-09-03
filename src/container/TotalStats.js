@@ -29,7 +29,8 @@ class TotalStats extends Component {
                     friend[0].username}
                     </li>
                 <span>
-                    Total Drinks: {friend[0].beer + friend[0].wine + 
+                    Total Drinks: {friend[0].beer + friend[0].seltzer +
+                        friend[0].craft_beer + friend[0].wine + 
                         friend[0].shots + friend[0].cocktail}
                 </span>
                     </div>

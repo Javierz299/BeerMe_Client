@@ -72,6 +72,8 @@ refreshStats = () => {
             }</h3>
             <div>
             <span>Beer: {this.context.globalStats.beer}</span>
+            <span>Seltzer: {this.context.globalStats.seltzer}</span>
+            <span>Craft: {this.context.globalStats.craft_beer}</span>
             <span>Wine: {this.context.globalStats.wine}</span>
             <span>Shots: {this.context.globalStats.shots}</span>
             <span>Mixed: {this.context.globalStats.cocktail}</span>
