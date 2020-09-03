@@ -170,6 +170,14 @@ export const following = (following) => {
   }
 }
 
+export const show_friend_stats = () => {
+  return {
+    type: ACTION_TYPES.SHOW_FRIEND_STATS
+  }
+}
 
-
-
+export const hide_friend_stats = () => {
+  return {
+    type: ACTION_TYPES.HIDE_FRIEND_STATS
+  }
+}
