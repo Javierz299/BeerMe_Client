@@ -170,9 +170,10 @@ export const following = (following) => {
   }
 }
 
-export const show_friend_stats = () => {
+export const show_friend_stats = (stats) => {
   return {
-    type: ACTION_TYPES.SHOW_FRIEND_STATS
+    type: ACTION_TYPES.SHOW_FRIEND_STATS,
+    payload: stats
   }
 }
 
