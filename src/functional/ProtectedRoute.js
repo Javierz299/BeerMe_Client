@@ -40,7 +40,8 @@ class ProtectedRoute extends Component {
                       console.log("empty array, no friends have accepted")
                       return
                   }
-                  console.log('friends following',res)
+                  console.log('friends following',res.data.length)
+                  this.props.total_friends(res.data.length)
                   this.props.friends(res.data)
                   
               })
@@ -57,13 +58,13 @@ refreshStats = () => {
             <div>
             {/* {render compnent that returns below} */}
             <div>
-            following: 0, followers: 0
-            <h3>
+                Friends: {this.props.totalFriends}
+            
             <div>
             <span><Link to="/friends">Friends</Link></span>
             <span><Link to="/pending">Requests</Link></span>
             </div>
-            </h3>
+            
             </div>
             <h3> {this.context.globalProfile.username === null ? 
             this.props.profile.name : 
@@ -87,7 +88,8 @@ refreshStats = () => {
 function mapStateToProps(state){
     return {
         profile: state.auth_reducer.profile,
-        profileStats: state.user_reducer.profileStats
+        profileStats: state.user_reducer.profileStats,
+        totalFriends: state.user_reducer.total_friends
     }
 }
 function mapDispatchToProps(dispatch){
@@ -95,6 +97,7 @@ function mapDispatchToProps(dispatch){
         set_profile_stats: (profile) => dispatch(ACTIONS.set_profile_stats(profile)),
         pending: (pending) => dispatch(ACTIONS.pending_requests(pending)),
         friends: (following) => dispatch(ACTIONS.following(following)),
+        total_friends: (total) => dispatch(ACTIONS.total_friends(total))
     }
 }
 

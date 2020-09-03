@@ -5,6 +5,7 @@ const initialState = {
     profileStats: null,
     friendsList: null,
     friend_search: null,
+    total_friends: null,
     show_friend_stats: null,
     pending_requests: null,
     beer: 0,
@@ -91,6 +92,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 hide_friend_stats: null
+            }
+        case ACTION_TYPES.TOTAL_FRIENDS:
+            return {
+                ...state,
+                total_friends: action.payload
             }
         default:
             return state

@@ -51,7 +51,6 @@ export class FriendsList extends Component {
         //make a conditional so you cant add yourself as a friend
         return (
             <div>
-                search
                 <form onSubmit={this.handleSearchFriend}>
                     <input id="find_friend" type="text" placeholder="name123@email.com"/>
                     <button type="submit" >search</button>

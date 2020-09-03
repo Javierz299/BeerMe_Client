@@ -182,3 +182,10 @@ export const hide_friend_stats = () => {
     type: ACTION_TYPES.HIDE_FRIEND_STATS
   }
 }
+
+export const total_friends = (total) => {
+  return {
+    type: ACTION_TYPES.TOTAL_FRIENDS,
+    payload: total
+  }
+}

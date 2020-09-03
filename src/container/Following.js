@@ -41,10 +41,13 @@ show_friend_stats = (id) => {
                 {this.props.friend_stats === null ?
                 null :
                 <div>
-                    Beer: {this.props.friend_stats[0].beer}
-                    Wine: {this.props.friend_stats[0].wine}
-                    Shots: {this.props.friend_stats[0].shots}
-                    Mixed: {this.props.friend_stats[0].cocktail}
+                    <h3>{this.props.friend_stats[0].username}</h3>
+                    <div>
+                        Beer: {this.props.friend_stats[0].beer}
+                        Wine: {this.props.friend_stats[0].wine}
+                        Shots: {this.props.friend_stats[0].shots}
+                        Mixed: {this.props.friend_stats[0].cocktail}
+                    </div>
                 </div>
                 }  
 
