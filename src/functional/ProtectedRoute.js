@@ -11,7 +11,22 @@ import DrinkForm from '../container/DrinkForm'
 class ProtectedRoute extends Component {
     static contextType = Context
 
-     
+    convertTime = (t,d) => {
+        console.log('t',t)
+         let dt = d.toString()
+         t = t.split(':');
+        let hours = t[0];
+        let minutes = t[1];
+        let seconds = t[2];
+        let timeValue = "" + ((hours >12) ? hours -14 :hours);
+            timeValue += (minutes < 10) ? ":0" : ":" + minutes;
+            //timeValue += (seconds < 10) ? ":0" : ":" + seconds;
+            timeValue += (hours >= 12) ? " P.M." : " A.M.";
+            timeValue += dt
+     console.log("timevalue",timeValue,dt);
+     this.props.last_entry(timeValue)
+}
+    
     componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
@@ -24,6 +39,7 @@ class ProtectedRoute extends Component {
                let timestamp = res.data.date.slice(11,16)
                 console.log('lasted posted',lastPosted)
                 console.log('timestamp',timestamp)
+                this.convertTime(timestamp,lastPosted)
               })
         
         axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
@@ -56,28 +72,31 @@ refreshStats = () => {
     render(){
         return (
             <div>
-            {/* {render compnent that returns below} */}
             <div>
                 Friends: {this.props.totalFriends}
             
             <div>
-            <span><Link to="/friends">Friends</Link></span>
-            <span><Link to="/pending">Requests</Link></span>
+                <span><Link to="/friends">Friends</Link></span>
+                <span><Link to="/pending">Requests</Link></span>
             </div>
             
             </div>
-            <h3> {this.context.globalProfile.username === null ? 
+             {this.context.globalProfile.username === null ? 
             this.props.profile.name : 
-            this.context.globalProfile.username
-            }</h3>
             <div>
-            <span>Beer: {this.context.globalStats.beer}</span>
-            <span>Seltzer: {this.context.globalStats.seltzer}</span>
-            <span>Craft: {this.context.globalStats.craft_beer}</span>
-            <span>Wine: {this.context.globalStats.wine}</span>
-            <span>Shots: {this.context.globalStats.shots}</span>
-            <span>Mixed: {this.context.globalStats.cocktail}</span>
-            <button type="button" onClick={() => this.refreshStats()}>refresh</button>
+                <h3>{this.context.globalProfile.username}</h3>
+                <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,9)}</h5>
+                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,19)}</h5>
+            </div>
+            }
+            <div>
+                <span>Beer: {this.context.globalStats.beer}</span>
+                <span>Seltzer: {this.context.globalStats.seltzer}</span>
+                <span>Craft: {this.context.globalStats.craft_beer}</span>
+                <span>Wine: {this.context.globalStats.wine}</span>
+                <span>Shots: {this.context.globalStats.shots}</span>
+                <span>Mixed: {this.context.globalStats.cocktail}</span>
+                <button type="button" onClick={() => this.refreshStats()}>refresh</button>
             </div>
     
            {<DrinkForm />}
@@ -91,7 +110,8 @@ function mapStateToProps(state){
     return {
         profile: state.auth_reducer.profile,
         profileStats: state.user_reducer.profileStats,
-        totalFriends: state.user_reducer.total_friends
+        totalFriends: state.user_reducer.total_friends,
+        entry: state.user_reducer.last_entry,
     }
 }
 function mapDispatchToProps(dispatch){
@@ -99,7 +119,8 @@ function mapDispatchToProps(dispatch){
         set_profile_stats: (profile) => dispatch(ACTIONS.set_profile_stats(profile)),
         pending: (pending) => dispatch(ACTIONS.pending_requests(pending)),
         friends: (following) => dispatch(ACTIONS.following(following)),
-        total_friends: (total) => dispatch(ACTIONS.total_friends(total))
+        total_friends: (total) => dispatch(ACTIONS.total_friends(total)),
+        last_entry: (entry) => dispatch(ACTIONS.last_entry(entry))
     }
 }
 

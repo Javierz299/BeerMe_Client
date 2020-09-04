@@ -1,4 +1,5 @@
 import * as ACTION_TYPES from '../../actions/action_types'
+import { last_entry } from '../actions'
 
 
 const initialState = {
@@ -8,6 +9,7 @@ const initialState = {
     total_friends: null,
     show_friend_stats: null,
     pending_requests: null,
+    last_entry: null,
     beer: 0,
     seltzer: 0,
     craft: 0,
@@ -96,11 +98,16 @@ export default (state = initialState, action) => {
                 ...state,
                 friend_click: true
             }
-            case ACTION_TYPES.FRIEND_CLICK_OFF:
+        case ACTION_TYPES.FRIEND_CLICK_OFF:
                 return {
                     ...state,
                     friend_click: false
                 }
+        case ACTION_TYPES.LAST_ENTRY:
+            return {
+                ...state,
+                last_entry: action.payload
+            }
         default:
             return state
     }

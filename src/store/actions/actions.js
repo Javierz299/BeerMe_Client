@@ -229,3 +229,10 @@ export const friend_click_off = () => {
     type: ACTION_TYPES.FRIEND_CLICK_OFF,
   }
 }
+
+export const last_entry = (entry) => {
+  return {
+    type: ACTION_TYPES.LAST_ENTRY,
+    payload: entry
+  }
+}

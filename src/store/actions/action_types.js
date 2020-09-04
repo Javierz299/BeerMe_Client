@@ -69,3 +69,5 @@ export const TOTAL_FRIENDS = "TOTAL_FRIENDS"
 export const FRIEND_CLICK_ON = "FRIEND_CLICK_ON"
 
 export const FRIEND_CLICK_OFF = "FRIEND_CLICK_OFF"
+
+export const LAST_ENTRY = "LAST_ENTRY"
