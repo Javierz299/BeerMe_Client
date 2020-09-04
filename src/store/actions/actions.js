@@ -243,3 +243,10 @@ export const friends_last_entry = (entry) => {
     payload: entry
   }
 }
+
+export const cumulative_drinks = (cumulative) => {
+  return {
+    type: ACTION_TYPES.CUMULATIVE_DRINKS,
+    payload: cumulative
+  }
+}

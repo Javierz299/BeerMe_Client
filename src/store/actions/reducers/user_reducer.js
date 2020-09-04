@@ -11,6 +11,7 @@ const initialState = {
     pending_requests: null,
     last_entry: null,
     friends_last_entry: null,
+    cumulative_drinks: null,
     beer: 0,
     seltzer: 0,
     craft: 0,
@@ -114,6 +115,11 @@ export default (state = initialState, action) => {
                     ...state,
                     friends_last_entry: action.payload
                 }
+        case ACTION_TYPES.CUMULATIVE_DRINKS:
+            return {
+                ...state,
+                cumulative_drinks: action.payload
+            }
         default:
             return state
     }
