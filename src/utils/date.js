@@ -31,4 +31,20 @@ console.log(dateStr);
 return dateStr
 }
 
+export const convertTime = (t,d) => {
+  console.log('t',t)
+   let dt = d.toString()
+   t = t.split(':');
+  let hours = t[0];
+  let minutes = t[1];
+  let seconds = t[2];
+  let timeValue = "" + ((hours >12) ? hours -14 :hours);
+      timeValue += (minutes < 10) ? ":0" : ":" + minutes;
+      //timeValue += (seconds < 10) ? ":0" : ":" + seconds;
+      timeValue += (hours >= 12) ? " P.M." : " A.M.";
+      timeValue += dt
+console.log("timevalue",timeValue,dt);
+return timeValue
+}
+
 

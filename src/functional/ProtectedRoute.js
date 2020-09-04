@@ -5,27 +5,28 @@ import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { convertTime } from '../utils/date'
 
 import DrinkForm from '../container/DrinkForm'
 
 class ProtectedRoute extends Component {
     static contextType = Context
 
-    convertTime = (t,d) => {
-        console.log('t',t)
-         let dt = d.toString()
-         t = t.split(':');
-        let hours = t[0];
-        let minutes = t[1];
-        let seconds = t[2];
-        let timeValue = "" + ((hours >12) ? hours -14 :hours);
-            timeValue += (minutes < 10) ? ":0" : ":" + minutes;
-            //timeValue += (seconds < 10) ? ":0" : ":" + seconds;
-            timeValue += (hours >= 12) ? " P.M." : " A.M.";
-            timeValue += dt
-     console.log("timevalue",timeValue,dt);
-     this.props.last_entry(timeValue)
-}
+//     convertTime = (t,d) => {
+//         console.log('t',t)
+//          let dt = d.toString()
+//          t = t.split(':');
+//         let hours = t[0];
+//         let minutes = t[1];
+//         let seconds = t[2];
+//         let timeValue = "" + ((hours >12) ? hours -14 :hours);
+//             timeValue += (minutes < 10) ? ":0" : ":" + minutes;
+//             //timeValue += (seconds < 10) ? ":0" : ":" + seconds;
+//             timeValue += (hours >= 12) ? " P.M." : " A.M.";
+//             timeValue += dt
+//      console.log("timevalue",timeValue,dt);
+//      this.props.last_entry(timeValue)
+// }
     
     componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
@@ -39,7 +40,7 @@ class ProtectedRoute extends Component {
                let timestamp = res.data.date.slice(11,16)
                 console.log('lasted posted',lastPosted)
                 console.log('timestamp',timestamp)
-                this.convertTime(timestamp,lastPosted)
+                this.props.last_entry(convertTime(timestamp,lastPosted))
               })
         
         axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
@@ -56,7 +57,7 @@ class ProtectedRoute extends Component {
                       console.log("empty array, no friends have accepted")
                       return
                   }
-                  console.log('friends following',res.data.length)
+                  console.log('friends following',res.data)
                   this.props.total_friends(res.data.length)
                   this.props.friends(res.data)
                   
@@ -120,7 +121,8 @@ function mapDispatchToProps(dispatch){
         pending: (pending) => dispatch(ACTIONS.pending_requests(pending)),
         friends: (following) => dispatch(ACTIONS.following(following)),
         total_friends: (total) => dispatch(ACTIONS.total_friends(total)),
-        last_entry: (entry) => dispatch(ACTIONS.last_entry(entry))
+        last_entry: (entry) => dispatch(ACTIONS.last_entry(entry)),
+        friends_last_entry: (entry) => dispatch(ACTIONS.friends_last_entry(entry))
     }
 }
 

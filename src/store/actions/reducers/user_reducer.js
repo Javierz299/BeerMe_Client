@@ -10,6 +10,7 @@ const initialState = {
     show_friend_stats: null,
     pending_requests: null,
     last_entry: null,
+    friends_last_entry: null,
     beer: 0,
     seltzer: 0,
     craft: 0,
@@ -108,6 +109,11 @@ export default (state = initialState, action) => {
                 ...state,
                 last_entry: action.payload
             }
+        case ACTION_TYPES.FRIENDS_LAST_ENTRY:
+                return {
+                    ...state,
+                    friends_last_entry: action.payload
+                }
         default:
             return state
     }

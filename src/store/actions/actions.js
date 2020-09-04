@@ -236,3 +236,10 @@ export const last_entry = (entry) => {
     payload: entry
   }
 }
+
+export const friends_last_entry = (entry) => {
+  return {
+    type: ACTION_TYPES.LAST_ENTRY,
+    payload: entry
+  }
+}

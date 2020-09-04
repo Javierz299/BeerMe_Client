@@ -28,6 +28,9 @@ class TotalStats extends Component {
                     <li>{
                     friend[0].username}
                     </li>
+                    {friend[0].last ? <li>{friend[0].last}</li> : <li>never posted</li>
+
+                    }
                 <li>
                     Total Drinks: {friend[0].beer + friend[0].seltzer +
                         friend[0].craft_beer + friend[0].wine + 
