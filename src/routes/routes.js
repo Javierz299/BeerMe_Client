@@ -23,6 +23,7 @@ import { Router, Route, Switch } from 'react-router'
 
 import Context from '../context/ProfileContext'
 import axios from 'axios'
+import PublicGraph from '../container/PublicGraph'
 
 
 export class routes extends Component {
@@ -73,7 +74,7 @@ export class routes extends Component {
                         <Route exact path='/' component={Home} />
                         <Route path='/redirect' component={UnauthRedirect} />
                         <Route path="/callback" render={(props) => <Callback  props={props}/>} />
-                        <Route path="/public" />
+                        <Route path="/public"  component={PublicGraph} />
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/privateroute'  component={ProtectedRoute} />
