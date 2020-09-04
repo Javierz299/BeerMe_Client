@@ -28,8 +28,12 @@ class TotalStats extends Component {
                     <li>{
                     friend[0].username}
                     </li>
-                    {friend[0].last ? <li>{friend[0].last}</li> : <li>never posted</li>
-
+                    {friend[0].last ? 
+                        <div>
+                            <small>Last Posted: {friend[0].last.slice(10,20)}</small>
+                            <small> At: {friend[0].last.slice(0,9)}</small>
+                        </div> : 
+                            <li>never posted</li>
                     }
                 <li>
                     Total Drinks: {friend[0].beer + friend[0].seltzer +

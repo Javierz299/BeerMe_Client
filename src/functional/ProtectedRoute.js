@@ -59,8 +59,7 @@ class ProtectedRoute extends Component {
                   }
                   console.log('friends following',res.data)
                   this.props.total_friends(res.data.length)
-                  this.props.friends(res.data)
-                  
+                  this.props.friends(res.data)                  
               })
     }
 
