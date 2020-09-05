@@ -9,8 +9,6 @@ import * as ACTIONS from '../store/actions/actions'
 
 
 class ConfigureGraph extends Component {
-
-    //create graph reducer
      
       componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/alluserdata`)
@@ -43,7 +41,6 @@ class ConfigureGraph extends Component {
 
 
     render() {
-        console.log('graphstate',this.props.graphState)
         return (
             <div>
                 <Bar
@@ -67,7 +64,6 @@ class ConfigureGraph extends Component {
 
 function mapStateToProps(state){
     return {
-        totalDrinks: state.user_reducer.cumulative_drinks,
         graphState: state.user_reducer.graphState
     }
 }

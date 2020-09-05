@@ -12,9 +12,10 @@ class Header extends Component {
             <div>
                 <h2>BeerMe</h2>
                 <AuthLogin />
-                <Link to="/">home  </Link>
-                <Link to="/public">Graph </Link>
-                <Link to="/privateroute"> profile</Link>
+                <Link to="/"> home  </Link>
+                <Link to="/public"> Graph </Link>
+                <Link to="/ranking" > Ranking </Link>
+                <Link to="/privateroute"> profile </Link>
             </div>
         )
         }

@@ -1,6 +1,4 @@
 import * as ACTION_TYPES from '../../actions/action_types'
-import { last_entry } from '../actions'
-
 
 const initialState = {
     profileStats: null,
@@ -11,6 +9,7 @@ const initialState = {
     pending_requests: null,
     last_entry: null,
     friends_last_entry: null,
+    ranking: null,
     graphState: null,
     beer: 0,
     seltzer: 0,
@@ -138,6 +137,11 @@ export default (state = initialState, action) => {
                       }]
                   }
             }
+            case ACTION_TYPES.CUMULATIVE_DRINKS_PER:
+                return {
+                    ...state,
+                    ranking: [action.payload]
+                }
         default:
             return state
     }

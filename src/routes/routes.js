@@ -10,6 +10,7 @@ import UnauthRedirect from '../functional/UnAuthRedirect'
 
 import FriendsRoute from '../container/FriendsList'
 import PendingRequest from '../container/PendingRequest'
+import GlobalRanking from '../container/GlobalRanking'
 
 import PrivateRoute from '../routes/PrivateRoute'
 
@@ -75,6 +76,7 @@ export class routes extends Component {
                         <Route path='/redirect' component={UnauthRedirect} />
                         <Route path="/callback" render={(props) => <Callback  props={props}/>} />
                         <Route path="/public"  component={PublicGraph} />
+                        <Route path="/ranking" component={GlobalRanking}/>
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/privateroute'  component={ProtectedRoute} />

@@ -250,3 +250,10 @@ export const cumulative_drinks = (cumulative) => {
     payload: cumulative
   }
 }
+
+export const cumulative_drinks_per = (user) => {
+  return {
+    type: ACTION_TYPES.CUMULATIVE_DRINKS_PER,
+    payload: user
+  }
+}
