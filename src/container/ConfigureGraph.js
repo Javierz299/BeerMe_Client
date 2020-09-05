@@ -1,36 +1,53 @@
 import React, { Component } from 'react'
 import { Bar } from 'react-chartjs-2'
 
+import config from '../config'
+import axios from 'axios'
 import { connect } from 'react-redux'
+
+import * as ACTIONS from '../store/actions/actions'
+
 
 class ConfigureGraph extends Component {
 
     //create graph reducer
-     state = {
-        labels: ['Beer', 'Seltzer', 'Craft',
-                 'Wine', 'Shots', 'Mixed'],
-        datasets: [
-          {
-            backgroundColor: [ 
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 2,
-            data: this.props.totalDrinks
+     
+      componentDidMount(){
+        axios.get(`${config.API_ENDPOINT}/get/alluserdata`)
+            .then(res => {
+                console.log('graph data',res.data)
+                let beerTotal = 0
+                let seltzerTotal = 0
+                let craftTotal = 0
+                let wineTotal = 0
+                let shotsTotal = 0
+                let mixedTotal = 0
 
-          }]
-      }
+                for(let user of res.data){
+                    beerTotal += user.beer
+                    seltzerTotal += user.seltzer
+                    craftTotal += user.craft_beer
+                    wineTotal += user.wineTotal
+                    shotsTotal += user.shots
+                    mixedTotal += user.cocktail
+                }
+                this.props.cumulativeData([
+                    beerTotal,seltzerTotal,
+                    craftTotal,wineTotal,
+                    shotsTotal,mixedTotal
+                ])
+              
+            })
+        
+    }
+
+
     render() {
-        console.log('totaldrinks',this.props.totalDrinks)
+        console.log('graphstate',this.props.graphState)
         return (
             <div>
                 <Bar
-          data={this.state}
+          data={this.props.graphState}
           options={{
             title:{
               display:true,
@@ -50,8 +67,15 @@ class ConfigureGraph extends Component {
 
 function mapStateToProps(state){
     return {
-        totalDrinks: state.user_reducer.cumulative_drinks
+        totalDrinks: state.user_reducer.cumulative_drinks,
+        graphState: state.user_reducer.graphState
     }
 }
 
-export default connect(mapStateToProps)(ConfigureGraph)
+function mapDispatchToProps(dispatch){
+    return {
+        cumulativeData: (drinks) => dispatch(ACTIONS.cumulative_drinks(drinks)),
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ConfigureGraph)
