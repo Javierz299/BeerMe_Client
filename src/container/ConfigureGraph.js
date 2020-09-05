@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Bar } from 'react-chartjs-2'
 
+import { connect } from 'react-redux'
+
 class ConfigureGraph extends Component {
 
     //create graph reducer
@@ -19,11 +21,12 @@ class ConfigureGraph extends Component {
             ],
             borderColor: 'rgba(0,0,0,1)',
             borderWidth: 2,
-            data: [12, 19, 3, 5, 5, 3]
+            data: this.props.totalDrinks
 
           }]
       }
     render() {
+        console.log('totaldrinks',this.props.totalDrinks)
         return (
             <div>
                 <Bar
@@ -45,4 +48,10 @@ class ConfigureGraph extends Component {
     }
 }
 
-export default ConfigureGraph
+function mapStateToProps(state){
+    return {
+        totalDrinks: state.user_reducer.cumulative_drinks
+    }
+}
+
+export default connect(mapStateToProps)(ConfigureGraph)
