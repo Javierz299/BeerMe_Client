@@ -36,9 +36,11 @@ class GlobalRanking extends Component {
             <div>
                 Rankings
                 1 2 3...
-                {[this.props.ranking].map((user,i) => (  
-                    <div>
-                        <li>{console.log('usermap',user),user}</li>
+                {this.props.ranking === null ?
+                <div>loading</div> :
+                this.props.ranking[0].map((user,i) => (  
+                    <div key={user[0]}>
+                        <h4>{i + 1} {user[0]} total: {user[1]}</h4>
                    </div>
                 ))
 
