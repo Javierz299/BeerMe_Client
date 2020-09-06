@@ -13,39 +13,34 @@ class GlobalRanking extends Component {
         axios.get(`${config.API_ENDPOINT}/get/alluserdata`)
             .then(res => {
                 console.log('graph data',res.data)
-                let users = {}
+                let users = []
                 console.log()
-                res.data.map(user => {
-                    console.log('user',user)
+                res.data.forEach(user => {
                     let total = (user.beer + 
                         user.seltzer + user.craft_beer + 
                         user.wine + user.shots + user.cocktail)
-                        console.log('total',total)
-                    if(!users.hasOwnProperty(user.username)){
-                        console.log('drinks',user.beer,user.seltzer)
-                        users['username'] = user.username
-                    } else {
-                        console.log('users',users)
-                    }
-                    console.log('ranking',users)
-                    this.props.rankUsers(users)
 
-                })              
-            })
+                        users.push([user.username,total])
+                    })
+                    console.log('ranking',users)
+                this.props.rankUsers(users.sort((a,b) => b[1] - a[1]))
+                })
+                
         
     }
 
 
     render() {
-
+        console.log('rankings render',this.props.ranking)
         return (
             <div>
                 Rankings
                 1 2 3...
-                {[this.props.ranking].map(user => {
-                    console.log('usermap',user)
-
-                })
+                {[this.props.ranking].map((user,i) => (  
+                    <div>
+                        <li>{console.log('usermap',user),user}</li>
+                   </div>
+                ))
 
                 }
             </div>
