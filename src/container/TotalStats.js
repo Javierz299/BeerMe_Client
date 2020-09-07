@@ -30,7 +30,8 @@ class TotalStats extends Component {
                     </li>
                     {friend[0].last ? 
                         <div>
-                            <small>Last Posted: {friend[0].last.slice(10,20)}</small>
+                            {console.log('friend time',friend[0].last)}
+                            <small>Last Posted: {friend[0].last.slice(9,20)}</small>
                             <small> At: {friend[0].last.slice(0,9)}</small>
                         </div> : 
                             <li>never posted</li>

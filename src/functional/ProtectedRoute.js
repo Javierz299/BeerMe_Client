@@ -36,11 +36,9 @@ class ProtectedRoute extends Component {
                     console.log("empty array")
                     return
                 }
-               let lastPosted = res.data.date.slice(0,10)
-               let timestamp = res.data.date.slice(11,16)
-                console.log('lasted posted',lastPosted)
-                console.log('timestamp',timestamp)
-                this.props.last_entry(convertTime(timestamp,lastPosted))
+                console.log('last entry profile',res.data)
+               
+                this.props.last_entry(res.data)
               })
         
         axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
@@ -86,7 +84,7 @@ refreshStats = () => {
             <div>
                 <h3>{this.context.globalProfile.username}</h3>
                 <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,9)}</h5>
-                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,19)}</h5>
+                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,20)}</h5>
             </div>
             }
             <div>
