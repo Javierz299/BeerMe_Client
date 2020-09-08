@@ -44,23 +44,29 @@ class DrinkForm extends Component{
      handleIncrementClick = (e) => {
          //this.increment_beer(e.target.id)
          let id = e.target.id
-         
-            if(id === "beer" && this.props.beer !== 2){
+         //Allows only one type to be incremented at a time per submit
+            if(id === "beer" && this.props.beer !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
+            && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                 console.log('reached')
                this.props.inc_beer(this.props.beer + 1)
                console.log('increment',this.props.beer)
-            } else if(id === "seltzer" && this.props.seltzer !== 2){
+            } else if(id === "seltzer" && this.props.seltzer !== 1 && this.props.beer !== 1 && this.props.craft !== 1
+            && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                 console.log('increment',this.props.craft)
                 this.props.inc_seltzer(this.props.seltzer + 1)
-             } else if(id === "craft" && this.props.craft !== 2){
+             } else if(id === "craft" && this.props.craft !== 1 && this.props.seltzer !== 1 && this.props.beer !== 1
+             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                 this.props.inc_craft(this.props.craft + 1)
-             }else if(id === "wine" && this.props.wine !== 2){
+             }else if(id === "wine" && this.props.wine !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
+             && this.props.beer !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                this.props.inc_wine(this.props.wine + 1)
                console.log('increment',this.props.wine)
-            } else if(id === "shots" && this.props.shots !== 2){
+            } else if(id === "shots" && this.props.shots !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
+            && this.props.wine !== 1 && this.props.beer !== 1 && this.props.cocktail !== 1){
                 this.props.inc_shots(this.props.shots + 1)
                 console.log('inc',this.props.shots)
-            } else if(id === "cocktail" && this.props.cocktail !== 2){
+            } else if(id === "cocktail" && this.props.cocktail !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
+            && this.props.wine !== 1 && this.props.shots !== 1 && this.props.beer !== 1){
                 this.props.inc_cocktail(this.props.cocktail + 1)
                 console.log('inc',this.props.cocktail)
             }

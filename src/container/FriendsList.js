@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import config from '../config'
 import Following from '../container/Following'
+import Loading from '../loading/loading'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from '../store/actions/actions'

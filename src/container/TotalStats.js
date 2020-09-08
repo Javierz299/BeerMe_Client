@@ -20,7 +20,7 @@ class TotalStats extends Component {
         return (
             <div>
                 {this.props.friends === null ?
-                <div>no friends yet</div>:
+                <div>no friends yet</div> :
                 this.props.friends.map(friend => (
                     <div key={friend[0].id} 
                     id="friend_container"

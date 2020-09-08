@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loading from '../loading/loading'
 
 import config from '../config'
 import axios from 'axios'
@@ -36,7 +37,7 @@ class GlobalRanking extends Component {
             <div>
              Global Ranking
                 {this.props.ranking === null ?
-                <div>loading</div> :
+                <Loading /> :
                 this.props.ranking[0].map((user,i) => (  
                     <div key={user[0]}>
                         <h4>{i + 1} {user[0]} total: {user[1]}</h4>
