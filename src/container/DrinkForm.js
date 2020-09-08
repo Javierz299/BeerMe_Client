@@ -152,10 +152,10 @@ class DrinkForm extends Component{
     render(){
         console.log('render submitValue',this.props.submitValue)
         return (
-            <div>
+            <div id="drink-form-container">
                 <form id="drink_form" onSubmit={this.openConfirmationModal}>
                     <div>
-                    <h2><img src={beerPic} alt="beer pic" />  <span>{this.props.beer}</span></h2>
+                    <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
                     <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
                     <button id="beer" type="button" onClick={this.handleIncrementClick}>+</button>
                     </div>
@@ -193,9 +193,12 @@ class DrinkForm extends Component{
                     this.props.submitValue === false ?
                     <div></div> :
                     <div id="confirmation_box">
-                        <br/>
-                        <button id="cancel" className="confirmation_buttons" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
-                        <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
+                        <div id="confirmation-buttons">
+                            <div>
+                            <button id="cancel" className="confirmation_buttons" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
+                            <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
+                            </div>
+                        </div>
                      </div>
                     }
                     </div>

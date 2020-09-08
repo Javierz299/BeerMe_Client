@@ -6,12 +6,6 @@ import Context from '../context/ProfileContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import beerPic from '../Favorites/icons8-beer-50.png'
-import seltzerPic from '../Favorites/icons8-sparkling-water-50.png'
-import craftPic from '../Favorites/icons8-guinness-beer-50.png'
-import winePic from '../Favorites/icons8-wine-glass-50.png'
-import shotPic from '../Favorites/icons8-whiskey-50.png'
-import mixedPic from '../Favorites/icons8-cocktail-50.png'
 
 import DrinkForm from '../container/DrinkForm'
 
@@ -59,32 +53,34 @@ refreshStats = () => {
 
     render(){
         return (
-            <div>
-            <div>
-                Friends: {this.props.totalFriends}
-            
-            <div>
-                <span><Link to="/friends">Friends</Link></span>
-                <span><Link to="/pending">Requests</Link></span>
-            </div>
-            
-            </div>
+            <div id="profile-container" >
+                <div id="friends-link-container">
+                    <div>
+                        <Link to="/friends"><span className="friends-link">Friends</span></Link>
+                        <Link to="/pending"><span className="friends-link">Requests</span></Link>
+                    </div>
+                    <div id="following-container">
+                        <h3>Friends: {this.props.totalFriends}</h3>
+                    </div>
+                
+                </div>
              {this.context.globalProfile.username === null ? 
             this.props.profile.name : 
-            <div>
+            <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
                 <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,9)}</h5>
                 <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,20)}</h5>
             </div>
             }
-            <div>
-                <span>Beer: {this.context.globalStats.beer}</span>
-                <span>Seltzer: {this.context.globalStats.seltzer}</span>
-                <span>Craft: {this.context.globalStats.craft_beer}</span>
-                <span>Wine: {this.context.globalStats.wine}</span>
-                <span>Shots: {this.context.globalStats.shots}</span>
-                <span>Mixed: {this.context.globalStats.cocktail}</span>
-                <button type="button" onClick={() => this.refreshStats()}>refresh</button>
+            <div id="profile-stats-container">
+
+                <div><span>Beer: {this.context.globalStats.beer}</span></div>
+                <div><span>Seltzer: {this.context.globalStats.seltzer}</span></div>
+                <div><span>Craft: {this.context.globalStats.craft_beer}</span></div>
+                <div><span>Wine: {this.context.globalStats.wine}</span></div>
+                <div><span>Shots: {this.context.globalStats.shots}</span></div>
+                <div><span>Mixed: {this.context.globalStats.cocktail}</span></div>
+                {/* <div><button type="button" onClick={() => this.refreshStats()}>r</button></div> */}
             </div>
     
            {<DrinkForm />}

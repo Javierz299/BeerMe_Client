@@ -14,15 +14,17 @@ export class AuthLogin extends Component {
 
     render() {
         return (
-            <div>
+            <div id="log-container">
+                <div>
                {
                  !auth0Client.isAuthenticated() &&
-                 <button onClick={auth0Client.signIn}>Sign In</button>
+                 <button className="log-button" onClick={auth0Client.signIn}>Sign In/Up</button>
                }
+               </div>
                <div>
                {
                  auth0Client.isAuthenticated() &&
-                 <button  onClick={() => this.signOut()}>Sign Out</button>
+                 <button className="log-button" onClick={() => this.signOut()}>Sign Out</button>
                 }
                 </div>
             </div>

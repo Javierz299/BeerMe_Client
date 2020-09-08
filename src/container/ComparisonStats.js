@@ -55,7 +55,6 @@ class ComparisonStats extends Component {
 
         return (
             <div>
-                ComparisonStats
                 <this.renderComparisonStats />
             </div>
         )
