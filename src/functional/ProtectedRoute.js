@@ -5,7 +5,13 @@ import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { convertTime } from '../utils/date'
+
+import beerPic from '../Favorites/icons8-beer-50.png'
+import seltzerPic from '../Favorites/icons8-sparkling-water-50.png'
+import craftPic from '../Favorites/icons8-guinness-beer-50.png'
+import winePic from '../Favorites/icons8-wine-glass-50.png'
+import shotPic from '../Favorites/icons8-whiskey-50.png'
+import mixedPic from '../Favorites/icons8-cocktail-50.png'
 
 import DrinkForm from '../container/DrinkForm'
 
