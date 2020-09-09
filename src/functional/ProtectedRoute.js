@@ -6,6 +6,8 @@ import Context from '../context/ProfileContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+import Loading from '../loading/loading'
+
 
 import DrinkForm from '../container/DrinkForm'
 
@@ -69,19 +71,22 @@ refreshStats = () => {
             <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
                 <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,9)}</h5>
-                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,20)}</h5>
+                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(10,20)}</h5>
             </div>
             }
-            <div id="profile-stats-container">
-
-                <div><span>Beer: {this.context.globalStats.beer}</span></div>
-                <div><span>Seltzer: {this.context.globalStats.seltzer}</span></div>
-                <div><span>Craft: {this.context.globalStats.craft_beer}</span></div>
-                <div><span>Wine: {this.context.globalStats.wine}</span></div>
-                <div><span>Shots: {this.context.globalStats.shots}</span></div>
-                <div><span>Mixed: {this.context.globalStats.cocktail}</span></div>
-                {/* <div><button type="button" onClick={() => this.refreshStats()}>r</button></div> */}
-            </div>
+                {this.context.globalStats === null ?
+                    <Loading /> :
+                <div id="profile-stats-container">
+                    <div><span>Beer: {this.context.globalStats.beer}</span></div>
+                    <div><span>Seltzer: {this.context.globalStats.seltzer}</span></div>
+                    <div><span>Craft: {this.context.globalStats.craft_beer}</span></div>
+                    <div><span>Wine: {this.context.globalStats.wine}</span></div>
+                    <div><span>Shots: {this.context.globalStats.shots}</span></div>
+                    <div><span>Mixed: {this.context.globalStats.cocktail}</span></div>
+                    {/* <div><button type="button" onClick={() => this.refreshStats()}>r</button></div> */}
+                </div>
+                }
+                
     
            {<DrinkForm />}
         </div>
