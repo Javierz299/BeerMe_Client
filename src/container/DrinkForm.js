@@ -153,42 +153,50 @@ class DrinkForm extends Component{
         console.log('render submitValue',this.props.submitValue)
         return (
             <div id="drink-form-container">
-                <form id="drink_form" onSubmit={this.openConfirmationModal}>
-                    <div>
-                    <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
-                    <button id="beer" type="button" onClick={this.handleDecrementClick}>-</button>
-                    <button id="beer" type="button" onClick={this.handleIncrementClick}>+</button>
+                <form id="drink-form" onSubmit={this.openConfirmationModal}>
+                    <div className="drink-box">
+                        <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
+                        <div className="drink-button-container">
+                            <button id="beer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="beer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2><img src={seltzerPic} alt="seltzer pic" />  {this.props.seltzer}</h2>
+                        <div className="drink-button-container">
+                            <button id="seltzer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="seltzer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2><img src={craftPic} alt="craftbeer pic" />  {this.props.craft}</h2>
+                        <div className="drink-button-container">
+                            <button id="craft" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="craft" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2><img src={winePic} alt="wine pic" />  {this.props.wine}</h2>
+                        <div className="drink-button-container">
+                            <button id="wine" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="wine" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2><img src={shotPic} alt="shot pic" />  {this.props.shots}</h2>
+                        <div className="drink-button-container">
+                            <button id="shots" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="shots" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2><img src={mixedPic} alt="cocktail pic" />  {this.props.cocktail}</h2>
+                        <div className="drink-button-container">
+                            <button id="cocktail" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="cocktail" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
                     </div>
                     <div>
-                    <h2><img src={seltzerPic} alt="seltzer pic" />  {this.props.seltzer}</h2>
-                    <button id="seltzer" type="button" onClick={this.handleDecrementClick}>-</button>
-                    <button id="seltzer" type="button" onClick={this.handleIncrementClick}>+</button>
-                    </div>
-                    <div>
-                    <h2><img src={craftPic} alt="craftbeer pic" />  {this.props.craft}</h2>
-                    <button id="craft" type="button" onClick={this.handleDecrementClick}>-</button>
-                    <button id="craft" type="button" onClick={this.handleIncrementClick}>+</button>
-                    </div>
-                    <div>
-                    <h2><img src={winePic} alt="wine pic" />  {this.props.wine}</h2>
-                    <button id="wine" type="button" onClick={this.handleDecrementClick}>-</button>
-                    <button id="wine" type="button" onClick={this.handleIncrementClick}>+</button>
-                    </div>
-                    <div>
-                    <h2><img src={shotPic} alt="shot pic" />  {this.props.shots}</h2>
-                    <button id="shots" type="button" onClick={this.handleDecrementClick}>-</button>
-                    <button id="shots" type="button" onClick={this.handleIncrementClick}>+</button>
-                    </div>
-                    <div>
-                    <h2><img src={mixedPic} alt="cocktail pic" />  {this.props.cocktail}</h2>
-                    <button id="cocktail" type="button" onClick={this.handleDecrementClick}>-</button>
-                    <button id="cocktail" type="button" onClick={this.handleIncrementClick}>+</button>
-                    </div>
-                    <div>
-                    <div>
-                        <br/>
-                        <button id="submit" type="button" onClick={this.openConfirmationModal} >Beer Me</button>
-                    </div>
                     {
                     this.props.submitValue === false ?
                     <div></div> :
@@ -203,6 +211,10 @@ class DrinkForm extends Component{
                     }
                     </div>
                 </form>
+                    <br/>
+                    <div>
+                        <button id="submit" type="button" onClick={this.openConfirmationModal} >Beer Me</button>
+                    </div>
             </div>
         )
     

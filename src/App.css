@@ -1,10 +1,19 @@
-*{
+body{
   box-sizing: border-box;
   letter-spacing: 1px;
+  height: 100%;
 }
 
 #header{
   border: 1px solid black;
+}
+
+.link-box:hover{
+  background: #ffdb58;
+}
+
+a:hover{
+  color: orange;
 }
 
 li{
@@ -19,16 +28,14 @@ span{
   text-align: center;
 }
 
-.friends-link{
-  color: #ffdb58;
-}
-
 #name-date-container{
   text-align: center;
 }
 
 #profile-stats-container{
   text-align: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #drink_form{
@@ -61,6 +68,11 @@ span{
 #profile-container{
   color: #ffdb58;
   background: black;
+}
+
+.drink-box{
+  display: grid;
+  justify-content: space-evenly;
 }
 
  @media only screen and (max-width: 768px){
@@ -98,10 +110,11 @@ span{
     padding: 12px 16px;
     z-index: 3;
   }
+  
 
   .link-container{
     position: relative;
-    z-index: 3;
+    z-index: 2;
   }
 
   .link-box{
@@ -153,7 +166,6 @@ span{
   .log-button{
     border: 1px solid red;
     display: inline-block;
-    
   }
 
   #friends-link-container{
@@ -162,16 +174,52 @@ span{
     z-index: 2;
   }
 
+  #friends-link-box{
+    position: relative;
+    z-index: 2;
+    display: flex;
+  }
+
+  a:hover{
+    color: orange;
+  }
+
+  .friends-link{
+    padding: 5px;
+    color: #ffdb58;
+    display: inline-block;
+    border: 1px solid black;
+  }
+
+  .friends-link:hover{
+    background: black;
+  }
+
+  .friends-link > a {
+    color: #ffdb58;
+  }
+  
   #name-date-container{
     position: relative;
     z-index: 2;
   }
 
   #profile-stats-container{
+    padding: 10px;
+  }
+
+  #profile-stats-container{
     position: relative;
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-gap: 10px;
     z-index: 2;
+  }
+
+  #drink-form{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 50px;
   }
 
   #drink-form-container{
@@ -179,14 +227,36 @@ span{
     text-align: center;
     z-index: 2;
   }
-  
+
+  .drink-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    }
+  .drink-button{
+    height: 25px;
+    width: 25px;
+  }
+
+  .drink-button-container{
+    padding: 5px;
+    margin: auto 0 auto 0;
+  }
+
+  .drink-box > h2{
+    margin: 0;
+  }
+
   #profile-container{
     color: #ffdb58;
-    background: url("./Favorites/bottle.png");
+    background: url("./Favorites/social-drinking.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
+    height: 100%;
+    width: 100%;
   }
 
   #profile-container::after{
@@ -203,9 +273,38 @@ span{
 
  }
 
+ @media only screen and (max-width: 600px){
+  .drink-box{
+    display: block;
+  }
+
+  #drink-form{
+    display: block;
+  }
+  #profile-container{
+    background: url("./Favorites/cheers.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 320px){
   span{
     font-size: 15px;
   }
-  
+
+  /* .drink-box > h2 > img{
+    height: 25px;
+  }
+
+  .drink-button{
+    height: 20px;
+    width: 20px;
+    padding: 3px;
+  } */
+
 }

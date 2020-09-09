@@ -55,9 +55,9 @@ refreshStats = () => {
         return (
             <div id="profile-container" >
                 <div id="friends-link-container">
-                    <div>
-                        <Link to="/friends"><span className="friends-link">Friends</span></Link>
-                        <Link to="/pending"><span className="friends-link">Requests</span></Link>
+                    <div id="friends-link-box">
+                    <div className="friends-link"><Link to="/friends">Friends</Link></div>
+                    <div className="friends-link"><Link to="/pending">Requests</Link></div>
                     </div>
                     <div id="following-container">
                         <h3>Friends: {this.props.totalFriends}</h3>

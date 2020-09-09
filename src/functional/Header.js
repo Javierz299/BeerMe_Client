@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { Link } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ navBar = () => {
     render(){
         return (
             <div id="header">
+                <TransitionGroup>
                 <div id="logo-container">
                     <div><img src={beerlogo} /></div>
                     <div id="logo-box">
@@ -30,21 +32,19 @@ navBar = () => {
                     </div>
                     <div><img src={beerlogo} /></div>
                 </div>
+
                 <div id="main-nav">
                     <div id="menu-container">
                         <li id="menu-bar" onClick={this.navBar}>
                             <img id="ham-menu" src={ham} />
                         </li>
+                      
                     </div>
                     <div id="nav-links">
                         <div className="link-container">
-                            
-                                <Link to="/">
-                                    <div className="link-box">
-                                     Home
-                                    </div>
-                                </Link>
-                            
+                            <div className="link-box">
+                                <Link to="/">Home</Link>
+                            </div>
                             <div className="link-box">
                                 <Link to="/public"> Graph </Link>
                             </div>
@@ -60,6 +60,7 @@ navBar = () => {
                         <AuthLogin />
                     </div>
                 </div>
+                </TransitionGroup>
             </div>
         )
         }
