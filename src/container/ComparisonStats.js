@@ -54,7 +54,7 @@ class ComparisonStats extends Component {
         console.log("state",this.props.friend_stats)
 
         return (
-            <div>
+            <div className="friend-stat">
                 <this.renderComparisonStats />
             </div>
         )

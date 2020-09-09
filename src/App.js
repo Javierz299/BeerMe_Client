@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from 'react'
-import './App.css'
+import './portfolio.css'
+import './friends.css'
 
 import Context from './context/ProfileContext'
 

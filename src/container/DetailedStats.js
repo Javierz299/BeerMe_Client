@@ -20,15 +20,17 @@ export class DetailedStats extends Component {
 
     render() {
         return (
-                 <div onClick={() => this.hide_friend_stats()}>
-                    <h3>{this.props.friend_stats[0].username}</h3>
-                        <h4><img src={beerPic} alt="beer pic" /> {this.props.friend_stats[0].beer}</h4>
-                        <h4><img src={seltzerPic} alt="seltzer pic" /> {this.props.friend_stats[0].seltzer}</h4>
-                        <h4><img src={craftPic} alt="craft pic" /> {this.props.friend_stats[0].craft_beer}</h4>
-                        <h4><img src={winePic} alt="wine pic" /> {this.props.friend_stats[0].wine}</h4>
-                        <h4><img src={shotPic} alt="shot pic" /> {this.props.friend_stats[0].shots}</h4>
-                        <h4><img src={mixedPic} alt="mixed pic" /> {this.props.friend_stats[0].cocktail}</h4>
-                        <ComparisonStats />
+                 <div id="detailed-stats" onClick={() => this.hide_friend_stats()}>
+                    <h3 id="drink-stats">{this.props.friend_stats[0].username}</h3>
+                    <div id="grid-stats">
+                        <div><h4 className="friend-stat"><img src={beerPic} alt="beer pic" /> {this.props.friend_stats[0].beer}</h4></div>
+                        <div><h4 className="friend-stat"><img src={seltzerPic} alt="seltzer pic" /> {this.props.friend_stats[0].seltzer}</h4></div>
+                        <div><h4 className="friend-stat"><img src={craftPic} alt="craft pic" /> {this.props.friend_stats[0].craft_beer}</h4></div>
+                        <div><h4 className="friend-stat"><img src={winePic} alt="wine pic" /> {this.props.friend_stats[0].wine}</h4></div>
+                        <div><h4 className="friend-stat"><img src={shotPic} alt="shot pic" /> {this.props.friend_stats[0].shots}</h4></div>
+                        <div><h4 className="friend-stat"><img src={mixedPic} alt="mixed pic" /> {this.props.friend_stats[0].cocktail}</h4></div>
+                    </div>
+                    <div id="compare-stats"><ComparisonStats /></div>
                  </div>   
         )
     }

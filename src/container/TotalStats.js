@@ -23,24 +23,26 @@ class TotalStats extends Component {
                 <div>no friends yet</div> :
                 this.props.friends.map(friend => (
                     <div key={friend[0].id} 
-                    id="friend_container"
+                    id="friend-card"
                 onClick={() => this.show_friend_stats(friend[0].id)}>
-                    <li>{
-                    friend[0].username}
-                    </li>
+                    <div id="friend-name">
+                        <li>{friend[0].username}</li>
+                    </div>
                     {friend[0].last ? 
-                        <div>
+                        <div id="friend-time">
                             {console.log('friend time',friend[0].last)}
                             <small>Last Posted: {friend[0].last.slice(9,20)}</small>
                             <small> At: {friend[0].last.slice(0,9)}</small>
                         </div> : 
                             <li>never posted</li>
                     }
-                <li>
-                    Total Drinks: {friend[0].beer + friend[0].seltzer +
-                        friend[0].craft_beer + friend[0].wine + 
-                        friend[0].shots + friend[0].cocktail}
-                </li>
+                <div id="friend-total">
+                    <li>
+                        Total Drinks: {friend[0].beer + friend[0].seltzer +
+                            friend[0].craft_beer + friend[0].wine + 
+                            friend[0].shots + friend[0].cocktail}
+                    </li>
+                </div>
                     </div>
                     ))
                 }

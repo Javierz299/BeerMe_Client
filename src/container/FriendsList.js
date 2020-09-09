@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import config from '../config'
 import Following from '../container/Following'
-import Loading from '../loading/loading'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from '../store/actions/actions'
@@ -53,8 +52,10 @@ export class FriendsList extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSearchFriend}>
-                    <input id="find_friend" type="text" placeholder="name123@email.com"/>
-                    <button type="submit" >search</button>
+                    <div id="add-friend-box">
+                        <input id="find_friend" type="text" placeholder="name123@email.com"/>
+                        <button className="search-friend"type="submit">add</button>
+                    </div>
                 </form>
                 <div>
                 {this.props.friend === null ? <span></span> :
@@ -69,7 +70,6 @@ export class FriendsList extends Component {
                 </div>
             }
                 <div>
-                    render list of friends
                     <Following />
                 </div>
                 </div>
