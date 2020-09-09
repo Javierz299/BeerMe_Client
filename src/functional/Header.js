@@ -11,7 +11,6 @@ import AuthLogin from '../container/AuthLogin'
 class Header extends Component {
 
 navBar = () => {
-    console.log('menu clicked')
     let div = document.getElementById('nav-links')
     if(div.style.display === "none"){
         div.style.display = 'block'
@@ -34,14 +33,13 @@ navBar = () => {
                 </div>
 
                 <div id="main-nav">
-                    <div id="menu-container">
+                    {/* <div id="menu-container">
                         <li id="menu-bar" onClick={this.navBar}>
                             <img id="ham-menu" src={ham} />
                         </li>
-                      
-                    </div>
-                    <div id="nav-links"  onClick={this.navBar}>
-                        <div className="link-container">
+                    </div> */}
+                    <div id="nav-links" className="nav-links-show">
+                        <div id="link-container">
                             <div className="link-box">
                                 <Link to="/">Home</Link>
                             </div>

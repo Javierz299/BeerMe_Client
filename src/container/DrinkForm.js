@@ -154,6 +154,7 @@ class DrinkForm extends Component{
         return (
             <div id="drink-form-container">
                 <form id="drink-form" onSubmit={this.openConfirmationModal}>
+                    <div id="drink-form-container">
                     <div className="drink-box">
                         <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
                         <div className="drink-button-container">
@@ -209,6 +210,7 @@ class DrinkForm extends Component{
                         </div>
                      </div>
                     }
+                    </div>
                     </div>
                 </form>
                     <br/>
