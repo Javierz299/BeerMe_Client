@@ -40,7 +40,7 @@ navBar = () => {
                         </li>
                       
                     </div>
-                    <div id="nav-links">
+                    <div id="nav-links"  onClick={this.navBar}>
                         <div className="link-container">
                             <div className="link-box">
                                 <Link to="/">Home</Link>
