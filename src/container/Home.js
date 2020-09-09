@@ -7,10 +7,15 @@ export class Home extends Component {
         return (
             <div id="home-contaier">
                 <section id="top-home-section">
-                    background image
-                    <div><h1>Welcome</h1></div>
-                        <div><p>introduction</p></div>
-                        <div><button type="button">Guest Login</button></div>
+                    <div id="top-home-content">
+                        <div className="welcom-box">
+                            <div><h1>Welcome</h1></div>
+                        </div>
+                        <div>
+                            <div><p>introduction</p></div>
+                            <div><button type="button">Guest Login</button></div>
+                        </div>
+                    </div>
                 </section>
                 <section id="middle-home-section">
                         <div><h1>Track your progress</h1></div>
