@@ -93,8 +93,6 @@
     padding: 3px;
 }
 
-@media only screen and (max-width: 768px){
-    #grid-stats{
-        
-    }
+#global-rankng-container{
+    text-align: center;
 }

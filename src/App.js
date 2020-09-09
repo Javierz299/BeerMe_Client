@@ -1,6 +1,8 @@
 import React, { useState, useReducer } from 'react'
 import './portfolio.css'
 import './friends.css'
+import './ranking.css'
+import './home.css'
 
 import Context from './context/ProfileContext'
 

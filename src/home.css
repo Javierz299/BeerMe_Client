@@ -1,0 +1,17 @@
+#header{
+   background: #ffdb58;
+}
+
+#top-home-section{
+    border: 1px solid red;
+}
+
+#middle-home-section{
+    border: 1px solid blue;
+
+}
+
+#bottom-home-section{
+    border: 1px solid green;
+
+}

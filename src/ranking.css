@@ -1,0 +1,15 @@
+#rank0{
+    background: gold;
+}
+
+#rank1{
+    background: silver;
+}
+
+#rank2{
+    background: brown;
+}
+
+#rank3:nth-child(n+1){
+    border-top: 1px solid black ;
+}

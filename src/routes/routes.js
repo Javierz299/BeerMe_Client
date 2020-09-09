@@ -61,7 +61,7 @@ export class routes extends Component {
                     axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
                     .then(res => this.context.dispatchStatsProfile(res.data))
                     .then(() => this.props.set_profile_stats(this.context.globalStats))
-                },700)
+                },1000)
             
         }
     }
