@@ -33,19 +33,16 @@ export class Home extends Component {
                         <div className="middle-grid-content">
                             <div className="middle-content-boxa"></div>                            
                         </div>
-                    {/*<div className="middle-grid-content">
-                            <div className="middle-content-boxb"></div>                            
-                        </div> */}
                     </div>
                 </section>
                 </div>
                 <div>
                 <section id="bottom-home-section">
                 <div id="bottom-home-content">
-                        <div className="bottom-grid-content">
+                        <div id="a" className="bottom-grid-content">
                             <div className="bottom-content-boxb"></div>                            
                         </div>
-                        <div className="bottom-title">
+                        <div id="b" className="bottom-title">
                             <div><h1>Follow Friends</h1></div>
                         </div>
                     </div>

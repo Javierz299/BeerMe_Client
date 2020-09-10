@@ -40,30 +40,6 @@
    width: 500px;
 }
 
-
-#middle-home-section{
-    /* border: 1px solid black; */
-    /* background: url("./Favorites/homeImage.jpg"); */
-    /* background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative; */
-    /* height: 100%;
-    width: 100%; */
-}
-
-/* #middle-home-section::after{
-     color: rgba(27, 19, 19, 0.721);
-     width: 100%;
-     height: 100%;
-     position: absolute;
-     content: '';
-     top: 0;
-     left:0;
-     background: rgba(1, 10, 19, 0.6);
-     z-index: 1;
-} */
-
 #middle-home-content{
     position: relative;
     color: orange;
@@ -135,6 +111,82 @@
 
 
 
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 800px){
 
+    .home-intro{
+        height: auto;
+        width: 400px;
+     }
+
+    #middle-home-content{
+        padding: 5px;
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: center;
+        align-items: center;
+        height: auto;
+    }
+      
+    #bottom-home-content{
+        padding: 5px;
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: center;
+        align-items: center;
+        height: auto;
+    }
+
+    .middle-content-boxa{
+        height: 400px;
+        width: 425px;
+    }
+
+    .bottom-content-boxb{
+        height: 400px;
+        width: 425px;
+    }
+ 
+    #b{
+        grid-row: 1;
+    }
+}
+
+@media only screen and (max-width: 800px){
+
+    .home-intro{
+        height: auto;
+        width: 400px;
+     }
+
+    #middle-home-content{
+        padding: 5px;
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: center;
+        align-items: center;
+        height: auto;
+    }
+      
+    #bottom-home-content{
+        padding: 5px;
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: center;
+        align-items: center;
+        height: auto;
+    }
+
+    .middle-content-boxa{
+        height: 400px;
+        width: 425px;
+    }
+
+    .bottom-content-boxb{
+        height: 400px;
+        width: 425px;
+    }
+ 
+    #b{
+        grid-row: 1;
+    }
 }
