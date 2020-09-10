@@ -3,21 +3,7 @@
 }
 
 #top-home-section{
-    border: 1px solid red;
-}
-
-#middle-home-section{
-    border: 1px solid blue;
-
-}
-
-#bottom-home-section{
-    border: 1px solid green;
-
-}
-
-#top-home-section{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     color: #ffdb58;
     background: url("./Favorites/homeImage.jpg");
     background-repeat: no-repeat;
@@ -48,4 +34,83 @@
     grid-template-columns: auto auto;
     justify-items: center;
     align-items: center;
+}
+
+
+#middle-home-section{
+    /* border: 1px solid black; */
+    /* background: url("./Favorites/homeImage.jpg"); */
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative; */
+    /* height: 100%;
+    width: 100%; */
+}
+
+/* #middle-home-section::after{
+     color: rgba(27, 19, 19, 0.721);
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     content: '';
+     top: 0;
+     left:0;
+     background: rgba(1, 10, 19, 0.6);
+     z-index: 1;
+} */
+
+#middle-home-content{
+    color: orange;
+    background:  #ffdb58;
+    height: 300px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: flex-end;
+    align-items: center;
+}
+
+
+.middle-content-boxa{
+    /* color: #ffdb58; */
+    background: url("./Favorites/profileForm.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 300px;
+    width: 500px;
+}
+
+/* .middle-content-boxb{
+    /* color: #ffdb58; */
+    /* background: url("./Favorites/ranking.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 300px;
+    min-width: 200px; */
+/* } */ 
+
+#bottom-home-content{
+    color: orange;
+    background:  #ffdb58;
+    height: 300px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: flex-start;
+    align-items: center;
+}
+
+
+.bottom-content-boxb{
+    /* color: #ffdb58; */
+    background: url("./Favorites/friends.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 300px;
+    width: 500px;
 }

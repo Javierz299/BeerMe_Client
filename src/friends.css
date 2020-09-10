@@ -44,8 +44,6 @@
     width: 100%;
 }
 
-
-
 #friends-container::after{
     color: rgba(27, 19, 19, 0.721);
      width: 100%;
@@ -73,6 +71,11 @@
     margin-top: 10px;
     padding: 5px;  
     z-index: 2;  
+}
+
+#friend-card:hover{
+    background: rgba(27, 19, 19, 0.721);
+    opacity: 0.1;
 }
 
 #friend-name{

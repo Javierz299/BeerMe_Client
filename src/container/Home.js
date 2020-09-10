@@ -6,6 +6,7 @@ export class Home extends Component {
     render() {
         return (
             <div id="home-contaier">
+                <div>
                 <section id="top-home-section">
                     <div id="top-home-content">
                         <div className="welcom-box">
@@ -17,17 +18,34 @@ export class Home extends Component {
                         </div>
                     </div>
                 </section>
+                </div>
+                <div>
                 <section id="middle-home-section">
-                        <div><h1>Track your progress</h1></div>
-                        <div><h3>show picture of form</h3></div>
-                        <div><h3>show picture of stats</h3></div>
+                    <div id="middle-home-content">
+                        <div className="middle-title">
+                            <div><h1>Track progress</h1></div>
+                        </div>
+                        <div className="middle-grid-content">
+                            <div className="middle-content-boxa"></div>                            
+                        </div>
+                    {/*<div className="middle-grid-content">
+                            <div className="middle-content-boxb"></div>                            
+                        </div> */}
+                    </div>
                 </section>
+                </div>
+                <div>
                 <section id="bottom-home-section">
-                <div><h1>Follow your friends</h1></div>
-                        <div><h3>show pic of friends</h3></div>
-                        <div><h3>show picture of detailed friend stats</h3></div>
+                <div id="bottom-home-content">
+                        <div className="bottom-grid-content">
+                            <div className="bottom-content-boxb"></div>                            
+                        </div>
+                        <div className="bottom-title">
+                            <div><h1>Follow Friends</h1></div>
+                        </div>
+                    </div>
                 </section>
-                
+                </div>
             </div>
         )
     }

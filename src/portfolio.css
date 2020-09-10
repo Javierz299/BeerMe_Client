@@ -6,7 +6,7 @@ body{
 }
 
 #header{
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #logo-container{
@@ -40,12 +40,11 @@ body{
 }
 
 #auth-box{
-  margin: auto;
+  margin: 3px auto 3px auto;
+  padding: 5px;
 }
 
-#log-container{
-  margin: auto;
-}
+
 
 .log-button{
   display: inline-block;

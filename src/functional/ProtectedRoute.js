@@ -70,8 +70,8 @@ refreshStats = () => {
             this.props.profile.name : 
             <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
-                <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,9)}</h5>
-                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(10,20)}</h5>
+                <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,8)}</h5>
+                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(8,20)}</h5>
             </div>
             }
                 {this.context.globalStats === null ?
