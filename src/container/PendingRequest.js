@@ -41,17 +41,17 @@ export class PendingRequest extends Component {
     render(){
         console.log('pending',this.props.pending_requests)
         return (
-            <div>
-                Pending friend Requests
+            <div id="pending-requests-container">
+                <h2>Pending friend Requests</h2>
                 {this.props.pending_requests === null ?
-                <h3>no friend requests</h3> :
-                <ul>{[...this.props.pending_requests].map(user => (
-                    <div key={user[1]}>
+                <h3>no requests yet</h3> :
+                <div>{[...this.props.pending_requests].map(user => (
+                    <div className="request-box" key={user[1]}>
                         <li>{user[0]}</li>
-                        <button id={user[1]} onClick={this.accept_request}>add</button>
+                        <button id={user[1]} onClick={this.accept_request}>accept</button>
                         <button id={user[1]} onClick={this.decline_request}>decline</button>
                    </div>
-                ))}</ul>
+                ))}</div>
 
                 }
             </div>

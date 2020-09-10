@@ -9,11 +9,16 @@ export class Home extends Component {
                 <div>
                 <section id="top-home-section">
                     <div id="top-home-content">
-                        <div className="welcom-box">
-                            <div><h1>Welcome</h1></div>
+                        <div className="welcome-box">
+                            <div><h1>Cheers</h1></div>
                         </div>
-                        <div>
-                            <div><p>introduction</p></div>
+                        <div id="intro-container">
+                            <div className="home-intro">
+                                <p>At BeerMe Social you can track
+                                your alcoholic drinks. Find your friends and track their progress.
+                                As well as follow the global ranking board. Use the guest login and test out the app.
+                                </p>
+                            </div>
                             <div><button type="button">Guest Login</button></div>
                         </div>
                     </div>

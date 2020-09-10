@@ -1,8 +1,12 @@
 body{
   box-sizing: border-box;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
   height: 100%;
   background: whitesmoke;
+}
+
+button{
+  background: #ffdb58;
 }
 
 #header{
@@ -15,6 +19,7 @@ body{
 }
 
 #logo{
+  color: orange;
   display: inline;
   padding: 3px;
 }

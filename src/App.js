@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react'
 import './portfolio.css'
 import './friends.css'
+import './pending.css'
 import './ranking.css'
 import './home.css'
 

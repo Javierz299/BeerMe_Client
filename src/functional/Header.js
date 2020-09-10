@@ -10,14 +10,14 @@ import AuthLogin from '../container/AuthLogin'
 
 class Header extends Component {
 
-navBar = () => {
-    let div = document.getElementById('nav-links')
-    if(div.style.display === "none"){
-        div.style.display = 'block'
-    } else {
-        div.style.display = 'none'
-    }
-}
+// navBar = () => {
+//     let div = document.getElementById('nav-links')
+//     if(div.style.display === "none"){
+//         div.style.display = 'block'
+//     } else {
+//         div.style.display = 'none'
+//     }
+// }
 
 
     render(){
@@ -27,7 +27,7 @@ navBar = () => {
                 <div id="logo-container">
                     <div><img src={beerlogo} /></div>
                     <div id="logo-box">
-                    <h2 id="logo">BeerMe</h2>
+                    <h2 id="logo">BeerMe Social</h2>
                     </div>
                     <div><img src={beerlogo} /></div>
                 </div>

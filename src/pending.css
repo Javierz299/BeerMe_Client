@@ -1,0 +1,11 @@
+#pending-requests-container{
+    height: 100%;
+    background: orange;
+    padding: 3px;
+    text-align: center;
+}
+
+.request-box{
+    padding: 5px;
+    color: #ffdb58;
+}
