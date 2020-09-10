@@ -41,7 +41,8 @@ export class PendingRequest extends Component {
     render(){
         console.log('pending',this.props.pending_requests)
         return (
-            <div id="pending-requests-container">
+            <div>
+               <div id="pending-requests-container">
                 <h2>Pending friend Requests</h2>
                 {this.props.pending_requests === null ?
                 <h3>no requests yet</h3> :
@@ -54,6 +55,7 @@ export class PendingRequest extends Component {
                 ))}</div>
 
                 }
+                </div>
             </div>
         )
     }

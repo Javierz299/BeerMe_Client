@@ -65,6 +65,7 @@
 } */
 
 #middle-home-content{
+    position: relative;
     color: orange;
     background:  #ffdb58;
     height: 300px;
@@ -74,6 +75,17 @@
     align-items: center;
 }
 
+#middle-home-content::after{
+    color: rgba(27, 19, 19, 0.721);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: '';
+    top: 0;
+    left:0;
+    background: rgba(1, 10, 19, 0.2);
+    z-index: 1;
+}
 
 .middle-content-boxa{
     /* color: #ffdb58; */
@@ -86,18 +98,8 @@
     width: 500px;
 }
 
-/* .middle-content-boxb{
-    /* color: #ffdb58; */
-    /* background: url("./Favorites/ranking.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 300px;
-    min-width: 200px; */
-/* } */ 
-
 #bottom-home-content{
+    position: relative;
     color: orange;
     background:  #ffdb58;
     height: 300px;
@@ -107,6 +109,17 @@
     align-items: center;
 }
 
+#bottom-home-content::after{
+    color: rgba(27, 19, 19, 0.721);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: '';
+    top: 0;
+    left:0;
+    background: rgba(1, 10, 19, 0.2);
+    z-index: 1;
+}
 
 .bottom-content-boxb{
     /* color: #ffdb58; */
@@ -117,4 +130,11 @@
     position: relative;
     height: 300px;
     width: 500px;
+}
+
+
+
+
+@media only screen and (max-width: 320px){
+
 }
