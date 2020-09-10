@@ -11,7 +11,6 @@ import UnauthRedirect from '../functional/UnAuthRedirect'
 import FriendsRoute from '../container/FriendsList'
 import PendingRequest from '../container/PendingRequest'
 import GlobalRanking from '../container/GlobalRanking'
-
 import PrivateRoute from '../routes/PrivateRoute'
 
 import history from '../utils/history'
@@ -32,7 +31,6 @@ export class routes extends Component {
     static contextType = Context
 
     async componentDidMount(){    
-        //console.log('props from routes',props)    
         //if (this.location.pathname === '/callback') return;
         try {
           await auth0Client.silentAuth();

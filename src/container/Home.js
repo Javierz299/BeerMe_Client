@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-export class Home extends Component {
-
+class Home extends Component {
 
     render() {
         return (
@@ -19,7 +19,7 @@ export class Home extends Component {
                                 As well as follow the global ranking board. Use the guest login and test out the app.
                                 </p>
                             </div>
-                            <div><button type="button">Guest Login</button></div>
+                            <div><Link to="/privateroute"><button type="button">Guest Login</button></Link></div>
                         </div>
                     </div>
                 </section>
