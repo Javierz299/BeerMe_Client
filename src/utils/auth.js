@@ -51,12 +51,11 @@ signOut = () => {
     })
 }
 setSession(authResult){
-    //this.accessToken = authResult.accessToken
+    this.accessToken = authResult.accessToken
     this.idToken = authResult.idToken
     this.profile = authResult.idTokenPayload
     let expAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()))
     this.expiresAt = authResult.idTokenPayload.exp * expAt
-    console.log('this',this.profile)
 }
 
 silentAuth(){

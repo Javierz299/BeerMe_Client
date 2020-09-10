@@ -30,6 +30,9 @@ class ProtectedRoute extends Component {
         axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
               .then(res => {
                   console.log('res',res)
+                  if(res.data.message){
+                      return
+                  }
                   let names = []
                   res.data.forEach((user) => names.push([user[0].username,user[1]]))
                  this.props.pending(names)
@@ -71,7 +74,7 @@ refreshStats = () => {
             <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
                 <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,8)}</h5>
-                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(8,20)}</h5>
+                <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,20)}</h5>
             </div>
             }
                 {this.context.globalStats === null ?
