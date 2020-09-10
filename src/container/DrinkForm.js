@@ -1,4 +1,4 @@
-import React, { useContext, Component } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import config from '../config'
 import * as ACTIONS from '../store/actions/actions'
@@ -50,7 +50,6 @@ class DrinkForm extends Component{
      }
 
      handleIncrementClick = (e) => {
-         //this.increment_beer(e.target.id)
          let id = e.target.id
          //Allows only one type to be incremented at a time per submit
             if(id === "beer" && this.props.beer !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
@@ -80,7 +79,6 @@ class DrinkForm extends Component{
             }
      }
      handleDecrementClick = (e) => {
-         //this.decrement_beer(e.target.id)
          let id = e.target.id
          
             if(id === "beer" && this.props.beer !== 0){

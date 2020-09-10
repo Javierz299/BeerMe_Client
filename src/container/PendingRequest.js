@@ -21,7 +21,7 @@ export class PendingRequest extends Component {
         console.log('currentuser',currentUser)
         axios.patch(`${config.API_ENDPOINT}/patch/addfriend/${requestFrom}`,currentUser)
 
-        let filtered = this.props.pending_requests.filter(user => user[1] != requestFrom)
+        let filtered = this.props.pending_requests.filter(user => user[1] !== Number(requestFrom))
         this.props.pending(filtered)
     }
 
@@ -34,7 +34,7 @@ export class PendingRequest extends Component {
         axios.patch(`${config.API_ENDPOINT}/patch/declinefriend/${requestFrom}`,currentUser)
             .then(res => console.log('patch',res))
 
-        let filtered = this.props.pending_requests.filter(user => user[1] != requestFrom)
+        let filtered = this.props.pending_requests.filter(user => user[1] !== Number(requestFrom))
         this.props.pending(filtered)
     }
 

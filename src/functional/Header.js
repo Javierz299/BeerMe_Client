@@ -1,43 +1,26 @@
 import React, { Component } from 'react'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+//import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { Link } from 'react-router-dom'
 
-import ham from '../Favorites/ham.png'
 import beerlogo from '../Favorites/beer.png'
 
 import AuthLogin from '../container/AuthLogin'
 
 class Header extends Component {
 
-// navBar = () => {
-//     let div = document.getElementById('nav-links')
-//     if(div.style.display === "none"){
-//         div.style.display = 'block'
-//     } else {
-//         div.style.display = 'none'
-//     }
-// }
-
-
     render(){
         return (
             <div id="header">
-                <TransitionGroup>
                 <div id="logo-container">
-                    <div><img src={beerlogo} /></div>
+                    <div><img src={beerlogo} alt="beer logo" /></div>
                     <div id="logo-box">
                     <h2 id="logo">BeerMe Social</h2>
                     </div>
-                    <div><img src={beerlogo} /></div>
+                    <div><img src={beerlogo} alt="beer logo" /></div>
                 </div>
 
                 <div id="main-nav">
-                    {/* <div id="menu-container">
-                        <li id="menu-bar" onClick={this.navBar}>
-                            <img id="ham-menu" src={ham} />
-                        </li>
-                    </div> */}
                     <div id="nav-links" className="nav-links-show">
                         <div id="link-container">
                             <div className="link-box">
@@ -58,7 +41,6 @@ class Header extends Component {
                         <AuthLogin />
                     </div>
                 </div>
-                </TransitionGroup>
             </div>
         )
         }

@@ -45,18 +45,16 @@ export class routes extends Component {
             let userProfile = auth0Client.getProfile()
             this.props.add_profile(userProfile)
             console.log('post/get,',userProfile.email)
-            axios.post(`${config.API_ENDPOINT}/post/userprofile`,userProfile)
+            await axios.post(`${config.API_ENDPOINT}/post/userprofile`,userProfile)
                 .then(res => {
-                    //console.log('post res',res)
                    let parsed = JSON.parse(res.config.data)
-                    //console.log('res data',parsed.email)
-                    if(res.config.data){
-                        axios.get(`${config.API_ENDPOINT}/get/userprofile/${parsed.email}`)
+                    if(res.config.data){ 
+                       axios.get(`${config.API_ENDPOINT}/get/userprofile/${parsed.email}`)
                         .then(res => this.context.dispatchGlobalProfile(res.data))
                     }
                 })
-                //this.props.set_db_profile(JSON.parse(res.config.data))
-                //console.log('post res', JSON.parse(res.config.data))
+                //data doesnt get stored into global fast enough
+                //wait one second before trying to get global context. 
                 setTimeout(() => {
                     axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
                     .then(res => this.context.dispatchStatsProfile(res.data))

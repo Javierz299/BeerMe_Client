@@ -37,7 +37,7 @@ export const convertTime = (t,d) => {
    t = t.split(':');
   let hours = t[0];
   let minutes = t[1];
-  let seconds = t[2];
+  //let seconds = t[2];
   let timeValue = "" + ((hours >12) ? hours - 12 :hours);
       timeValue += (minutes < 10) ? ":" + minutes: ":" + minutes;
       //timeValue += (seconds < 10) ? ":0" : ":" + seconds;

@@ -1,5 +1,4 @@
 import auth0 from 'auth0-js'
-import history from './history'
 
  class Auth {
     auth0 = new auth0.WebAuth({

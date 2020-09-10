@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import './portfolio.css'
 import './friends.css'
 import './pending.css'
