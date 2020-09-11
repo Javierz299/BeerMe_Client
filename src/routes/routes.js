@@ -49,14 +49,6 @@ export class routes extends Component {
                         .then(res => this.context.dispatchGlobalProfile(res.data))
                     }
                 })
-                //data doesnt get stored into global fast enough
-                //wait one second before trying to get global context. 
-                setTimeout(() => {
-                    axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
-                    .then(res => this.context.dispatchStatsProfile(res.data))
-                    .then(() => this.props.set_profile_stats(this.context.globalStats))
-                },1000)
-            
         }
     }
 
@@ -73,7 +65,7 @@ export class routes extends Component {
                         <Route path="/ranking" component={GlobalRanking}/>
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
-                        <PrivateRoute path='/privateroute'  component={ProtectedRoute} />
+                        <PrivateRoute path='/profile'  component={ProtectedRoute} />
                         <PrivateRoute path='/friends' component={FriendsRoute} /> 
                     </Switch>
 

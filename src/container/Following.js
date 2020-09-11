@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import * as ACTIONS from '../store/actions/actions'
+import Context from '../context/ProfileContext'
+
 
 import TotalStats from '../container/TotalStats'
 import DetailedStats from '../container/DetailedStats'
@@ -7,6 +9,19 @@ import DetailedStats from '../container/DetailedStats'
 import { connect } from 'react-redux'
 
 class Following extends Component {
+
+    static contextType = Context
+
+    componentDidMount(){
+        axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
+              .then(res => {
+                  if(res.data.length === 0){
+                      return
+                  }
+                  this.props.total_friends(res.data.length)
+                  this.props.friends(res.data)                  
+              })
+    }
 
 
     render() {
@@ -34,6 +49,8 @@ function mapDispatchToProps(dispatch){
     return {
         show: (stats) => dispatch(ACTIONS.show_friend_stats(stats)),
         hide: () => dispatch(ACTIONS.hide_friend_stats()),
+        friends: (following) => dispatch(ACTIONS.following(following)),
+        total_friends: (total) => dispatch(ACTIONS.total_friends(total)),
     }
 }
 

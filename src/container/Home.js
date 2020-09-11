@@ -19,7 +19,7 @@ class Home extends Component {
                                 As well as follow the global ranking board. Use the guest login and test out the app.
                                 </p>
                             </div>
-                            <div><Link to="/privateroute"><button className="guest-button" type="button">Guest Login</button></Link></div>
+                            <div><Link to="/profile"><button className="guest-button" type="button">Guest Login</button></Link></div>
                         </div>
                     </div>
                 </section>

@@ -15,6 +15,10 @@ class ProtectedRoute extends Component {
     static contextType = Context
     
     componentDidMount(){
+
+        axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+            .then(res => this.context.dispatchStatsProfile(res.data))
+            .then(() => this.props.set_profile_stats(this.context.globalStats))
         axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
                 if(res.data.message){
@@ -23,24 +27,6 @@ class ProtectedRoute extends Component {
                 this.props.last_entry(res.data)
               })
         
-        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
-              .then(res => {
-                  if(res.data.message){
-                      return
-                  }
-                  let names = []
-                  res.data.forEach((user) => names.push([user[0].username,user[1]]))
-                 this.props.pending(names)
-              })
-
-        axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
-              .then(res => {
-                  if(res.data.length === 0){
-                      return
-                  }
-                  this.props.total_friends(res.data.length)
-                  this.props.friends(res.data)                  
-              })
     }
 
 refreshStats = () => {
@@ -62,8 +48,8 @@ refreshStats = () => {
                     </div>
                 
                 </div>
-             {this.context.globalProfile.username === null ? 
-            this.props.profile.name : 
+             {this.context.globalProfile === null ? 
+                <Loading /> : 
             <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
                 <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,8)}</h5>

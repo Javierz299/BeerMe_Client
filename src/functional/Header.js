@@ -33,7 +33,7 @@ class Header extends Component {
                                 <Link to="/ranking" > Ranking </Link>
                             </div>
                             <div className="link-box">
-                                <Link to="/privateroute"> Profile </Link>
+                                <Link to="/profile"> Profile </Link>
                             </div>
                         </div>
                     </div>

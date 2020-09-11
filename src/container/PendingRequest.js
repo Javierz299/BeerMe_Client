@@ -11,6 +11,18 @@ export class PendingRequest extends Component {
 
     static contextType = Context
 
+    componentDidMount(){
+        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
+              .then(res => {
+                  if(res.data.message){
+                      return
+                  }
+                  let names = []
+                  res.data.forEach((user) => names.push([user[0].username,user[1]]))
+                 this.props.pending(names)
+              })
+    }
+
 
     accept_request = (e) => {
         let requestFrom = e.target.id
