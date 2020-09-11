@@ -31,7 +31,7 @@ class TotalStats extends Component {
                             <small>Last Posted: {friend[0].last.slice(9,20)}</small>
                             <small> At: {friend[0].last.slice(0,9)}</small>
                         </div> : 
-                            <li>never posted</li> && console.log('friends last entry',friend[0].last)
+                            <li>never posted</li> && console.log('friends last entry',friend[0])
                     }
                 <div id="friend-total">
                     <li>
