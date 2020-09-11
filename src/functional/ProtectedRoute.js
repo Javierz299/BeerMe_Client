@@ -5,6 +5,7 @@ import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Loading from '../loading'
 
 import Loading from '../loading/loading'
 
@@ -15,6 +16,9 @@ class ProtectedRoute extends Component {
     static contextType = Context
     
     componentDidMount(){
+        if(this.context.globalProfile === null){
+            <Loading />
+        }
 
         axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
             .then(res => this.context.dispatchStatsProfile(res.data))
