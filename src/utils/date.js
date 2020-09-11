@@ -14,7 +14,6 @@ if(mm<10)
     mm='0'+mm;
 } 
 today = yyyy+'-'+mm+'-'+dd
-console.log(today);
 return today
 }
 
@@ -27,7 +26,6 @@ let dateStr =
   ("00" + date.getHours()).slice(-2) + ":" +
   ("00" + date.getMinutes()).slice(-2) + ":" +
   ("00" + date.getSeconds()).slice(-2);
-console.log(dateStr);
 return dateStr
 }
 

@@ -31,8 +31,6 @@ export class routes extends Component {
     static contextType = Context
 
     async componentDidMount(){    
-        console.log('profile',auth0Client.getProfile())
-        //if (this.location.pathname === '/callback') return;
         try {
           await auth0Client.silentAuth();
           this.forceUpdate();
