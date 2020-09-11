@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 
+import axios from 'axios'
+import config from '../config'
 
 import TotalStats from '../container/TotalStats'
 import DetailedStats from '../container/DetailedStats'
