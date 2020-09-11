@@ -19,6 +19,7 @@ class TotalStats extends Component {
                 {this.props.friends === null ?
                 <div id="no-friends-yet">no friends yet</div> :
                 this.props.friends.map(friend => (
+                    
                     <div key={friend[0].id} 
                     id="friend-card"
                 onClick={() => this.show_friend_stats(friend[0].id)}>
@@ -30,7 +31,7 @@ class TotalStats extends Component {
                             <small>Last Posted: {friend[0].last.slice(9,20)}</small>
                             <small> At: {friend[0].last.slice(0,9)}</small>
                         </div> : 
-                            <li>never posted</li>
+                            <li>never posted</li> && console.log('friends last entry',friend[0].last)
                     }
                 <div id="friend-total">
                     <li>
