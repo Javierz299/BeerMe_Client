@@ -19,7 +19,6 @@ class ProtectedRoute extends Component {
             .then(() => this.props.set_profile_stats(this.context.globalStats))
         axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
-                  console.log("LAST-ENTRY-GET",res)
                 if(res.data.message){
                     return
                 }               

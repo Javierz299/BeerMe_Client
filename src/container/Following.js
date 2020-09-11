@@ -17,6 +17,7 @@ class Following extends Component {
     componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
               .then(res => {
+                  console.log('get following',res.data)
                   if(res.data.length === 0){
                       return
                   }
