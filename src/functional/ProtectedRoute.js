@@ -23,31 +23,9 @@ class ProtectedRoute extends Component {
                     return
                 }
                 console.log('last entry profile',res.data)
-               
                 this.props.last_entry(res.data)
               })
-        
-        axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
-              .then(res => {
-                  console.log('res',res)
-                  if(res.data.message){
-                      return
-                  }
-                  let names = []
-                  res.data.forEach((user) => names.push([user[0].username,user[1]]))
-                 this.props.pending(names)
-              })
 
-        axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
-              .then(res => {
-                  if(res.data.length === 0){
-                      console.log("empty array, no friends have accepted")
-                      return
-                  }
-                  console.log('friends following',res.data)
-                  this.props.total_friends(res.data.length)
-                  this.props.friends(res.data)                  
-              })
     }
 
 refreshStats = () => {
@@ -69,8 +47,8 @@ refreshStats = () => {
                     </div>
                 
                 </div>
-             {this.context.globalProfile.username === null ? 
-            this.props.profile.name : 
+             {this.context.globalProfile === null ? 
+            <Loading /> : 
             <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
                 <h5>Last Drink At: {this.props.entry === null ? null : this.props.entry.slice(0,8)}</h5>
