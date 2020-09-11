@@ -6,9 +6,28 @@ body{
   background: whitesmoke;
 }
 
+
+/* global start */
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+
 button{
   background: #ffdb58;
+  border-radius: 5px;
 }
+
+button:hover{
+  opacity: 0.8;
+}
+
+/* global end */
 
 #logo-container{
   display: flex;
