@@ -14,7 +14,6 @@ const App = () => {
   const [statsGlobal, setStatsGlobal ] = useState(null)
 
   const dispatchContextProfile = (profile) => {
-    console.log('REACHED globalcontext',profile)
     setProfileGlobal(profile)
   }
 
@@ -22,7 +21,6 @@ const App = () => {
     if(proStats === ''){
         setStatsGlobal('Empty')
     } else {
-      console.log('proState reached',proStats)
       setStatsGlobal(proStats)
     }
 

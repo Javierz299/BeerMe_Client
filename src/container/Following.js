@@ -10,7 +10,6 @@ class Following extends Component {
 
 
     render() {
-        console.log('stats',this.props.friend_stats)
         return (
             <div id="friends-container">
                 <h3 id="friends-title">Friends</h3>

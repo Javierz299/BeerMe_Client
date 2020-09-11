@@ -13,12 +13,10 @@ export class PendingRequest extends Component {
 
 
     accept_request = (e) => {
-        console.log('add',e.target.id)
         let requestFrom = e.target.id
         let currentUser = {
             sent_request_to: this.context.globalProfile.id,
         }
-        console.log('currentuser',currentUser)
         axios.patch(`${config.API_ENDPOINT}/patch/addfriend/${requestFrom}`,currentUser)
 
         let filtered = this.props.pending_requests.filter(user => user[1] !== Number(requestFrom))
@@ -26,20 +24,18 @@ export class PendingRequest extends Component {
     }
 
     decline_request = (e) => {
-        console.log('decline',e.target.id)
         let requestFrom = e.target.id
         let currentUser = {
             sent_request_to: this.context.globalProfile.id,
         }
         axios.patch(`${config.API_ENDPOINT}/patch/declinefriend/${requestFrom}`,currentUser)
-            .then(res => console.log('patch',res))
+            .then(res => res)
 
         let filtered = this.props.pending_requests.filter(user => user[1] !== Number(requestFrom))
         this.props.pending(filtered)
     }
 
     render(){
-        console.log('pending',this.props.pending_requests)
         return (
             <div>
                <div id="pending-requests-container">

@@ -10,13 +10,10 @@ class TotalStats extends Component {
         let friendStats = this.props.friends.find(friend => friend[0].id === friendId)
     
         this.props.show(friendStats)
-        console.log("friendstats",friendStats)
-        console.log('stats',this.props.friend_stats)
         this.props.friend_clicked_on()
     }
 
     render() {
-        console.log('friend clicked',this.props.friendClick)
         return (
             <div>
                 {this.props.friends === null ?
@@ -30,7 +27,6 @@ class TotalStats extends Component {
                     </div>
                     {friend[0].last ? 
                         <div id="friend-time">
-                            {console.log('friend time',friend[0].last)}
                             <small>Last Posted: {friend[0].last.slice(9,20)}</small>
                             <small> At: {friend[0].last.slice(0,9)}</small>
                         </div> : 

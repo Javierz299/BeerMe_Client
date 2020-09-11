@@ -13,7 +13,6 @@ import mixedPic from '../Favorites/icons8-cocktail-50.png'
 
 export class DetailedStats extends Component {
     hide_friend_stats = () => {
-        console.log("change state to revert back to showing all friends")
         this.props.friend_click_off()
     }
 

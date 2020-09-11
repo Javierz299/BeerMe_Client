@@ -17,19 +17,14 @@ class ProtectedRoute extends Component {
     componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
-                console.log('last entry',res.data)
                 if(res.data.message){
-                    console.log("empty array")
                     return
-                }
-                console.log('last entry profile',res.data)
-               
+                }               
                 this.props.last_entry(res.data)
               })
         
         axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
               .then(res => {
-                  console.log('res',res)
                   if(res.data.message){
                       return
                   }
@@ -41,10 +36,8 @@ class ProtectedRoute extends Component {
         axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
               .then(res => {
                   if(res.data.length === 0){
-                      console.log("empty array, no friends have accepted")
                       return
                   }
-                  console.log('friends following',res.data)
                   this.props.total_friends(res.data.length)
                   this.props.friends(res.data)                  
               })

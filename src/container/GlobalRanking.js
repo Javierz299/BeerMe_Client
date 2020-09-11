@@ -13,9 +13,7 @@ class GlobalRanking extends Component {
     componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/alluserdata`)
             .then(res => {
-                console.log('graph data',res.data)
                 let users = []
-                console.log()
                 res.data.forEach(user => {
                     let total = (user.beer + 
                         user.seltzer + user.craft_beer + 
@@ -23,7 +21,6 @@ class GlobalRanking extends Component {
 
                         users.push([user.username,total])
                     })
-                    console.log('ranking',users)
                 this.props.rankUsers(users.sort((a,b) => b[1] - a[1]))
                 })
                 
@@ -32,7 +29,6 @@ class GlobalRanking extends Component {
 
 
     render() {
-        console.log('rankings render',this.props.ranking)
         return (
             <div id="global-rankng-container">
              <h2>Global Ranking</h2>

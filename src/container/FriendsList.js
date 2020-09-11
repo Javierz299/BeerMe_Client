@@ -14,7 +14,6 @@ export class FriendsList extends Component {
 
     friendRequest = (e) => {
         let friend = e.target.id
-        console.log('add friend clicked',friend)
 
         let requestObj = {
             friend_id: Number(friend),
@@ -22,7 +21,7 @@ export class FriendsList extends Component {
         }
 
         axios.post(`${config.API_ENDPOINT}/post/friendrequest`,requestObj)
-            .then(res => console.log('post friend request', res))
+            .then(res => res)
 
 
         this.props.friend_search(null)
@@ -31,15 +30,11 @@ export class FriendsList extends Component {
     
     handleSearchFriend = (e) => {
         e.preventDefault()
-        console.log('target',e.target)
         const { find_friend } = e.target
         let friend_email = find_friend.value
         if(friend_email === ''){
-            console.log('empty search')
             return
         }
-        
-        console.log(friend_email)        
         axios.get(`${config.API_ENDPOINT}/get/friendid/${friend_email}`,)
             .then(res => this.props.friend_search(res.data))
 

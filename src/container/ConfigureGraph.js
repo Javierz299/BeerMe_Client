@@ -13,7 +13,6 @@ class ConfigureGraph extends Component {
       componentDidMount(){
         axios.get(`${config.API_ENDPOINT}/get/alluserdata`)
             .then(res => {
-                console.log('graph data',res.data)
                 let beerTotal = 0
                 let seltzerTotal = 0
                 let craftTotal = 0

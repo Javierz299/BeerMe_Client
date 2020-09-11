@@ -36,11 +36,9 @@ class DrinkForm extends Component{
         }
 
         if(this.context.globalStats === 'Empty'){
-            console.log('stats came back null/empty',this.context.globalStats)
             axios.post(`${config.API_ENDPOINT}/post/userdrink`,BeerMe)
-            .then(res => console.log('response from post/form',res))
+            .then(res => res)
         } else if(this.context.globalStats !== 'Empty'){
-            console.log('founds stats',this.context.globalStats)
             setTimeout(() => {
                 axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
                 .then(res => this.context.dispatchStatsProfile(res.data))
@@ -54,12 +52,10 @@ class DrinkForm extends Component{
          //Allows only one type to be incremented at a time per submit
             if(id === "beer" && this.props.beer !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
-                console.log('reached')
+                
                this.props.inc_beer(this.props.beer + 1)
-               console.log('increment',this.props.beer)
             } else if(id === "seltzer" && this.props.seltzer !== 1 && this.props.beer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
-                console.log('increment',this.props.craft)
                 this.props.inc_seltzer(this.props.seltzer + 1)
              } else if(id === "craft" && this.props.craft !== 1 && this.props.seltzer !== 1 && this.props.beer !== 1
              && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
@@ -67,15 +63,12 @@ class DrinkForm extends Component{
              }else if(id === "wine" && this.props.wine !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
              && this.props.beer !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                this.props.inc_wine(this.props.wine + 1)
-               console.log('increment',this.props.wine)
             } else if(id === "shots" && this.props.shots !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.beer !== 1 && this.props.cocktail !== 1){
                 this.props.inc_shots(this.props.shots + 1)
-                console.log('inc',this.props.shots)
             } else if(id === "cocktail" && this.props.cocktail !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.beer !== 1){
                 this.props.inc_cocktail(this.props.cocktail + 1)
-                console.log('inc',this.props.cocktail)
             }
      }
      handleDecrementClick = (e) => {
@@ -83,26 +76,21 @@ class DrinkForm extends Component{
          
             if(id === "beer" && this.props.beer !== 0){
                 this.props.dec_beer(this.props.beer - 1)
-                console.log('decrement',this.props.beer)
              } else if(id === "seltzer" && this.props.seltzer !== 0){
                 this.props.dec_seltzer(this.props.seltzer - 1)
              } else if(id === "craft" && this.props.craft !== 0){
                 this.props.dec_craft(this.props.craft - 1)
              }else if(id === "wine" && this.props.wine !== 0){
                 this.props.dec_wine(this.props.wine - 1)
-                console.log('decrement',this.props.wine)
              } else if(id === "shots" && this.props.shots !== 0){
                 this.props.dec_shots(this.props.shots - 1)
-                console.log('dec',this.props.shots)
             } else if(id === "cocktail" && this.props.cocktail !== 0){
                 this.props.dec_cocktail(this.props.cocktail - 1)
-                console.log('dec',this.props.cocktail)
             }
      }
 
      closeConfirmationWindow = () => {
         this.props.submit_drink(false)
-        console.log('submitvalue cancel',this.props.submitValue)
         this.props.dec_beer(0)
         this.props.dec_seltzer(0)
         this.props.dec_craft(0)
@@ -117,11 +105,9 @@ class DrinkForm extends Component{
 
      handleBeerMeForm = (e) => {
          e.preventDefault()
-        console.log('submitValue',this.props.submitValue)
             let datePosted = {
                 date: getDate_Time()
             }
-            console.log('datePosted',datePosted)
             let beerMe = {
                 beer: this.props.beer,
                 seltzer: this.props.seltzer,
@@ -130,10 +116,9 @@ class DrinkForm extends Component{
                 shots: this.props.shots,
                 cocktail: this.props.cocktail,
             }
-            console.log('beerMe patch',beerMe)
             axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMe)
                 .then(() => axios.post(`${config.API_ENDPOINT}/post/drinkdate/${this.context.globalProfile.id}`,datePosted))
-                        .then(res => console.log('date res',res))
+                        .then(res => res)
                 //revert form values back to zero
                 this.props.dec_beer(0)
                 this.props.dec_seltzer(0)
@@ -143,12 +128,9 @@ class DrinkForm extends Component{
                 this.props.dec_cocktail(0)
 
                 this.props.submit_drink(false)
-        
-        console.log('submitValue',this.props.submitValue)
-    }
+            }
 
     render(){
-        console.log('render submitValue',this.props.submitValue)
         return (
             <div id="drink-form-container">
                 <form id="drink-form" onSubmit={this.openConfirmationModal}>
