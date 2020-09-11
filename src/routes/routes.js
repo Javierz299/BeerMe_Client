@@ -67,7 +67,7 @@ export class routes extends Component {
                         <Route path="/ranking" component={GlobalRanking}/>
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
-                        <PrivateRoute path='/privateroute'  component={ProtectedRoute} />
+                        <PrivateRoute path='/profile'  component={ProtectedRoute} />
                         <PrivateRoute path='/friends' component={FriendsRoute} /> 
                     </Switch>
 
