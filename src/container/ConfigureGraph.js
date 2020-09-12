@@ -24,7 +24,7 @@ class ConfigureGraph extends Component {
                     beerTotal += user.beer
                     seltzerTotal += user.seltzer
                     craftTotal += user.craft_beer
-                    wineTotal += user.wineTotal
+                    wineTotal += user.wine
                     shotsTotal += user.shots
                     mixedTotal += user.cocktail
                 }
