@@ -42,12 +42,20 @@ class ProtectedRoute extends Component {
               .then(res => {
                 console.log('friends following',res.data)
 
+                let friendObj = []
+                let len = res.data[1].length
+                let entries = res.data[1]
+                for(let i = 0; i < len; i++){
+                    let findEntry = res.data[0].find(friend => friend.id === entries[i].user_id)
+                    friendObj.push({"friend": findEntry, "entry": entries[i]})
+                }
+
                   if(res.data.length === 0){
                       console.log("empty array, no friends have accepted")
                       return
                   }
-                  this.props.total_friends(res.data.length)
-                  this.props.friends(res.data)                  
+                  this.props.total_friends(len)
+                  this.props.friends(friendObj)                  
               })
     }
 

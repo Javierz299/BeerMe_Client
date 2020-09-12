@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { convertTime, convertDate } from '../utils/date'
 
 import * as ACTIONS from '../store/actions/actions'
 
@@ -16,44 +17,31 @@ class TotalStats extends Component {
     }
 
     render() {
-        // let allfriends = this.props.friends[0]
-        // let allentries = this.props.friends[1]
-        // console.log('friends',allfriends)
-        // console.log('allentries',allentries)
-        let friendObj = []
-        let len = this.props.friends[1].length
-        let entries = this.props.friends[1]
-        for(let i = 0; i < len; i++){
-            let findEntry = this.props.friends[0].find(friend => friend.id === entries[i].user_id)
-            friendObj.push({"frinend": findEntry, "entry": entries[i]})
-        }
-
-     
-console.log('FRIENDOBJ',friendObj)
         return (
             <div>
                 {this.props.friends === null ?
                 <div id="no-friends-yet">no friends yet</div> :
                 this.props.friends.map(friend => (
-                    <div key={friend.id} 
+                    <div key={friend.friend.id} 
                     id="friend-card"
-                onClick={() => this.show_friend_stats(friend.id)}>
+                onClick={() => this.show_friend_stats(friend.friend.id)}>
                     <div id="friend-name">
-                        <li>{friend.username}</li>
+                        <li>{friend.friend.username}</li>
                     </div>
-                    {friend.last ? 
+                    {friend.entry.date ? 
+                
                         <div id="friend-time">
-                            {console.log('friend time',friend.last)}
-                            <small>Last Posted: {friend.last.slice(9,20)}</small>
-                            <small> At: {friend.last.slice(0,9)}</small>
+                            {console.log('friend time',friend.entry.date)}
+                            <small>Last Posted: {convertTime(friend.entry.date)}</small>
+                            <small> At: {convertDate(friend.entry.date.slice(0,10))}</small>
                         </div> : 
                             <li>never posted</li>
                     }
                 <div id="friend-total">
                     <li>
-                        Total Drinks: {friend.beer + friend.seltzer +
-                            friend.craft_beer + friend.wine + 
-                            friend.shots + friend.cocktail}
+                        Total Drinks: {friend.friend.beer + friend.friend.seltzer +
+                            friend.friend.craft_beer + friend.friend.wine + 
+                            friend.friend.shots + friend.friend.cocktail}
                     </li>
                 </div>
                     </div>

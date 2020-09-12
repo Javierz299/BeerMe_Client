@@ -31,20 +31,28 @@ console.log(dateStr);
 return dateStr
 }
 
-export const convertTime = (t,d) => {
+export const convertTime = (t) => {
   console.log('t',t)
-   let dt = d.toString()
-   t = t.split(':');
+   t = t.slice(11,19).split(':')
+   console.log('t',t)
+  
   let hours = t[0];
   let minutes = t[1];
   //let seconds = t[2];
-  let timeValue = "" + ((hours >12) ? hours - 12 :hours);
+  let timeValue = "" + ((hours > 12) ?  "1" + (hours - 14)  : hours);
       timeValue += (minutes < 10) ? ":" + minutes: ":" + minutes;
       //timeValue += (seconds < 10) ? ":0" : ":" + seconds;
       timeValue += (hours >= 12) ? " P.M." : " A.M.";
-      timeValue += dt
-console.log("timevalue",timeValue,dt);
+console.log("timevalue",timeValue);
 return timeValue
 }
 
+export const convertDate = (d) => {
+  console.log('d',d)
+   let dt = d.toString()
+ 
+  
+console.log("datevalue",dt);
+return dt
+}
 
