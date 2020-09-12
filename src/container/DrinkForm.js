@@ -195,7 +195,7 @@ class DrinkForm extends Component{
                 </form>
                     <br/>
                     <div>
-                        <button id="submit" type="button" onClick={this.openConfirmationModal} >Beer Me</button>
+                        <button id="submit"  className="beerMe-button" type="button" onClick={this.openConfirmationModal} >Beer Me</button>
                     </div>
             </div>
         )
