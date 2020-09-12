@@ -7,7 +7,7 @@ class TotalStats extends Component {
 
     show_friend_stats = (id) => {
         let friendId = id
-        let friendStats = this.props.friends.find(friend => friend[0].id === friendId)
+        let friendStats = this.props.friends.find(friend => friend.id === friendId)
     
         this.props.show(friendStats)
         console.log("friendstats",friendStats)
@@ -16,31 +16,44 @@ class TotalStats extends Component {
     }
 
     render() {
-        console.log('friend clicked',this.props.friendClick)
+        // let allfriends = this.props.friends[0]
+        // let allentries = this.props.friends[1]
+        // console.log('friends',allfriends)
+        // console.log('allentries',allentries)
+        let friendObj = []
+        let len = this.props.friends[1].length
+        let entries = this.props.friends[1]
+        for(let i = 0; i < len; i++){
+            let findEntry = this.props.friends[0].find(friend => friend.id === entries[i].user_id)
+            friendObj.push({"frinend": findEntry, "entry": entries[i]})
+        }
+
+     
+console.log('FRIENDOBJ',friendObj)
         return (
             <div>
                 {this.props.friends === null ?
                 <div id="no-friends-yet">no friends yet</div> :
                 this.props.friends.map(friend => (
-                    <div key={friend[0].id} 
+                    <div key={friend.id} 
                     id="friend-card"
-                onClick={() => this.show_friend_stats(friend[0].id)}>
+                onClick={() => this.show_friend_stats(friend.id)}>
                     <div id="friend-name">
-                        <li>{friend[0].username}</li>
+                        <li>{friend.username}</li>
                     </div>
-                    {friend[0].last ? 
+                    {friend.last ? 
                         <div id="friend-time">
-                            {console.log('friend time',friend[0].last)}
-                            <small>Last Posted: {friend[0].last.slice(9,20)}</small>
-                            <small> At: {friend[0].last.slice(0,9)}</small>
+                            {console.log('friend time',friend.last)}
+                            <small>Last Posted: {friend.last.slice(9,20)}</small>
+                            <small> At: {friend.last.slice(0,9)}</small>
                         </div> : 
                             <li>never posted</li>
                     }
                 <div id="friend-total">
                     <li>
-                        Total Drinks: {friend[0].beer + friend[0].seltzer +
-                            friend[0].craft_beer + friend[0].wine + 
-                            friend[0].shots + friend[0].cocktail}
+                        Total Drinks: {friend.beer + friend.seltzer +
+                            friend.craft_beer + friend.wine + 
+                            friend.shots + friend.cocktail}
                     </li>
                 </div>
                     </div>

@@ -30,7 +30,6 @@ class DrinkForm extends Component{
             wine: 0,
             shots: 0,
             cocktail: 0,
-            date: getDateOnly(),
             seltzer: 0,
             craft_beer: 0,
         }
