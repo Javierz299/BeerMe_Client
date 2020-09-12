@@ -25,10 +25,13 @@ class ConfigureGraph extends Component {
                     beerTotal += user.beer
                     seltzerTotal += user.seltzer
                     craftTotal += user.craft_beer
-                    wineTotal += user.wineTotal
+                    wineTotal += user.wine
                     shotsTotal += user.shots
                     mixedTotal += user.cocktail
                 }
+                console.log('WINE GRAPH',wineTotal)
+                console.log('BEER GRAPH',beerTotal)
+
                 this.props.cumulativeData([
                     beerTotal,seltzerTotal,
                     craftTotal,wineTotal,
