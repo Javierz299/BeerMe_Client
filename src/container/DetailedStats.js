@@ -19,16 +19,17 @@ export class DetailedStats extends Component {
 
 
     render() {
+        console.log('friendSTATS',this.props.friend_stats)
         return (
                  <div id="detailed-stats" onClick={() => this.hide_friend_stats()}>
-                    <h3 id="drink-stats">{this.props.friend_stats[0].username}</h3>
+                    <h3 id="drink-stats">{this.props.friend_stats[0].friend.username}</h3>
                     <div id="grid-stats">
-                        <div><h4 className="friend-stat"><img src={beerPic} alt="beer pic" /> {this.props.friend_stats[0].beer}</h4></div>
-                        <div><h4 className="friend-stat"><img src={seltzerPic} alt="seltzer pic" /> {this.props.friend_stats[0].seltzer}</h4></div>
-                        <div><h4 className="friend-stat"><img src={craftPic} alt="craft pic" /> {this.props.friend_stats[0].craft_beer}</h4></div>
-                        <div><h4 className="friend-stat"><img src={winePic} alt="wine pic" /> {this.props.friend_stats[0].wine}</h4></div>
-                        <div><h4 className="friend-stat"><img src={shotPic} alt="shot pic" /> {this.props.friend_stats[0].shots}</h4></div>
-                        <div><h4 className="friend-stat"><img src={mixedPic} alt="mixed pic" /> {this.props.friend_stats[0].cocktail}</h4></div>
+                        <div><h4 className="friend-stat"><img src={beerPic} alt="beer pic" /> {this.props.friend_stats[0].friend.beer}</h4></div>
+                        <div><h4 className="friend-stat"><img src={seltzerPic} alt="seltzer pic" /> {this.props.friend_stats[0].friend.seltzer}</h4></div>
+                        <div><h4 className="friend-stat"><img src={craftPic} alt="craft pic" /> {this.props.friend_stats[0].friend.craft_beer}</h4></div>
+                        <div><h4 className="friend-stat"><img src={winePic} alt="wine pic" /> {this.props.friend_stats[0].friend.wine}</h4></div>
+                        <div><h4 className="friend-stat"><img src={shotPic} alt="shot pic" /> {this.props.friend_stats[0].friend.shots}</h4></div>
+                        <div><h4 className="friend-stat"><img src={mixedPic} alt="mixed pic" /> {this.props.friend_stats[0].friend.cocktail}</h4></div>
                     </div>
                     <div id="compare-stats"><ComparisonStats /></div>
                  </div>   

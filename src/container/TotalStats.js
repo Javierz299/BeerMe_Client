@@ -8,11 +8,19 @@ class TotalStats extends Component {
 
     show_friend_stats = (id) => {
         let friendId = id
-        let friendStats = this.props.friends.find(friend => friend.id === friendId)
-    
-        this.props.show(friendStats)
-        console.log("friendstats",friendStats)
-        console.log('stats',this.props.friend_stats)
+
+        let filtered = []
+        let len = this.props.friends.length
+        for(let i = 0; i < len; i++){
+            let findfriend = this.props.friends.find(friend => friend.friend.id === friendId)
+            console.log('findfriend',findfriend)
+            filtered.push(findfriend)
+        }
+        //let friendStats = this.props.friends[0].find(friend => friend.friend.id === friendId)
+        console.log("filtered",filtered)
+        this.props.show(filtered)
+        // console.log("friendstats",friendStats)
+        // console.log('stats',this.props.friend_stats)
         this.props.friend_clicked_on()
     }
 
