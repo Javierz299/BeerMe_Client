@@ -36,7 +36,9 @@ class GlobalRanking extends Component {
                 <Loading /> :
                 this.props.ranking[0].map((user,i) => (  
                     <div id={"rank" + i}key={user[0]}>
+                        <div className="rank-box">
                         <h4>{i + 1} {user[0]} <span>total: {user[1]}</span></h4>
+                        </div>
                    </div>
                 ))
 
