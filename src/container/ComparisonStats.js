@@ -32,7 +32,7 @@ class ComparisonStats extends Component {
        if(profileTotal >= friendTotal){
            compare = profileTotal - friendTotal
        } else if(friendTotal >= profileTotal){
-           compare = friendTotal - friendTotal
+           compare = profileTotal - friendTotal
        }
         
 
@@ -50,8 +50,12 @@ class ComparisonStats extends Component {
 
     static contextType = Context
     render() {
+        console.log("context",this.context.globalStats)
+        console.log("state",this.props.friend_stats)
+
         return (
-            <div className="friend-stat">
+            <div>
+                ComparisonStats
                 <this.renderComparisonStats />
             </div>
         )
