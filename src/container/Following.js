@@ -30,7 +30,9 @@ class Following extends Component {
     render() {
         return (
             <div id="friends-container">
-                <h3 id="friends-title">Friends</h3>
+                <h3 id="friends-title">Friends 
+                <small> - click on friends to see more</small>
+                </h3>
                 {!this.props.friend_clicked ?
                 <TotalStats /> :
                 <DetailedStats />
