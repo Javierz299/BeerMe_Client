@@ -13,3 +13,8 @@
 #rank3:nth-child(n+1){
     border-top: 1px solid black ;
 }
+
+.rank-box{
+    padding: 5px;
+    text-align: left;
+}

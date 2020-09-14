@@ -63,7 +63,7 @@ refreshStats = () => {
                     <div><span>Wine: {this.context.globalStats.wine}</span></div>
                     <div><span>Shots: {this.context.globalStats.shots}</span></div>
                     <div><span>Mixed: {this.context.globalStats.cocktail}</span></div>
-                    <div><button type="button" onClick={() => this.refreshStats()}>r</button></div>
+                    <div><button type="button" onClick={() => this.refreshStats()}>refresh stats</button></div>
                 </div>
                 }
                 
