@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 
@@ -30,13 +30,19 @@ class Following extends Component {
     render() {
         return (
             <div id="friends-container">
-                <h3 id="friends-title">Friends 
-                <small> - click on friends to see more</small>
-                </h3>
-                {!this.props.friend_clicked ?
-                <TotalStats /> :
-                <DetailedStats />
-                }
+                <div>
+                    <h3 id="friends-title">Friends 
+                    <small> - click on friends to see more</small>
+                    </h3>
+                </div>
+                <div>
+                    <div>
+                        {!this.props.friend_clicked ?
+                        <TotalStats /> :
+                        <DetailedStats />
+                        }
+                    </div>
+                </div>
             </div>
         )
     }
