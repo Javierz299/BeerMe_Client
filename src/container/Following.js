@@ -2,8 +2,8 @@ import React, { Component, PureComponent } from 'react'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 
-import axios from 'axios'
-import config from '../config'
+//import axios from 'axios'
+//import config from '../config'
 
 import TotalStats from '../container/TotalStats'
 import DetailedStats from '../container/DetailedStats'
@@ -15,15 +15,15 @@ class Following extends Component {
     static contextType = Context
 
     componentDidMount(){
-        axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
-              .then(res => {
-                  console.log('get following',res.data)
-                  if(res.data.length === 0){
-                      return
-                  }
-                  this.props.total_friends(res.data.length)
-                  this.props.friends(res.data)                  
-              })
+        // axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
+        //       .then(res => {
+        //           console.log('get following',res.data)
+        //           if(res.data.length === 0){
+        //               return
+        //           }
+        //           this.props.total_friends(res.data.length)
+        //           this.props.friends(res.data)                  
+        //       })
     }
 
 

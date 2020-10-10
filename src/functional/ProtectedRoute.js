@@ -12,7 +12,7 @@ import DrinkForm from '../container/DrinkForm'
 class ProtectedRoute extends Component {
     static contextType = Context
     
-    async componentDidMount(){
+    componentDidMount(){
         
            axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
             .then(res => this.context.dispatchStatsProfile(res.data))
@@ -21,19 +21,29 @@ class ProtectedRoute extends Component {
              axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
                 if(res.data.message){
-                    return
+                    return;
                 }               
                 this.props.last_entry(res.data)
               })
 
-             await axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
+              axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
               .then(res => {
                   if(res.data.message){
-                      return
+                      return;
                   }
                   let names = []
                   res.data.forEach((user) => names.push([user[0].username,user[1]]))
                  this.props.pending(names)
+              })
+
+              axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
+              .then(res => {
+                  console.log('get following',res.data)
+                  if(res.data.length === 0){
+                      return
+                  }
+                  this.props.total_friends(res.data.length)
+                  this.props.friends(res.data)                  
               })
         
  
@@ -46,7 +56,6 @@ refreshStats = () => {
 }
 
     render(){
-        console.log(this.props.pending_requests)
         return (
             <div id="profile-container" >
                 <div id="friends-link-container">
@@ -110,8 +119,6 @@ function mapDispatchToProps(dispatch){
         total_friends: (total) => dispatch(ACTIONS.total_friends(total)),
         last_entry: (entry) => dispatch(ACTIONS.last_entry(entry)),
         friends_last_entry: (entry) => dispatch(ACTIONS.friends_last_entry(entry)),
-        pending: (pending) => dispatch(ACTIONS.pending_requests(pending))
-
     }
 }
 

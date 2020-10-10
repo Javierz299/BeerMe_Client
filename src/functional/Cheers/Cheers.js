@@ -1,52 +1,67 @@
-import React,{ useEffect, useContext, useState} from 'react'
+import React,{ Component, useEffect, useState} from 'react'
+import Loading from '../../loading/loading'
+import { connect } from 'react-redux'
+
+import * as ACTIONS from '../../store/actions/actions'
 
 import axios from 'axios'
 import config from '../../config'
 import Context from '../../context/ProfileContext'
 
-import { useSelector } from 'react-redux'
-import { RenderCheers } from './RenderCheers'
+import RenderCheers from './RenderCheers'
 
-const Cheers = () => {
-    const user = useContext(Context)
-    let [cheers, setCheers] = useState([])
-    let [img, setImg] = useState(false)
-    const friends = useSelector(state => state.user_reducer.friendsList)
+class Cheers extends Component{
+    static contextType = Context;
 
-    useEffect(() => {
-        const userId = Number(user.globalProfile.id)
-        async function getCheers(){
-            const result = await axios.get(`${config.API_ENDPOINT}/get/allCheers/${userId}`)
-                .then(res => res)
-                setCheers(result.data)
-        }
-       getCheers()
-    },[])
+    getNames = (cheers,friends) => {
+        //console.log('getNames',cheers,friends)
+        let cheersFriend = cheers.map(user => friends.find(friend => friend[0].id === user.user_id ))
+        //console.log('getting cheers',cheersFriend)
+        this.props.set_cheers_names(cheersFriend)// create another action type to add this too
+    }   
 
-    console.log("friends",friends)
+    async componentDidMount(){
+        const userId = Number(this.context.globalProfile.id)
+       
+         await axios.get(`${config.API_ENDPOINT}/get/allCheers/${userId}`)
+                .then(res => this.props.set_cheers(res.data))
+    
+            this.getNames(this.props.get_cheers,this.props.friends)
+}
+
+render(){
     return (
         <div id="cheers-container">
             <h2>Cheers</h2>
-            <div>
-                {cheers.length > 0 ?
-                    cheers.map(cheer => (
-                        <div key={cheer.user_id}>
-                            <div>
-                                {cheer.user_id}, cheers! 
-                                 <button id={cheer.user_id} type="button" onClick={() => setImg(true)}>open</button>
-                            </div>
-                        </div>
-                    )) :
-                    <span></span>     
-                }
-                <div className="cheers-img-container">
-                    {
-                    img ? <RenderCheers /> : img
-                    }
+            {this.props.get_cheers_names === null ?
+            <Loading /> :
+            this.props.get_cheers_names.map(name => (
+                <div key={name[0].id}> 
+                    <h1>{name[0].username},sent you a cheers!</h1>
+                    <button onClick={() => console.log('open clicked')} >open</button>
                 </div>
-            </div>
-        </div>
+            ))
+                
+            }
+         </div>
     )
-};
+  }
+}
 
-export default Cheers;
+function mapStateToProps(state){
+    return {
+        get_cheers: state.cheers_reducer.cheers,
+        friends: state.user_reducer.friendsList,
+        get_cheers_names: state.cheers_reducer.cheers_names,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        set_cheers: (cheers) => dispatch(ACTIONS.get_cheers(cheers)),
+        toggle_cheers_img: () => dispatch(ACTIONS.cheers_img()),
+        set_cheers_names: (names) => dispatch(ACTIONS.cheers_names(names))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cheers);

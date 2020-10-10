@@ -257,3 +257,23 @@ export const cumulative_drinks_per = (user) => {
     payload: user
   }
 }
+
+export const get_cheers = (cheers) => {
+  return {
+    type: ACTION_TYPES.GET_CHEERS,
+    payload: cheers
+  }
+}
+
+export const cheers_img = () => {
+  return {
+    type: ACTION_TYPES.CHEERS_IMG,
+  }
+} 
+
+export const cheers_names = (names) => {
+  return {
+    type: ACTION_TYPES.CHEERS_NAMES,
+    payload: names,
+  }
+}
