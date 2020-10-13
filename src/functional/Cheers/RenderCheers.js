@@ -1,14 +1,16 @@
-import React,{ useContext } from 'react'
+import React  from 'react'
+import { useDispatch } from 'react-redux'
 
 import LeoCheers from '../../Favorites/leo-cheers.jpg'
+import { CHEERS_IMG } from '../../store/actions/action_types'
 
 
 const RenderCheers = () => {
+   const dispatch = useDispatch()
 
-    //console.log('cheers',cheers)
     return (
-        <div className="img-box">
-            <img src={LeoCheers} alt="leo cheers" />
+        <div className="cheers-img-box">
+            <img onClick={() => dispatch({type: CHEERS_IMG})} src={LeoCheers} alt="leo cheers" />
         </div>
     )
 }

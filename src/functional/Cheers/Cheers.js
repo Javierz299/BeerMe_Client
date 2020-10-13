@@ -1,4 +1,4 @@
-import React,{ Component, useEffect, useState} from 'react'
+import React,{ Component } from 'react'
 import Loading from '../../loading/loading'
 import { connect } from 'react-redux'
 
@@ -14,10 +14,8 @@ class Cheers extends Component{
     static contextType = Context;
 
     getNames = (cheers,friends) => {
-        //console.log('getNames',cheers,friends)
         let cheersFriend = cheers.map(user => friends.find(friend => friend[0].id === user.user_id ))
-        //console.log('getting cheers',cheersFriend)
-        this.props.set_cheers_names(cheersFriend)// create another action type to add this too
+        this.props.set_cheers_names(cheersFriend)
     }   
 
     async componentDidMount(){
@@ -30,6 +28,7 @@ class Cheers extends Component{
 }
 
 render(){
+    console.log('cheers',console.log(this.props.get_cheers_names))
     return (
         <div id="cheers-container">
             <h2>Cheers</h2>
@@ -37,11 +36,15 @@ render(){
             <Loading /> :
             this.props.get_cheers_names.map(name => (
                 <div key={name[0].id}> 
-                    <h1>{name[0].username},sent you a cheers!</h1>
-                    <button onClick={() => console.log('open clicked')} >open</button>
+                    <h3>{name[0].username},sent you a cheers!</h3>
+                    <button id={name[0].id} onClick={(e) => this.props.toggle_cheers_img(e.target.id)} >open</button>
                 </div>
             ))
                 
+            }
+            {this.props.cheers_img ? 
+            <RenderCheers /> :
+                null
             }
          </div>
     )
@@ -53,13 +56,14 @@ function mapStateToProps(state){
         get_cheers: state.cheers_reducer.cheers,
         friends: state.user_reducer.friendsList,
         get_cheers_names: state.cheers_reducer.cheers_names,
+        cheers_img: state.cheers_reducer.cheers_img,
     }
 }
 
 function mapDispatchToProps(dispatch){
     return {
         set_cheers: (cheers) => dispatch(ACTIONS.get_cheers(cheers)),
-        toggle_cheers_img: () => dispatch(ACTIONS.cheers_img()),
+        toggle_cheers_img: (id) => dispatch(ACTIONS.cheers_img(id)),
         set_cheers_names: (names) => dispatch(ACTIONS.cheers_names(names))
     }
 }

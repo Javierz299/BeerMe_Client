@@ -265,9 +265,11 @@ export const get_cheers = (cheers) => {
   }
 }
 
-export const cheers_img = () => {
+export const cheers_img = (id) => {
+  console.log('userid',id)
   return {
     type: ACTION_TYPES.CHEERS_IMG,
+    payload: id
   }
 } 
 

@@ -1,17 +1,19 @@
 #cheers-container{
     text-align: center;
+    position: relative;
 }
 
-.cheers-img-container{
-    display: flex;
-    justify-content: center;
-    background: 1px solid red;
-    min-width: 300px;
-    max-width: 400px;
-    min-height: 250px;
-    max-height: 300px;
+.cheers-img-box{
+    /* border: 1px solid red; */
+    background: rgba(128, 128, 128, 0.385);
+    height: 100%;
+    top: 0;
+    right: 0;
+    position: absolute;
 }
 
-.cheers-img-container img{
+.cheers-img-box img{
+    margin-top: 10px;
     width: 100%;
 }
+

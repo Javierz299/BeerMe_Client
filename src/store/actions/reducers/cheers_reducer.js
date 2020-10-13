@@ -14,9 +14,12 @@ export default (state = initialState, actions) => {
                 cheers: actions.payload
             }
         case ACTIONS_TYPES.CHEERS_IMG:
+            let newCheers = state.cheers_names.filter(user => user[0].id != actions.payload)
+            console.log('newCheers',newCheers)
             return {
                 ...state,
-                cheers_img: !state.cheers_img
+                cheers_img: !state.cheers_img,
+                cheers_names: newCheers,
             }
         case ACTIONS_TYPES.CHEERS_NAMES:
             return {
