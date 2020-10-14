@@ -12,6 +12,7 @@ import FriendsRoute from '../container/FriendsList'
 import PendingRequest from '../container/PendingRequest'
 import GlobalRanking from '../container/GlobalRanking'
 import PrivateRoute from '../routes/PrivateRoute'
+import CheersRoute from '../functional/Cheers/Cheers'
 
 import history from '../utils/history'
 import auth0Client from '../utils/auth'
@@ -67,6 +68,7 @@ export class routes extends Component {
                         <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/profile'  component={ProtectedRoute} />
                         <PrivateRoute path='/friends' component={FriendsRoute} /> 
+                        <PrivateRoute path='/cheers' component={CheersRoute} /> 
                     </Switch>
 
                 </Router>

@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 //import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { Link } from 'react-router-dom'
+import Context from '../context/ProfileContext'
 
 import beerlogo from '../Favorites/beer.png'
 
 import AuthLogin from '../container/AuthLogin'
+import Loading from '../loading/loading'
 
 class Header extends Component {
+    static contextType = Context
 
     render(){
         return (
@@ -33,7 +36,10 @@ class Header extends Component {
                                 <Link to="/ranking" > Ranking </Link>
                             </div>
                             <div className="link-box">
+                                {!this.context.globalProfile ?
+                                <Loading /> :
                                 <Link to="/profile"> Profile </Link>
+                                }
                             </div>
                         </div>
                     </div>

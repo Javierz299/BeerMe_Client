@@ -294,7 +294,9 @@ a:hover{
   #friends-link-box{
     position: relative;
     z-index: 2;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2px;
   }
 
   a:hover{

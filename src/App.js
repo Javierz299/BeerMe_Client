@@ -4,6 +4,7 @@ import './friends.css'
 import './pending.css'
 import './ranking.css'
 import './home.css'
+import './cheers.css'
 
 import Context from './context/ProfileContext'
 

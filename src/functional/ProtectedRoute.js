@@ -13,18 +13,43 @@ class ProtectedRoute extends Component {
     static contextType = Context
     
     componentDidMount(){
-
-        axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
+        
+           axios.get(`${config.API_ENDPOINT}/get/userdrink/${this.context.globalProfile.id}`)
             .then(res => this.context.dispatchStatsProfile(res.data))
             .then(() => this.props.set_profile_stats(this.context.globalStats))
-        axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
+
+             axios.get(`${config.API_ENDPOINT}/get/lastestentry/${this.context.globalProfile.id}`)
               .then(res => {
                 if(res.data.message){
-                    return
+                    return;
                 }               
                 this.props.last_entry(res.data)
               })
-        
+
+              axios.get(`${config.API_ENDPOINT}/get/friendrequests/${this.context.globalProfile.id}`)
+              .then(res => {
+                  if(res.data.message){
+                      return;
+                  }
+                  let names = []
+                  res.data.forEach((user) => names.push([user[0].username,user[1]]))
+                 this.props.pending(names)
+              })
+
+              axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
+              .then(res => {
+                  if(res.data.length === 0){
+                      return
+                  }
+                  this.props.total_friends(res.data.length)
+                  this.props.friends(res.data)                  
+              })
+
+              const userId = Number(this.context.globalProfile.id)
+       
+            axios.get(`${config.API_ENDPOINT}/get/allCheers/${userId}`)
+                .then(res => this.props.set_cheers(res.data))
+    
     }
 
 refreshStats = () => {
@@ -38,15 +63,24 @@ refreshStats = () => {
             <div id="profile-container" >
                 <div id="friends-link-container">
                     <div id="friends-link-box">
-                    <div className="friends-link"><Link to="/friends">Friends</Link></div>
-                    <div className="friends-link"><Link to="/pending">Requests</Link></div>
+                        <div className="friends-link"><Link to="/friends">Friends</Link></div>
+                        {/* request is green when you have requests else not green */}
+                        <div id={this.props.pending_requests === null || this.props.pending_requests.length > 0 ? 
+                        "requests" : ""} 
+                        className="friends-link"><Link to="/pending">Requests</Link></div>
+
+                        <div id={this.props.cheers === null || this.props.cheers.length > 0 ? 
+                        "requests" : ""} 
+                        className="friends-link"><Link to="/cheers">Cheers</Link></div>
+
+                        {/* <div className="friends-link"><Link to="/cheers">test box</Link></div> */}
                     </div>
                     <div id="following-container">
                         <h3>Friends: {this.props.totalFriends}</h3>
                     </div>
                 
                 </div>
-             {this.context.globalProfile === null ? 
+             {!this.context.globalProfile ? 
                 <Loading /> : 
             <div id="name-date-container">
                 <h3>{this.context.globalProfile.username}</h3>
@@ -54,7 +88,7 @@ refreshStats = () => {
                 <h5>On: {this.props.entry === null ? null : this.props.entry.slice(9,20)}</h5>
             </div>
             }
-                {this.context.globalStats === null ?
+                {!this.context.globalStats ?
                     <Loading /> :
                 <div id="profile-stats-container">
                     <div><span>Beer: {this.context.globalStats.beer}</span></div>
@@ -81,6 +115,10 @@ function mapStateToProps(state){
         profileStats: state.user_reducer.profileStats,
         totalFriends: state.user_reducer.total_friends,
         entry: state.user_reducer.last_entry,
+        pending_requests: state.user_reducer.pending_requests,
+        cheers: state.cheers_reducer.cheers,
+        get_cheers: state.cheers_reducer.cheers,
+
     }
 }
 function mapDispatchToProps(dispatch){
@@ -90,7 +128,10 @@ function mapDispatchToProps(dispatch){
         friends: (following) => dispatch(ACTIONS.following(following)),
         total_friends: (total) => dispatch(ACTIONS.total_friends(total)),
         last_entry: (entry) => dispatch(ACTIONS.last_entry(entry)),
-        friends_last_entry: (entry) => dispatch(ACTIONS.friends_last_entry(entry))
+        friends_last_entry: (entry) => dispatch(ACTIONS.friends_last_entry(entry)),
+        set_cheers: (cheers) => dispatch(ACTIONS.get_cheers(cheers)),
+        set_cheers_names: (names) => dispatch(ACTIONS.cheers_names(names))
+
     }
 }
 

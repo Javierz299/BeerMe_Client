@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
+import config from '../config'
+
+import Context from '../context/ProfileContext'
+
 
 import * as ACTIONS from '../store/actions/actions'
 
 class TotalStats extends Component {
+
+    static contextType = Context;
 
     show_friend_stats = (id) => {
         let friendId = id
@@ -11,6 +18,24 @@ class TotalStats extends Component {
     
         this.props.show(friendStats)
         this.props.friend_clicked_on()
+    }
+
+    send_cheers = (id,friendName) => {
+        const userId = this.context.globalProfile.id
+        const friendId = Number(id);
+        const name = friendName
+        const data = {
+            user_id: userId,
+            sent_to: friendId,
+        };
+        axios.post(`${config.API_ENDPOINT}/post/sendCheers`,data)
+            .then(res => {
+                if(res.data.user_id){
+                    alert(' sent cheers to ' + name)
+                } else {
+                    alert('already sent cheers ')
+                }
+            })
     }
 
     render() {
@@ -39,6 +64,7 @@ class TotalStats extends Component {
                             friend[0].craft_beer + friend[0].wine + 
                             friend[0].shots + friend[0].cocktail}
                     </li>
+                    <span><button id={friend[0].id} type="button" onClick={(e) => this.send_cheers(e.target.id,friend[0].username)}>cheers</button></span>
                 </div>
                     </div>
                     ))

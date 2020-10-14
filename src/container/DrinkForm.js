@@ -17,13 +17,12 @@ import {getDateOnly,getDate_Time} from '../utils/date'
 
 import Context from '../context/ProfileContext'
 
-
 class DrinkForm extends Component{
 
      static contextType = Context
 
      componentDidMount(){
-
+     
         const BeerMe = {
             user_id: this.context.globalProfile.id,
             beer: 0,
