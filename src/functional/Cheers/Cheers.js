@@ -45,7 +45,7 @@ class Cheers extends Component{
 }
 
 render(){
-    console.log('cheers',console.log(this.props.get_cheers_names))
+    
     return (
         <div id="cheers-container">
             <h2>Cheers</h2>
