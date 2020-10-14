@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react'
+import React, { Component } from 'react'
 import * as ACTIONS from '../store/actions/actions'
 import Context from '../context/ProfileContext'
 

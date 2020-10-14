@@ -44,8 +44,12 @@ class ProtectedRoute extends Component {
                   this.props.total_friends(res.data.length)
                   this.props.friends(res.data)                  
               })
-        
- 
+
+              const userId = Number(this.context.globalProfile.id)
+       
+            axios.get(`${config.API_ENDPOINT}/get/allCheers/${userId}`)
+                .then(res => this.props.set_cheers(res.data))
+    
     }
 
 refreshStats = () => {
@@ -60,10 +64,15 @@ refreshStats = () => {
                 <div id="friends-link-container">
                     <div id="friends-link-box">
                         <div className="friends-link"><Link to="/friends">Friends</Link></div>
+                        {/* request is green when you have requests else not green */}
                         <div id={this.props.pending_requests === null || this.props.pending_requests.length > 0 ? 
                         "requests" : ""} 
                         className="friends-link"><Link to="/pending">Requests</Link></div>
-                        <div className="friends-link"><Link to="/cheers">Cheers</Link></div>
+
+                        <div id={this.props.cheers === null || this.props.cheers.length > 0 ? 
+                        "requests" : ""} 
+                        className="friends-link"><Link to="/cheers">Cheers</Link></div>
+
                         {/* <div className="friends-link"><Link to="/cheers">test box</Link></div> */}
                     </div>
                     <div id="following-container">
@@ -107,6 +116,8 @@ function mapStateToProps(state){
         totalFriends: state.user_reducer.total_friends,
         entry: state.user_reducer.last_entry,
         pending_requests: state.user_reducer.pending_requests,
+        cheers: state.cheers_reducer.cheers,
+        get_cheers: state.cheers_reducer.cheers,
 
     }
 }
@@ -118,6 +129,9 @@ function mapDispatchToProps(dispatch){
         total_friends: (total) => dispatch(ACTIONS.total_friends(total)),
         last_entry: (entry) => dispatch(ACTIONS.last_entry(entry)),
         friends_last_entry: (entry) => dispatch(ACTIONS.friends_last_entry(entry)),
+        set_cheers: (cheers) => dispatch(ACTIONS.get_cheers(cheers)),
+        set_cheers_names: (names) => dispatch(ACTIONS.cheers_names(names))
+
     }
 }
 

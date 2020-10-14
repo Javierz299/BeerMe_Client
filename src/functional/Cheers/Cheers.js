@@ -14,9 +14,26 @@ class Cheers extends Component{
     static contextType = Context;
 
     getNames = (cheers,friends) => {
-        let cheersFriend = cheers.map(user => friends.find(friend => friend[0].id === user.user_id ))
-        this.props.set_cheers_names(cheersFriend)
-    }   
+        if(cheers.message){
+            return;
+        } else {
+            let cheersFriend = cheers.map(user => friends.find(friend => friend[0].id === user.user_id ))
+            this.props.set_cheers_names(cheersFriend)
+        }
+    } 
+    
+    deleteCheers = (id) => {
+        this.props.toggle_cheers_img(id)
+        
+        const data = {
+            user_id: Number(id),
+            sent_to: this.context.globalProfile.id,
+        }
+        console.log('data',data)
+        axios.delete(`${config.API_ENDPOINT}/delete/cheers/`,{data: data})
+            .then(res => console.log('delete cheers',res))
+
+    }
 
     async componentDidMount(){
         const userId = Number(this.context.globalProfile.id)
@@ -33,11 +50,11 @@ render(){
         <div id="cheers-container">
             <h2>Cheers</h2>
             {this.props.get_cheers_names === null ?
-            <Loading /> :
+            "no cheers yet" :
             this.props.get_cheers_names.map(name => (
                 <div key={name[0].id}> 
                     <h3>{name[0].username},sent you a cheers!</h3>
-                    <button id={name[0].id} onClick={(e) => this.props.toggle_cheers_img(e.target.id)} >open</button>
+                    <button id={name[0].id} onClick={(e) => this.deleteCheers(e.target.id)} >open</button>
                 </div>
             ))
                 
