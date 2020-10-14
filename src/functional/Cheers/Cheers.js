@@ -29,7 +29,7 @@ class Cheers extends Component{
             user_id: Number(id),
             sent_to: this.context.globalProfile.id,
         }
-        console.log('data',data)
+       
         axios.delete(`${config.API_ENDPOINT}/delete/cheers/`,{data: data})
             .then(res => console.log('delete cheers',res))
 

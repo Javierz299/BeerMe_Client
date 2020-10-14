@@ -50,9 +50,6 @@ class ComparisonStats extends Component {
 
     static contextType = Context
     render() {
-        console.log("context",this.context.globalStats)
-        console.log("state",this.props.friend_stats)
-
         return (
             <div>
                 ComparisonStats
