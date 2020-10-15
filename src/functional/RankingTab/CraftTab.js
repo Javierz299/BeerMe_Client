@@ -11,7 +11,7 @@ const CraftTab = () => {
     return (
         <div>
             <RankingTabs />
-            <h2>Seltzer Ranking</h2>
+            <h2>Craft Ranking</h2>
             {state.ranking === null ?
             <Redirect to="/ranking" /> :
             <CraftRanking />
