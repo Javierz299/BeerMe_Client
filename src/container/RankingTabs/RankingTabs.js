@@ -1,21 +1,34 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './RankingTabs.css'
 
-import { useSelector } from 'react-redux'
-
-//stopped rendering of this component in globalranking for every list item
+//stopped re-rendering of this component in globalranking for every list item
 const RankingTabs = React.memo(() => {
-    const state = useSelector(state => state.user_reducer.ranking)
-        console.log('ranking tabs',state)
+   
     return (
-        <div id="ranking-tabs-container">
-            <div onClick={() => console.log('beerclicked')} ><h4>Beer</h4></div>
-            <div onClick={() => console.log('seltzerclicked')} ><h4>Seltzer</h4></div>
-            <div onClick={() => console.log('craftclicked')} ><h4>Craft</h4></div>
-            <div onClick={() => console.log('wineclicked')} ><h4>Wine</h4></div>
-            <div onClick={() => console.log('shotsclicked')} ><h4>Shots</h4></div>
-            <div onClick={() => console.log('mixedclicked')} ><h4>Mixed</h4></div>
+        <div className="ranking-tabs-container">
+            <div id="global" >
+                <h4><Link to="/ranking">Global</Link></h4>
+            </div>
+            <div id="beer-tab">
+                <h4><Link to="/beerTab">Beer</Link></h4>
+            </div>
+            <div id="global" onClick={() => console.log('seltzerclicked')} >
+                <h4><Link to="/beerTab">Seltzer</Link></h4>
+            </div>
+            <div id="global" onClick={() => console.log('craftclicked')} >
+                <h4><Link to="/beerTab">Craft</Link></h4>
+            </div>
+            <div id="global" onClick={() => console.log('wineclicked')} >
+                <h4><Link to="/beerTab">Wine</Link></h4>
+            </div>
+            <div id="global" onClick={() => console.log('shotsclicked')} >
+                <h4><Link to="/beerTab">Shots</Link></h4>
+            </div>
+            <div id="global" onClick={() => console.log('mixedclicked')} >
+                <h4><Link to="/beerTab">Mixed</Link></h4>
+            </div>
         </div>
     )
 }

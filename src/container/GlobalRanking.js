@@ -20,7 +20,11 @@ class GlobalRanking extends Component {
                         user.seltzer + user.craft_beer + 
                         user.wine + user.shots + user.cocktail)
 
-                        users.push([user.username,total])
+                        users.push([user.username,total,{
+                            beer: user.beer, seltzer: user.seltzer,
+                            craft: user.craft_beer, wine: user.wine,
+                            shots: user.shots, mixed: user.cocktail,
+                        }])
                     })
                 this.props.rankUsers(users.sort((a,b) => b[1] - a[1]))
                 })
@@ -29,13 +33,13 @@ class GlobalRanking extends Component {
 
     render() {
         return (
-            <div id="global-rankng-container">
+            <div className="global-rankng-container">
                 <RankingTabs />
              <h2>Global Ranking</h2>
                 {this.props.ranking === null ?
                 <Loading /> :
                 this.props.ranking[0].map((user,i) => (  
-                    <div id={"rank" + i}key={user[0]}>
+                    <div className={"rank" + i}key={user[0]}>
                         <div className="rank-box">
                         <h4>{i + 1} {user[0]} <span>total: {user[1]}</span></h4>
                         </div>

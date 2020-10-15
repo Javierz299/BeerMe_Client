@@ -25,6 +25,7 @@ import { Router, Route, Switch } from 'react-router'
 import Context from '../context/ProfileContext'
 import axios from 'axios'
 import PublicGraph from '../container/PublicGraph'
+import BeerTab from '../functional/RankingTab/BeerTab'
 
 
 export class routes extends Component {
@@ -64,6 +65,7 @@ export class routes extends Component {
                         <Route path="/callback" render={(props) => <Callback  props={props}/>} />
                         <Route path="/public"  component={PublicGraph} />
                         <Route path="/ranking" component={GlobalRanking}/>
+                        <Route path="/beerTab" component={BeerTab}/>
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/profile'  component={ProtectedRoute} />
