@@ -15,7 +15,7 @@ const RankingTabs = React.memo(() => {
                 <h4><Link to="/beerTab">Beer</Link></h4>
             </div>
             <div id="global" onClick={() => console.log('seltzerclicked')} >
-                <h4><Link to="/beerTab">Seltzer</Link></h4>
+                <h4><Link to="/seltzerTab">Seltzer</Link></h4>
             </div>
             <div id="global" onClick={() => console.log('craftclicked')} >
                 <h4><Link to="/beerTab">Craft</Link></h4>

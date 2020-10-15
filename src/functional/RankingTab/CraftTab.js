@@ -3,22 +3,22 @@ import { Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import RankingTabs from '../../container/RankingTabs/RankingTabs'
-import BeerRanking from '../../container/BeerRanking/BeerRanking'
+import CraftRanking from '../../container/CraftRanking/CraftRanking'
 
-const BeerTab = () => {
+const CraftTab = () => {
     const state = useSelector(state => state.user_reducer)
 
     return (
         <div>
             <RankingTabs />
-            <h2>Beer Ranking</h2>
+            <h2>Seltzer Ranking</h2>
             {state.ranking === null ?
             <Redirect to="/ranking" /> :
-            <BeerRanking />
+            <CraftRanking />
             }
         </div>
     )
 }
 
 
-export default BeerTab;
+export default CraftTab;

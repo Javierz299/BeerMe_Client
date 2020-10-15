@@ -26,6 +26,8 @@ import Context from '../context/ProfileContext'
 import axios from 'axios'
 import PublicGraph from '../container/PublicGraph'
 import BeerTab from '../functional/RankingTab/BeerTab'
+import SeltzerTab from '../functional/RankingTab/SeltzerTab'
+import CraftTab from '../functional/RankingTab/CraftTab'
 
 
 export class routes extends Component {
@@ -66,6 +68,8 @@ export class routes extends Component {
                         <Route path="/public"  component={PublicGraph} />
                         <Route path="/ranking" component={GlobalRanking}/>
                         <Route path="/beerTab" component={BeerTab}/>
+                        <Route path="/seltzerTab" component={SeltzerTab} />
+                        <Route path="/craftTab" component={CraftTab} />
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/profile'  component={ProtectedRoute} />
