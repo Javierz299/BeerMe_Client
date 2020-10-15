@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Loading from '../loading/loading'
+import RankingTabs from '../container/RankingTabs/RankingTabs'
 
 import config from '../config'
 import axios from 'axios'
@@ -23,14 +24,13 @@ class GlobalRanking extends Component {
                     })
                 this.props.rankUsers(users.sort((a,b) => b[1] - a[1]))
                 })
-                
-        
     }
 
 
     render() {
         return (
             <div id="global-rankng-container">
+                <RankingTabs />
              <h2>Global Ranking</h2>
                 {this.props.ranking === null ?
                 <Loading /> :
