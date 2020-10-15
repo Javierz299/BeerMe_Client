@@ -18,16 +18,16 @@ const RankingTabs = React.memo(() => {
                 <h4><Link to="/seltzerTab">Seltzer</Link></h4>
             </div>
             <div id="global" onClick={() => console.log('craftclicked')} >
-                <h4><Link to="/beerTab">Craft</Link></h4>
+                <h4><Link to="/craftTab">Craft</Link></h4>
             </div>
             <div id="global" onClick={() => console.log('wineclicked')} >
-                <h4><Link to="/beerTab">Wine</Link></h4>
+                <h4><Link to="/wineTab">Wine</Link></h4>
             </div>
             <div id="global" onClick={() => console.log('shotsclicked')} >
-                <h4><Link to="/beerTab">Shots</Link></h4>
+                <h4><Link to="/shotsTab">Shots</Link></h4>
             </div>
             <div id="global" onClick={() => console.log('mixedclicked')} >
-                <h4><Link to="/beerTab">Mixed</Link></h4>
+                <h4><Link to="/mixedTab">Mixed</Link></h4>
             </div>
         </div>
     )

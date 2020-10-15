@@ -28,6 +28,10 @@ import PublicGraph from '../container/PublicGraph'
 import BeerTab from '../functional/RankingTab/BeerTab'
 import SeltzerTab from '../functional/RankingTab/SeltzerTab'
 import CraftTab from '../functional/RankingTab/CraftTab'
+import WineTab from '../functional/RankingTab/WineTab'
+import ShotsTab from '../functional/RankingTab/ShotsTab'
+import MixedTab from '../functional/RankingTab/MixedTab'
+
 
 
 export class routes extends Component {
@@ -70,6 +74,9 @@ export class routes extends Component {
                         <Route path="/beerTab" component={BeerTab}/>
                         <Route path="/seltzerTab" component={SeltzerTab} />
                         <Route path="/craftTab" component={CraftTab} />
+                        <Route path="/wineTab" component={WineTab} />
+                        <Route path="/shotsTab" component={ShotsTab} />
+                        <Route path="/MixedTab" component={MixedTab} />
 
                         <PrivateRoute path='/pending' component={PendingRequest}/>
                         <PrivateRoute path='/profile'  component={ProtectedRoute} />
