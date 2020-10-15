@@ -1,0 +1,18 @@
+.ranking-tabs-container{
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+    gap: 2px;
+}
+.ranking-tabs-container > div {
+    text-align: center;
+    border: 1px solid black;
+}
+
+
+@media only screen and (max-width: 800px){
+.ranking-tabs-container{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+}
+}
