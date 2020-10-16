@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Loading from '../loading/loading'
 import RankingTabs from '../container/RankingTabs/RankingTabs'
 
+import First from '../Favorites/Ranking/firstplace.png'
+import Second from '../Favorites/Ranking/secondplace.png'
+import Third from '../Favorites/Ranking/thirdplace.jpg'
+
 import config from '../config'
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -41,7 +45,11 @@ class GlobalRanking extends Component {
                 this.props.ranking[0].map((user,i) => (  
                     <div className={"rank" + i}key={user[0]}>
                         <div className="rank-box">
-                        <h4>{i + 1} {user[0]} <span>total: {user[1]}</span></h4>
+                <h4>{i + 1} {user[0]} <span>total: {user[1]}</span> 
+                    <span>{i + 1 === 1 ? <img src={First} alt={"first"} /> : null}</span>
+                    <span>{i + 1 === 2 ? <img src={Second} alt={"second"} /> : null}</span>
+                    <span>{i + 1 === 3 ? <img src={Third} alt={"third"} /> : null}</span>
+                </h4>
                         </div>
                    </div>
                 ))
