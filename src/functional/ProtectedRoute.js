@@ -3,6 +3,8 @@ import config from '../config'
 import Context from '../context/ProfileContext'
 import axios from 'axios'
 import Loading from '../loading/loading'
+import { connect } from 'react-redux'
+import * as ACTIONS from '../store/actions/actions'
 
 import DrinkForm from '../container/DrinkForm'
 import NextForm from '../container/NextForm/NextForm'
@@ -46,4 +48,10 @@ refreshStats = () => {
    
 }
 
-export default ProtectedRoute
+function mapDispatchToProps(dispatch){
+    return {
+        set_profile_stats: (profile) => dispatch(ACTIONS.set_profile_stats(profile)),
+    }
+}
+
+export default connect(null,mapDispatchToProps)(ProtectedRoute)
