@@ -321,3 +321,45 @@ export const increment_beer_flight = (beer_flight) => {
     payload: beer_flight
   }
 }
+
+export const decrement_duce = (duce) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_DUCE,
+    payload: duce
+  }
+}
+
+export const decrement_eight_n_up = (eight_n_up) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_EIGHT_N_UP,
+    payload: eight_n_up
+  }
+}
+
+export const decrement_beer_bong = (beer_bong) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_BONG,
+    payload: beer_bong
+  }
+}
+
+export const decrement_shotgun = (shotgun) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SHOTGUN,
+    payload: shotgun
+  }
+}
+
+export const decrement_wine_flight = (wine_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_WINE_FLIGHT,
+    payload: wine_flight
+  }
+}
+
+export const decrement_beer_flight = (beer_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_FLIGHT,
+    payload: beer_flight
+  }
+}
