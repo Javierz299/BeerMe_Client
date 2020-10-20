@@ -6,7 +6,7 @@ import Loading from '../loading/loading'
 import { connect } from 'react-redux'
 import * as ACTIONS from '../store/actions/actions'
 
-import DrinkForm from '../container/DrinkForm'
+//import DrinkForm from '../container/DrinkForm'
 import NextForm from '../container/NextForm/NextForm'
 import ProfileDash from '../container/ProfileDash/ProfileDash'
 
@@ -25,8 +25,6 @@ refreshStats = () => {
             <div id="profile-container" >
                 <ProfileDash />
 
-                <NextForm />
-
                 {!this.context.globalStats ?
                     <Loading /> :
                 <div id="profile-stats-container">
@@ -39,9 +37,7 @@ refreshStats = () => {
                     <div><button type="button" onClick={() => this.refreshStats()}>refresh stats</button></div>
                 </div>
                 }
-                
-                
-           {<DrinkForm />}
+                <NextForm />
         </div>
         )
     }

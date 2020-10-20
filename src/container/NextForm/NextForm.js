@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import DrinkForm from '../../container/DrinkForm'
+import DrinkForm2 from '../DrinkForm2/DrinkForm2'
+
 import '../NextForm/NextForm.css'
 
 const NextForm = () => {
+    const [toggle, setToggle] = useState(false)
+
 
 
     return (
             <div className="next-form">
-                <span className="form-left form-toggle">{"<"}</span>
-                <span className="form-right form-toggle">{">"}</span>
+                <span onClick={() => {setToggle(!toggle)}}
+                      className={!toggle ? "form-left-hide" : "form-left-show"}>
+                      {"<"}
+                </span>
+                <span onClick={() => setToggle(!toggle)} 
+                      className={"form-right-show"}>
+                      {">"}
+                </span>
+            {!toggle ? <DrinkForm /> : <DrinkForm2 />}
             </div>
     )
 }

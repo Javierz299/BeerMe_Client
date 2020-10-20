@@ -6,8 +6,11 @@
     z-index: 2;
   }
 
-.form-left{
+.form-left-hide{
     display: none;
+}
+.form-left-show{
+    display: show;
 }
 
   .form-toggle{
