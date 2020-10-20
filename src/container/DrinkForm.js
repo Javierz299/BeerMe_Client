@@ -10,7 +10,6 @@ import winePic from '../Favorites/icons8-wine-glass-50.png'
 import shotPic from '../Favorites/icons8-whiskey-50.png'
 import mixedPic from '../Favorites/icons8-cocktail-50.png'
 
-
 import { connect } from 'react-redux'
 
 import {getDateOnly,getDate_Time} from '../utils/date'
@@ -131,9 +130,9 @@ class DrinkForm extends Component{
 
     render(){
         return (
-            <div id="drink-form-container">
+            <div>
                 <form className="drink-form" onSubmit={this.openConfirmationModal}>
-                    <div id="drink-form-container">
+                    <div className="drink-form-container">
                     <div className="drink-box">
                         <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
                         <div className="drink-button-container">
