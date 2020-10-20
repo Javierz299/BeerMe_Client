@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
-
-import beerPic from '../../Favorites/icons8-beer-50.png'
-import seltzerPic from '../../Favorites/icons8-sparkling-water-50.png'
-import craftPic from '../../Favorites/icons8-guinness-beer-50.png'
-import winePic from '../../Favorites/icons8-wine-glass-50.png'
-import shotPic from '../../Favorites/icons8-whiskey-50.png'
-import mixedPic from '../../Favorites/icons8-cocktail-50.png'
+import axios from 'axios'
+import config from '../../config'
+import Context from '../../context/ProfileContext'
 
 import * as ACTIONS from '../../store/actions/actions'
-
 
 import { connect } from 'react-redux'
 
 
 class DrinkForm2 extends Component{
+    static contextType = Context;
 
     closeConfirmationWindow = () => {
         this.props.submit_drink(false)
@@ -75,7 +71,7 @@ render(){
     return (
         <div>
             <form className="drink-form" onSubmit={this.openConfirmationModal}>
-                <legend>Double</legend>
+                <legend>Extra Thirsty</legend>
                 <div className="drink-form-container">
                     <div className="drink-box">
                         <h2>DD {this.props.beer}</h2>
@@ -85,7 +81,7 @@ render(){
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>ABV 8%  {this.props.seltzer}</h2>
+                        <h2>8%^  {this.props.seltzer}</h2>
                         <div className="drink-button-container">
                             <button id="seltzer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="seltzer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
@@ -106,14 +102,14 @@ render(){
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>?  {this.props.shots}</h2>
+                        <h2>wine flight  {this.props.shots}</h2>
                         <div className="drink-button-container">
                             <button id="shots" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="shots" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>?  {this.props.cocktail}</h2>
+                        <h2>beer flight  {this.props.cocktail}</h2>
                         <div className="drink-button-container">
                             <button id="cocktail" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="cocktail" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>

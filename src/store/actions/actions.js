@@ -279,3 +279,45 @@ export const cheers_names = (names) => {
     payload: names,
   }
 }
+
+export const increment_duce = (duce) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_DUCE,
+    payload: duce
+  }
+}
+
+export const increment_eight_n_up = (eight_n_up) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_EIGHT_N_UP,
+    payload: eight_n_up
+  }
+}
+
+export const increment_beer_bong = (beer_bong) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_BONG,
+    payload: beer_bong
+  }
+}
+
+export const increment_shotgun = (shotgun) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SHOTGUN,
+    payload: shotgun
+  }
+}
+
+export const increment_wine_flight = (wine_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_WINE_FLIGHT,
+    payload: wine_flight
+  }
+}
+
+export const increment_beer_flight = (beer_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_FLIGHT,
+    payload: beer_flight
+  }
+}

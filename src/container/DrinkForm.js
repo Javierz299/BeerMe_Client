@@ -17,8 +17,7 @@ import {getDateOnly,getDate_Time} from '../utils/date'
 import Context from '../context/ProfileContext'
 
 class DrinkForm extends Component{
-
-     static contextType = Context
+    static contextType = Context;
 
      componentDidMount(){
      
@@ -132,6 +131,7 @@ class DrinkForm extends Component{
         return (
             <div>
                 <form className="drink-form" onSubmit={this.openConfirmationModal}>
+                    <legend>Thirsty</legend>
                     <div className="drink-form-container">
                     <div className="drink-box">
                         <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
