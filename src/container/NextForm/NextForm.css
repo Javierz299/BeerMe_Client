@@ -1,0 +1,15 @@
+.next-form{
+    position: relative;
+    border: 1px solid black;
+    text-align: center;
+    color: whitesmoke;
+    z-index: 2;
+  }
+
+.form-left{
+    display: none;
+}
+
+  .form-toggle{
+    padding: 5px;
+  }
