@@ -1,26 +1,22 @@
-import React, { useContext } from 'react'
-import Context from '../../context/ProfileContext'
-import Loading from '../../loading/loading'
-import * as ACTIONS from '../../store/actions/actions'
-
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
+import InitialStats from '../InitialStats/InitialStats'
+import ExtraStats from '../ExtraStats/ExtraStats'
 
 const NextStats = () => {
-    const context = useContext(Context)
+    const [toggle, setToggle] = useState(false)
 
     return (
-        <div>
-            {!context.globalStats ?
-                    <Loading /> :
-                <div id="profile-stats-container">
-                    <div><span>Beer: {context.globalStats.beer}</span></div>
-                    <div><span>Seltzer: {context.globalStats.seltzer}</span></div>
-                    <div><span>Craft: {context.globalStats.craft_beer}</span></div>
-                    <div><span>Wine: {context.globalStats.wine}</span></div>
-                    <div><span>Shots: {context.globalStats.shots}</span></div>
-                    <div><span>Mixed: {context.globalStats.cocktail}</span></div>
-                </div>
-                }
+      
+        <div className="next-form">
+            <span onClick={() => {setToggle(!toggle)}}
+                      className={!toggle ? "form-left-hide" : "form-left-show"}>
+                      {"<"}
+                </span>
+                <span onClick={() => setToggle(!toggle)} 
+                      className={"form-right-show"}>
+                      {">"}
+                </span>
+           {!toggle ? <InitialStats /> : <ExtraStats />}
         </div>
     )
   }

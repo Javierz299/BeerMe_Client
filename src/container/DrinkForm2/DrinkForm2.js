@@ -13,28 +13,28 @@ import {getDateOnly,getDate_Time} from '../../utils/date'
 class DrinkForm2 extends Component{
     static contextType = Context;
 
-    componentDidMount(){
-        console.log('second form mounted')
-        const BeerMeTwo = {
-            user_id: this.context.globalProfile.id,
-            duce: 0,
-            eight_n_up: 0,
-            beer_bong: 0,
-            shotgun: 0,
-            wine_flight: 0,
-            beer_flight: 0,
-        }
+    // componentDidMount(){
+    //     console.log('second form mounted')
+    //     const BeerMeTwo = {
+    //         user_id: this.context.globalProfile.id,
+    //         duce: 0,
+    //         eight_n_up: 0,
+    //         beer_bong: 0,
+    //         shotgun: 0,
+    //         wine_flight: 0,
+    //         beer_flight: 0,
+    //     }
 
-        if(this.props.profileStatsTwo === null){
-            axios.post(`${config.API_ENDPOINT}/post/userDrinkTwo`,BeerMeTwo)
-            .then(res => res)
-        } 
-            setTimeout(() => {
-                axios.get(`${config.API_ENDPOINT}/get/userDrinkTwo/${this.context.globalProfile.id}`)
-                .then(res => this.props.setProfileStatsTwo(res.data))
-            },400)
+    //     if(this.props.profileStatsTwo === null){
+    //         axios.post(`${config.API_ENDPOINT}/post/userDrinkTwo`,BeerMeTwo)
+    //         .then(res => res)
+    //     } 
+    //         setTimeout(() => {
+    //             axios.get(`${config.API_ENDPOINT}/get/userDrinkTwo/${this.context.globalProfile.id}`)
+    //             .then(res => this.props.setProfileStatsTwo(res.data))
+    //         },400)
 
-     }
+    //  }
 
     closeDrinkWindowTwo = () => {
         this.props.submit_drink_two(false)
@@ -129,7 +129,6 @@ class DrinkForm2 extends Component{
            }
 
 render(){
-    console.log('second stats',this.props.profileStatsTwo)
     return (
         <div>
             <form className="drink-form" onSubmit={this.openDrinkModalTwo}>
