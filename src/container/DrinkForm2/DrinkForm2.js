@@ -3,6 +3,8 @@ import axios from 'axios'
 import config from '../../config'
 import Context from '../../context/ProfileContext'
 
+import Duce from '../../Favorites/DrinkForm2/icons8-2-of-hearts-50.png'
+
 import * as ACTIONS from '../../store/actions/actions'
 
 import { connect } from 'react-redux'
@@ -112,42 +114,42 @@ render(){
                 <legend>Extra Thirsty</legend>
                 <div className="drink-form-container">
                     <div className="drink-box">
-                        <h2>DD {this.props.duce}</h2>
+                        <h2> <img src={Duce} alt="Duce" /> {this.props.duce}</h2>
                         <div className="drink-button-container">
                             <button id="duce" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="duce" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>8%^  {this.props.eight}</h2>
+                        <h2><img src={Duce} alt="eight" />  {this.props.eight}</h2>
                         <div className="drink-button-container">
                             <button id="eight" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="eight" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>Bong  {this.props.beer_bong}</h2>
+                        <h2><img src={Duce} alt="bong" /> {this.props.beer_bong}</h2>
                         <div className="drink-button-container">
                             <button id="beerBong" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="beerBong" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>Shotgun  {this.props.shotgun}</h2>
+                        <h2><img src={Duce} alt="shotgun" />  {this.props.shotgun}</h2>
                         <div className="drink-button-container">
                             <button id="shotgun" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="shotgun" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>wine flight  {this.props.wine_flight}</h2>
+                        <h2><img src={Duce} alt="wine flight" />  {this.props.wine_flight}</h2>
                         <div className="drink-button-container">
                             <button id="wineFlight" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="wineFlight" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>beer flight  {this.props.beer_flight}</h2>
+                        <h2><img src={Duce} alt="beer flight" />  {this.props.beer_flight}</h2>
                         <div className="drink-button-container">
                             <button id="beerFlight" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="beerFlight" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
