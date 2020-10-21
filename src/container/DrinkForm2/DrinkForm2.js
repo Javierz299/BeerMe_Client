@@ -13,12 +13,12 @@ class DrinkForm2 extends Component{
 
     closeConfirmationWindow = () => {
         this.props.submit_drink(false)
-        this.props.dec_beer(0)
-        this.props.dec_seltzer(0)
-        this.props.dec_craft(0)
-        this.props.dec_wine(0)
-        this.props.dec_shots(0)
-        this.props.dec_cocktail(0)
+        this.props.dec_duce(0)
+        this.props.dec_eight_n_up(0)
+        this.props.dec_duce_bong(0)
+        this.props.dec_shotgun(0)
+        this.props.dec_shotgun_flight(0)
+        this.props.dec_duce_flight(0)
      }
 
     openConfirmationModal = () => {
@@ -28,42 +28,42 @@ class DrinkForm2 extends Component{
      handleIncrementClick = (e) => {
         let id = e.target.id
         //Allows only one type to be incremented at a time per submit
-           if(id === "beer" && this.props.beer !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
-           && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
+           if(id === "duce" && this.props.duce !== 1 && this.props.eight !== 1 && this.props.beer !== 1
+           && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
                
-              this.props.inc_beer(this.props.beer + 1)
-           } else if(id === "seltzer" && this.props.seltzer !== 1 && this.props.beer !== 1 && this.props.craft !== 1
-           && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
-               this.props.inc_seltzer(this.props.seltzer + 1)
-            } else if(id === "craft" && this.props.craft !== 1 && this.props.seltzer !== 1 && this.props.beer !== 1
-            && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
-               this.props.inc_craft(this.props.craft + 1)
-            }else if(id === "wine" && this.props.wine !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
-            && this.props.beer !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
-              this.props.inc_wine(this.props.wine + 1)
-           } else if(id === "shots" && this.props.shots !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
-           && this.props.wine !== 1 && this.props.beer !== 1 && this.props.cocktail !== 1){
-               this.props.inc_shots(this.props.shots + 1)
-           } else if(id === "cocktail" && this.props.cocktail !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
-           && this.props.wine !== 1 && this.props.shots !== 1 && this.props.beer !== 1){
-               this.props.inc_cocktail(this.props.cocktail + 1)
+              this.props.inc_duce(this.props.duce + 1)
+           } else if(id === "eight" && this.props.eight !== 1 && this.props.duce !== 1 && this.props.beer !== 1
+           && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
+               this.props.inc_eight_n_up(this.props.eight + 1)
+            } else if(id === "beer" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.duce !== 1
+            && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
+               this.props.inc_duce_bong(this.props.beer + 1)
+            }else if(id === "shotgun" && this.props.shotgun !== 1 && this.props.eight !== 1 && this.props.beer !== 1
+            && this.props.duce !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
+              this.props.inc_shotgun(this.props.shotgun + 1)
+           } else if(id === "wine" && this.props.wine !== 1 && this.props.eight !== 1 && this.props.beer !== 1
+           && this.props.shotgun !== 1 && this.props.duce !== 1 && this.props.beer !== 1){
+               this.props.inc_shotgun_flight(this.props.wine + 1)
+           } else if(id === "beer" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.beer !== 1
+           && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.duce !== 1){
+               this.props.inc_duce_flight(this.props.beer + 1)
            }
     }
     handleDecrementClick = (e) => {
         let id = e.target.id
         
-           if(id === "beer" && this.props.beer !== 0){
-               this.props.dec_beer(this.props.beer - 1)
-            } else if(id === "seltzer" && this.props.seltzer !== 0){
-               this.props.dec_seltzer(this.props.seltzer - 1)
-            } else if(id === "craft" && this.props.craft !== 0){
-               this.props.dec_craft(this.props.craft - 1)
-            }else if(id === "wine" && this.props.wine !== 0){
-               this.props.dec_wine(this.props.wine - 1)
-            } else if(id === "shots" && this.props.shots !== 0){
-               this.props.dec_shots(this.props.shots - 1)
-           } else if(id === "cocktail" && this.props.cocktail !== 0){
-               this.props.dec_cocktail(this.props.cocktail - 1)
+           if(id === "duce" && this.props.duce !== 0){
+               this.props.dec_duce(this.props.duce - 1)
+            } else if(id === "eight" && this.props.eight !== 0){
+               this.props.dec_eight_n_up(this.props.eight - 1)
+            } else if(id === "beer" && this.props.beer !== 0){
+               this.props.dec_duce_bong(this.props.beer - 1)
+            }else if(id === "shotgun" && this.props.shotgun !== 0){
+               this.props.dec_shotgun(this.props.shotgun - 1)
+            } else if(id === "wine" && this.props.wine !== 0){
+               this.props.dec_shotgun_flight(this.props.wine - 1)
+           } else if(id === "beer" && this.props.beer !== 0){
+               this.props.dec_duce_flight(this.props.beer - 1)
            }
     }
 
@@ -74,45 +74,45 @@ render(){
                 <legend>Extra Thirsty</legend>
                 <div className="drink-form-container">
                     <div className="drink-box">
-                        <h2>DD {this.props.beer}</h2>
+                        <h2>DD {this.props.duce}</h2>
+                        <div className="drink-button-container">
+                            <button id="duce" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="duce" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2>8%^  {this.props.eight}</h2>
+                        <div className="drink-button-container">
+                            <button id="eight" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="eight" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                        </div>
+                    </div>
+                    <div className="drink-box">
+                        <h2>Bong  {this.props.beer}</h2>
                         <div className="drink-button-container">
                             <button id="beer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="beer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>8%^  {this.props.seltzer}</h2>
+                        <h2>Shotgun  {this.props.shotgun}</h2>
                         <div className="drink-button-container">
-                            <button id="seltzer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="seltzer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                            <button id="shotgun" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="shotgun" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>Bong  {this.props.craft}</h2>
-                        <div className="drink-button-container">
-                            <button id="craft" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="craft" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
-                        </div>
-                    </div>
-                    <div className="drink-box">
-                        <h2>Shotgun  {this.props.wine}</h2>
+                        <h2>shotgun flight  {this.props.wine}</h2>
                         <div className="drink-button-container">
                             <button id="wine" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
                             <button id="wine" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>wine flight  {this.props.shots}</h2>
+                        <h2>duce flight  {this.props.beer}</h2>
                         <div className="drink-button-container">
-                            <button id="shots" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="shots" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
-                        </div>
-                    </div>
-                    <div className="drink-box">
-                        <h2>beer flight  {this.props.cocktail}</h2>
-                        <div className="drink-button-container">
-                            <button id="cocktail" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="cocktail" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                            <button id="beer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="beer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div>
@@ -123,7 +123,7 @@ render(){
                         <div id="confirmation-buttons">
                             <div>
                             <button id="cancel" className="confirmation_buttons" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
-                            <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
+                            <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleduceMeForm}>confirm</button>
                             </div>
                         </div>
                      </div>
@@ -133,7 +133,7 @@ render(){
                 </form>
                     <br/>
                     <div>
-                        <button id="submit"  className="beerMe-button" type="button" onClick={this.openConfirmationModal} >Beer Me</button>
+                        <button id="submit"  className="duceMe-button" type="button" onClick={this.openConfirmationModal} >duce Me</button>
                     </div>
         </div>
     )
@@ -142,12 +142,12 @@ render(){
 
 function mapStatToProps(state){
     return {
-        beer: state.user_reducer.beer,
-        seltzer: state.user_reducer.seltzer,
-        craft: state.user_reducer.craft,
-        wine: state.user_reducer.wine,
-        shots: state.user_reducer.shots,
-        cocktail: state.user_reducer.cocktail,
+        duce: state.drinktwo_reducer.duce,
+        eight: state.drinktwo_reducer.eight_n_up,
+        beer_bong: state.drinktwo_reducer.beer_bong,
+        shotgun: state.drinktwo_reducer.shotgun,
+        wine_flight: state.drinktwo_reducer.wine_flight,
+        beer_flight: state.drinktwo_reducer.beer_flight,
         submitValue: state.user_reducer.submit,
         profileStats: state.user_reducer.profileStats,
     }
@@ -155,19 +155,19 @@ function mapStatToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        inc_beer: (beer) => dispatch(ACTIONS.increment_beer(beer)),
-        inc_seltzer: (seltzer) => dispatch(ACTIONS.increment_seltzer(seltzer)),
-        inc_craft: (craft) => dispatch(ACTIONS.increment_craft(craft)),
-        inc_wine: (wine) => dispatch(ACTIONS.increment_wine(wine)),
-        inc_shots: (shots) => dispatch(ACTIONS.increment_shots(shots)),
-        inc_cocktail: (cocktail) => dispatch(ACTIONS.increment_cocktail(cocktail)),
+        inc_duce: (duce) => dispatch(ACTIONS.increment_duce(duce)),
+        inc_eight_n_up: (eight) => dispatch(ACTIONS.increment_eight_n_up(eight)),
+        inc_beer_bong: (beer) => dispatch(ACTIONS.increment_beer_bong(beer)),
+        inc_shotgun: (shotgun) => dispatch(ACTIONS.increment_shotgun(shotgun)),
+        inc_wine_flight: (wine) => dispatch(ACTIONS.increment_wine_flight(wine)),
+        inc_beer_flight: (beer) => dispatch(ACTIONS.increment_beer_flight(beer)),
 
-        dec_beer: (beer) => dispatch(ACTIONS.decrement_beer(beer)),
-        dec_seltzer: (seltzer) => dispatch(ACTIONS.decrement_seltzer(seltzer)),
-        dec_craft: (craft) => dispatch(ACTIONS.decrement_craft(craft)),
-        dec_wine: (wine) => dispatch(ACTIONS.decrement_wine(wine)),
-        dec_shots: (shots) => dispatch(ACTIONS.decrement_shots(shots)),
-        dec_cocktail: (cocktail) => dispatch(ACTIONS.decrement_cocktail(cocktail)),
+        dec_duce: (duce) => dispatch(ACTIONS.decrement_duce(duce)),
+        dec_eight_n_up: (eight) => dispatch(ACTIONS.decrement_eight_n_up(eight)),
+        dec_beer_bong: (beer) => dispatch(ACTIONS.decrement_beer_bong(beer)),
+        dec_shotgun: (shotgun) => dispatch(ACTIONS.decrement_shotgun(shotgun)),
+        dec_wine_flight: (wine) => dispatch(ACTIONS.decrement_wine_flight(wine)),
+        dec_beer_flight: (beer) => dispatch(ACTIONS.decrement_beer_flight(beer)),
         submit_drink: (submit) => dispatch(ACTIONS.submit_drink(submit))
 
     }
