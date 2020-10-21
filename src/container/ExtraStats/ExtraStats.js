@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import Context from '../../context/ProfileContext'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Loading from '../../loading/loading'
 
 const ExtraStats= () => {
-    const context = useContext(Context)
     const state = useSelector(state => state.drinktwo_reducer)
     console.log("state",state)
     return (
