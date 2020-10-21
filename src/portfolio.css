@@ -126,7 +126,7 @@ span{
   margin-bottom: 5px;
 }
 
- #confirmation_box {
+ .confirmation_box {
    position: absolute;
    top: 0px;
    left: 0px;

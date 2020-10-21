@@ -7,46 +7,52 @@ import * as ACTIONS from '../../store/actions/actions'
 
 import { connect } from 'react-redux'
 
+import {getDateOnly,getDate_Time} from '../../utils/date'
+
 
 class DrinkForm2 extends Component{
     static contextType = Context;
 
-    closeConfirmationWindow = () => {
-        this.props.submit_drink(false)
+    closeDrinkWindowTwo = () => {
+        this.props.submit_drink_two(false)
         this.props.dec_duce(0)
         this.props.dec_eight_n_up(0)
-        this.props.dec_duce_bong(0)
+        this.props.dec_beer_bong(0)
         this.props.dec_shotgun(0)
-        this.props.dec_shotgun_flight(0)
-        this.props.dec_duce_flight(0)
+        this.props.dec_wine_flight(0)
+        this.props.dec_beer_flight(0)
      }
 
-    openConfirmationModal = () => {
-            this.props.submit_drink(true)
+    openDrinkModalTwo = () => {
+            this.props.submit_drink_two(true)
      }
 
      handleIncrementClick = (e) => {
         let id = e.target.id
         //Allows only one type to be incremented at a time per submit
-           if(id === "duce" && this.props.duce !== 1 && this.props.eight !== 1 && this.props.beer !== 1
-           && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
-               
+           if(id === "duce" && this.props.duce !== 1 && this.props.eight !== 1 && this.props.beer_bong !== 1
+           && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
               this.props.inc_duce(this.props.duce + 1)
+
            } else if(id === "eight" && this.props.eight !== 1 && this.props.duce !== 1 && this.props.beer !== 1
            && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
                this.props.inc_eight_n_up(this.props.eight + 1)
-            } else if(id === "beer" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.duce !== 1
-            && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
-               this.props.inc_duce_bong(this.props.beer + 1)
-            }else if(id === "shotgun" && this.props.shotgun !== 1 && this.props.eight !== 1 && this.props.beer !== 1
-            && this.props.duce !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
+
+            } else if(id === "beerBong" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.duce !== 1
+            && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
+               this.props.inc_beer_bong(this.props.beer_bong + 1)
+
+            }else if(id === "shotgun" && this.props.shotgun !== 1 && this.props.eight !== 1 && this.props.beer_bong !== 1
+            && this.props.duce !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
               this.props.inc_shotgun(this.props.shotgun + 1)
-           } else if(id === "wine" && this.props.wine !== 1 && this.props.eight !== 1 && this.props.beer !== 1
-           && this.props.shotgun !== 1 && this.props.duce !== 1 && this.props.beer !== 1){
-               this.props.inc_shotgun_flight(this.props.wine + 1)
-           } else if(id === "beer" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.beer !== 1
-           && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.duce !== 1){
-               this.props.inc_duce_flight(this.props.beer + 1)
+
+           } else if(id === "wineFlight" && this.props.wine_flight !== 1 && this.props.eight !== 1 && this.props.beer_flight !== 1
+           && this.props.shotgun !== 1 && this.props.duce !== 1 && this.props.beer_bong !== 1){
+               this.props.inc_wine_flight(this.props.wine_flight + 1)
+
+           } else if(id === "beerFlight" && this.props.duce !== 1 && this.props.eight !== 1 && this.props.beer_bong !== 1
+           && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
+               this.props.inc_beer_flight(this.props.beer_flight + 1)
            }
     }
     handleDecrementClick = (e) => {
@@ -54,23 +60,55 @@ class DrinkForm2 extends Component{
         
            if(id === "duce" && this.props.duce !== 0){
                this.props.dec_duce(this.props.duce - 1)
+
             } else if(id === "eight" && this.props.eight !== 0){
                this.props.dec_eight_n_up(this.props.eight - 1)
-            } else if(id === "beer" && this.props.beer !== 0){
-               this.props.dec_duce_bong(this.props.beer - 1)
+
+            } else if(id === "beerBong" && this.props.beer_bong !== 0){
+               this.props.dec_beer_bong(this.props.beer_bong - 1)
+
             }else if(id === "shotgun" && this.props.shotgun !== 0){
                this.props.dec_shotgun(this.props.shotgun - 1)
-            } else if(id === "wine" && this.props.wine !== 0){
-               this.props.dec_shotgun_flight(this.props.wine - 1)
-           } else if(id === "beer" && this.props.beer !== 0){
-               this.props.dec_duce_flight(this.props.beer - 1)
+
+            } else if(id === "wineFlight" && this.props.wine_flight !== 0){
+               this.props.dec_wine_flight(this.props.wine_flight - 1)
+
+           } else if(id === "beerFlight" && this.props.beer_flight !== 0){
+               this.props.dec_beer_flight(this.props.beer_flight - 1)
            }
     }
+
+    handleDrinkFormTwo = (e) => {
+        e.preventDefault()
+        let datePosted = {
+            date: getDate_Time()
+        }
+           let beerMeTwo = {
+               duce: this.props.duce,
+               eight_n_up: this.props.eight,
+               beer_bong: this.props.beer_bong,
+               shotgun: this.props.shotgun,
+               wine_flight: this.props.wine_flight,
+               beer_flight: this.props.beer_flight,
+           }
+           axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMeTwo)
+               .then(() => axios.post(`${config.API_ENDPOINT}/post/drinkdate/${this.context.globalProfile.id}`,datePosted))
+                       .then(res => res)
+               //revert form values back to zero
+               this.props.dec_duce(0)
+               this.props.dec_eight_n_up(0)
+               this.props.dec_beer_bong(0)
+               this.props.dec_shotgun(0)
+               this.props.dec_wine_flight(0)
+               this.props.dec_beer_flight(0)
+
+               this.props.submit_drink_two(false)
+           }
 
 render(){
     return (
         <div>
-            <form className="drink-form" onSubmit={this.openConfirmationModal}>
+            <form className="drink-form" onSubmit={this.openDrinkModalTwo}>
                 <legend>Extra Thirsty</legend>
                 <div className="drink-form-container">
                     <div className="drink-box">
@@ -88,10 +126,10 @@ render(){
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>Bong  {this.props.beer}</h2>
+                        <h2>Bong  {this.props.beer_bong}</h2>
                         <div className="drink-button-container">
-                            <button id="beer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="beer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                            <button id="beerBong" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="beerBong" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
@@ -102,28 +140,28 @@ render(){
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>shotgun flight  {this.props.wine}</h2>
+                        <h2>wine flight  {this.props.wine_flight}</h2>
                         <div className="drink-button-container">
-                            <button id="wine" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="wine" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                            <button id="wineFlight" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="wineFlight" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div className="drink-box">
-                        <h2>duce flight  {this.props.beer}</h2>
+                        <h2>beer flight  {this.props.beer_flight}</h2>
                         <div className="drink-button-container">
-                            <button id="beer" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
-                            <button id="beer" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
+                            <button id="beerFlight" className="drink-button" type="button" onClick={this.handleDecrementClick}>-</button>
+                            <button id="beerFlight" className="drink-button" type="button" onClick={this.handleIncrementClick}>+</button>
                         </div>
                     </div>
                     <div>
-                    {
-                    this.props.submitValue === false ?
+                    { 
+                    this.props.submitValueTwo === false ?
                     <div></div> :
-                    <div id="confirmation_box">
-                        <div id="confirmation-buttons">
+                    <div className="confirmation_box">
+                        <div>
                             <div>
-                            <button id="cancel" className="confirmation_buttons" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
-                            <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleduceMeForm}>confirm</button>
+                            <button className="confirmation_buttons cancel" type="button" onClick={this.closeDrinkWindowTwo} >cancel</button>
+                            <button className="confirmation_buttons confirm" type="submit"  onClick={this.handledDrinkFormTwo}>confirm</button>
                             </div>
                         </div>
                      </div>
@@ -133,7 +171,7 @@ render(){
                 </form>
                     <br/>
                     <div>
-                        <button id="submit"  className="duceMe-button" type="button" onClick={this.openConfirmationModal} >duce Me</button>
+                        <button id="submit"  className="duceMe-button" type="button" onClick={this.openDrinkModalTwo} >Beer Me</button>
                     </div>
         </div>
     )
@@ -148,7 +186,7 @@ function mapStatToProps(state){
         shotgun: state.drinktwo_reducer.shotgun,
         wine_flight: state.drinktwo_reducer.wine_flight,
         beer_flight: state.drinktwo_reducer.beer_flight,
-        submitValue: state.user_reducer.submit,
+        submitValueTwo: state.drinktwo_reducer.submit_drink_two,
         profileStats: state.user_reducer.profileStats,
     }
 }
@@ -168,7 +206,7 @@ function mapDispatchToProps(dispatch){
         dec_shotgun: (shotgun) => dispatch(ACTIONS.decrement_shotgun(shotgun)),
         dec_wine_flight: (wine) => dispatch(ACTIONS.decrement_wine_flight(wine)),
         dec_beer_flight: (beer) => dispatch(ACTIONS.decrement_beer_flight(beer)),
-        submit_drink: (submit) => dispatch(ACTIONS.submit_drink(submit))
+        submit_drink_two: (submit) => dispatch(ACTIONS.submit_drink_two(submit))
 
     }
 }

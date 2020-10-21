@@ -7,6 +7,7 @@ const initialState = {
     shotgun: 0,
     wine_flight: 0,
     beer_flight: 0,
+    submit_drink_two: false
 }
 
 export default (state = initialState, action) => {
@@ -41,7 +42,11 @@ export default (state = initialState, action) => {
                 ...state,
                 beer_flight: action.payload,
             }
-        
+        case ACTION_TYPES.SUBMIT_DRINK_TWO:
+            return {
+                ...state,
+                submit_drink_two: action.payload
+            }
         default:
             return state
     }

@@ -169,6 +169,12 @@ export const submit_drink = (submit) => {
     payload: submit
   }
 }
+export const submit_drink_two = (submitTwo) => {
+  return {
+    type: ACTION_TYPES.SUBMIT_DRINK_TWO,
+    payload: submitTwo
+  }
+}
 
 export const friend_search = (friend) => {
   return {
