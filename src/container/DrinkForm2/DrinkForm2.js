@@ -57,10 +57,11 @@ class DrinkForm2 extends Component{
            && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
               this.props.inc_duce(this.props.duce + 1)
 
-
-
-              
-            } else if(id === "beerBong" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.duce !== 1
+           } else if(id === "eight" && this.props.beer_bong !== 1 && this.props.eight !== 1 && this.props.duce !== 1
+              && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
+                 this.props.inc_eight_n_up(this.props.eight + 1)
+  
+            } else if(id === "beerBong" && this.props.beer_bong !== 1 && this.props.eight !== 1 && this.props.duce !== 1
             && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
                this.props.inc_beer_bong(this.props.beer_bong + 1)
 
