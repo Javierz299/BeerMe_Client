@@ -61,9 +61,18 @@ class TotalStats extends Component {
                     }
                 <div id="friend-total">
                     <li>
-                        Total Drinks: {friend[0].beer + friend[0].seltzer +
+                        Total Drinks: { (friend[1]) ?
+                
+                            (friend[0].beer + friend[0].seltzer +
                             friend[0].craft_beer + friend[0].wine + 
-                            friend[0].shots + friend[0].cocktail}
+                            friend[0].shots + friend[0].cocktail) + (friend[1].duce + friend[1].eight_n_up +
+                            friend[1].beer_bong + friend[1].shotgun +
+                            friend[1].wine_flight + friend[1].beer_flight) :
+
+                            (friend[0].beer + friend[0].seltzer +
+                            friend[0].craft_beer + friend[0].wine + 
+                            friend[0].shots + friend[0].cocktail)
+                            }
                     </li>
                     <span><button id={friend[0].id} type="button" onClick={(e) => this.send_cheers(e.target.id,friend[0].username)}>cheers</button></span>
                 </div>
