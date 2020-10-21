@@ -13,6 +13,29 @@ import {getDateOnly,getDate_Time} from '../../utils/date'
 class DrinkForm2 extends Component{
     static contextType = Context;
 
+    componentDidMount(){
+        console.log('second form mounted')
+        const BeerMeTwo = {
+            user_id: this.context.globalProfile.id,
+            duce: 0,
+            eight_n_up: 0,
+            beer_bong: 0,
+            shotgun: 0,
+            wine_flight: 0,
+            beer_flight: 0,
+        }
+
+        if(this.props.profileStatsTwo === null){
+            axios.post(`${config.API_ENDPOINT}/post/userDrinkTwo`,BeerMeTwo)
+            .then(res => res)
+        } 
+            setTimeout(() => {
+                axios.get(`${config.API_ENDPOINT}/get/userDrinkTwo/${this.context.globalProfile.id}`)
+                .then(res => this.props.setProfileStatsTwo(res.data))
+            },400)
+
+     }
+
     closeDrinkWindowTwo = () => {
         this.props.submit_drink_two(false)
         this.props.dec_duce(0)
@@ -34,10 +57,9 @@ class DrinkForm2 extends Component{
            && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
               this.props.inc_duce(this.props.duce + 1)
 
-           } else if(id === "eight" && this.props.eight !== 1 && this.props.duce !== 1 && this.props.beer !== 1
-           && this.props.shotgun !== 1 && this.props.wine !== 1 && this.props.beer !== 1){
-               this.props.inc_eight_n_up(this.props.eight + 1)
 
+
+              
             } else if(id === "beerBong" && this.props.beer !== 1 && this.props.eight !== 1 && this.props.duce !== 1
             && this.props.shotgun !== 1 && this.props.wine_flight !== 1 && this.props.beer_flight !== 1){
                this.props.inc_beer_bong(this.props.beer_bong + 1)
@@ -91,7 +113,7 @@ class DrinkForm2 extends Component{
                wine_flight: this.props.wine_flight,
                beer_flight: this.props.beer_flight,
            }
-           axios.patch(`${config.API_ENDPOINT}/patch/userdrink/${this.context.globalProfile.id}`,beerMeTwo)
+           axios.patch(`${config.API_ENDPOINT}/patch/userDrinkTwo/${this.context.globalProfile.id}`,beerMeTwo)
                .then(() => axios.post(`${config.API_ENDPOINT}/post/drinkdate/${this.context.globalProfile.id}`,datePosted))
                        .then(res => res)
                //revert form values back to zero
@@ -106,6 +128,7 @@ class DrinkForm2 extends Component{
            }
 
 render(){
+    console.log('second stats',this.props.profileStatsTwo)
     return (
         <div>
             <form className="drink-form" onSubmit={this.openDrinkModalTwo}>
@@ -158,10 +181,10 @@ render(){
                     this.props.submitValueTwo === false ?
                     <div></div> :
                     <div className="confirmation_box">
-                        <div>
+                        <div className="confirmation-buttons">
                             <div>
                             <button className="confirmation_buttons cancel" type="button" onClick={this.closeDrinkWindowTwo} >cancel</button>
-                            <button className="confirmation_buttons confirm" type="submit"  onClick={this.handledDrinkFormTwo}>confirm</button>
+                            <button className="confirmation_buttons confirm" type="submit"  onClick={this.handleDrinkFormTwo}>confirm</button>
                             </div>
                         </div>
                      </div>
@@ -187,7 +210,7 @@ function mapStatToProps(state){
         wine_flight: state.drinktwo_reducer.wine_flight,
         beer_flight: state.drinktwo_reducer.beer_flight,
         submitValueTwo: state.drinktwo_reducer.submit_drink_two,
-        profileStats: state.user_reducer.profileStats,
+        profileStatsTwo: state.drinktwo_reducer.profileStatsTwo,
     }
 }
 
@@ -206,6 +229,8 @@ function mapDispatchToProps(dispatch){
         dec_shotgun: (shotgun) => dispatch(ACTIONS.decrement_shotgun(shotgun)),
         dec_wine_flight: (wine) => dispatch(ACTIONS.decrement_wine_flight(wine)),
         dec_beer_flight: (beer) => dispatch(ACTIONS.decrement_beer_flight(beer)),
+
+        setProfileStatsTwo: (stats) => dispatch(ACTIONS.set_profile_stats_two(stats)),
         submit_drink_two: (submit) => dispatch(ACTIONS.submit_drink_two(submit))
 
     }

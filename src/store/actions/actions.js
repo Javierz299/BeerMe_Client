@@ -66,6 +66,13 @@ export const set_profile_stats = (stats) => {
   }
 }
 
+export const set_profile_stats_two = (stats) => {
+  return{
+      type: ACTION_TYPES.SET_PROFILE_STATS_TWO,
+      payload: stats,
+  }
+}
+
 export const remove_db_profile = () => {
   return{
       type: ACTION_TYPES.REMOVE_DB_PROFILE,
