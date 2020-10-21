@@ -39,6 +39,7 @@ class TotalStats extends Component {
     }
 
     render() {
+        console.log('friends',this.props.friends)
         return (
             <div>
                 {this.props.friends === null ?

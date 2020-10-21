@@ -26,7 +26,7 @@ class ProtectedRoute extends Component {
             beer_flight: 0,
         }
 
-        if(this.props.profileStatsTwo === null){
+        if(this.props.profileStatsTwo === null || this.props.profileStatsTwo === ""){
             axios.post(`${config.API_ENDPOINT}/post/userDrinkTwo`,BeerMeTwo)
             .then(res => res)
         } 
@@ -56,10 +56,16 @@ refreshStats = () => {
    
 }
 
+function mapStateToProps(state){
+    return {
+        profileStatsTwo: state.drinktwo_reducer.profileStatsTwo
+    }
+}
+
 function mapDispatchToProps(dispatch){
     return {
         setProfileStatsTwo: (stats) => dispatch(ACTIONS.set_profile_stats_two(stats)),
     }
 }
 
-export default connect(null,mapDispatchToProps)(ProtectedRoute)
+export default connect(mapStateToProps,mapDispatchToProps)(ProtectedRoute)

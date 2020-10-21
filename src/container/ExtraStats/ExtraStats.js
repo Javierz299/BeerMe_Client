@@ -7,7 +7,7 @@ const ExtraStats= () => {
     console.log("state",state)
     return (
         <div>
-            {!state.profileStatsTwo ?
+            {state.profileStatsTwo === null || state.profileStatsTwo === "" ?
                     <Loading /> :
                 <div id="profile-stats-container">
                     <div><span>Duce: {state.profileStatsTwo.duce}</span></div>
