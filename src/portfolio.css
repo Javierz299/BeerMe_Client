@@ -152,6 +152,9 @@ span{
 }
 
 .drink-box{
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
   display: grid;
   justify-content: space-evenly;
 }

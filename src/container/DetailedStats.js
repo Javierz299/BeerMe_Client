@@ -27,6 +27,7 @@ class DetailedStats extends Component {
         return (
                  <div id="detailed-stats" onClick={() => this.hide_friend_stats()}>
                     <h3 id="drink-stats">{this.props.friend_stats[0].username}</h3>
+                        <div id="compare-stats"><ComparisonStats /></div>
                     <div id="grid-stats">
                         <div><h4 className="friend-stat"><img src={beerPic} alt="beer pic" /> {this.props.friend_stats[0].beer}</h4></div>
                         <div><h4 className="friend-stat"><img src={seltzerPic} alt="seltzer pic" /> {this.props.friend_stats[0].seltzer}</h4></div>
@@ -42,7 +43,6 @@ class DetailedStats extends Component {
                         <div><h4 className="friend-stat"><img src={WineFlight} alt="wine flight" /> {this.props.friend_stats[1].wine_flight}</h4></div>
                         <div><h4 className="friend-stat"><img src={BeerFlight} alt="beer flight" /> {this.props.friend_stats[1].beer_flight}</h4></div>
                     </div>
-                    <div id="compare-stats"><ComparisonStats /></div>
                  </div>   
         )
     }

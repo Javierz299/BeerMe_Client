@@ -178,7 +178,7 @@ render(){
                 </form>
                     <br/>
                     <div>
-                        <button id="submit"  className="duceMe-button" type="button" onClick={this.openDrinkModalTwo} >Beer Me</button>
+                        <button id="submit"  className="beerMe-button" type="button" onClick={this.openDrinkModalTwo} >Beer Me</button>
                     </div>
         </div>
     )

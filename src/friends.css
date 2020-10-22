@@ -20,12 +20,10 @@
 }
 
 #compare-stats{
-    display: grid;
-    justify-content: center;
+   text-align: center;
 }
 
 .friend-stat{
-    margin: 0;
     height: 100%;
     width: 100%;
     position: relative;

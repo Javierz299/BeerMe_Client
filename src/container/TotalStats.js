@@ -39,7 +39,6 @@ class TotalStats extends Component {
     }
 
     render() {
-        console.log('friends',this.props.friends)
         return (
             <div>
                 {this.props.friends === null ?
@@ -47,15 +46,14 @@ class TotalStats extends Component {
                 this.props.friends.map(friend => (
                     
                     <div key={friend[0].id} 
-                    id="friend-card"
-                onClick={() => this.show_friend_stats(friend[0].id)}>
+                    id="friend-card">
                     <div id="friend-name">
                         <li>{friend[0].username}</li>
                     </div>
                     {friend[0].last ? 
                         <div id="friend-time">
-                            <small>Last Posted: {friend[0].last.slice(9,20)}</small>
-                            <small> At: {friend[0].last.slice(0,9)}</small>
+                            <small>Last Post: {friend[0].last.slice(9,20)}</small>
+                            <small> {friend[0].last.slice(0,9)}</small>
                         </div> : 
                             <li>never posted</li>
                     }
@@ -75,6 +73,7 @@ class TotalStats extends Component {
                             }
                     </li>
                     <span><button id={friend[0].id} type="button" onClick={(e) => this.send_cheers(e.target.id,friend[0].username)}>cheers</button></span>
+                    <span><button id={friend[0].id} type="button" onClick={() => this.show_friend_stats(friend[0].id)}>stats</button></span>
                 </div>
                     </div>
                     ))
