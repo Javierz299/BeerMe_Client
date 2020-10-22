@@ -11,7 +11,7 @@ class ComparisonStats extends Component {
         let friendName = friendStats[0].username
         console.log('comparison stats,friends',friendStats)
 
-        console.log('profileStats2',profileStatsTwo)
+        console.log('profileStats2',this.props.profileStatsTwo)
 
 
         let profileTotal = (
