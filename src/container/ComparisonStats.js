@@ -27,7 +27,7 @@ class ComparisonStats extends Component {
                 this.props.profileStatsTwo.beer_flight
         )
             //if no initial form values for second drink form then only add first form values
-            if(friendStats.lenght === 1) {
+            if(friendStats.length === 1) {
                     friendTotal = (
                     (friendStats[0].beer +
                     friendStats[0].seltzer +

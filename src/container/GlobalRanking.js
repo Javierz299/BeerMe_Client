@@ -16,6 +16,7 @@ class GlobalRanking extends Component {
             .then(res => {
                 let users = []
                 res.data.forEach(user => {
+                    console.log("global ranking user",user)
                     let total = (user.beer + 
                         user.seltzer + user.craft_beer + 
                         user.wine + user.shots + user.cocktail +
