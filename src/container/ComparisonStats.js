@@ -9,39 +9,50 @@ class ComparisonStats extends Component {
         let profileStats = this.context.globalStats
         let friendStats = this.props.friend_stats
         let friendName = friendStats[0].username
+        let compare;
+        let friendTotal;
 
         let profileTotal = (
-            (profileStats.beer +
+            profileStats.beer +
             profileStats.seltzer +
             profileStats.craft_beer +
             profileStats.wine +
             profileStats.shots +
-            profileStats.cocktail) +
-            (profileStats.duce +
-                profileStats.eight_n_up +
-                profileStats.beer_bong +
-                profileStats.shotgun +
-                profileStats.wine_flight +
-                profileStats.beer_flight)
+            profileStats.cocktail +
+                this.props.profileStatsTwo.duce +
+                this.props.profileStatsTwo.eight_n_up +
+                this.props.profileStatsTwo.beer_bong +
+                this.props.profileStatsTwo.shotgun +
+                this.props.profileStatsTwo.wine_flight +
+                this.props.profileStatsTwo.beer_flight
         )
-
-        let friendTotal = (
-            (friendStats[0].beer +
-            friendStats[0].seltzer +
-            friendStats[0].craft_beer +
-            friendStats[0].wine +
-            friendStats[0].shots +
-            friendStats[0].cocktail) +
-            (friendStats[0].duce +
-                friendStats[0].eight_n_up +
-                friendStats[0].beer_bong +
-                friendStats[0].shotgun +
-                friendStats[0].wine_flight +
-                friendStats[0].beer_flight)
-        )
-
-       let compare
-       console.log('compare',profileTotal,friendTotal)
+            //if no initial form values for second drink form then only add first form values
+            if(friendStats.lenght === 1) {
+                    friendTotal = (
+                    (friendStats[0].beer +
+                    friendStats[0].seltzer +
+                    friendStats[0].craft_beer +
+                    friendStats[0].wine +
+                    friendStats[0].shots +
+                    friendStats[0].cocktail)
+                )
+            } else {
+                friendTotal = (
+                    (friendStats[0].beer +
+                    friendStats[0].seltzer +
+                    friendStats[0].craft_beer +
+                    friendStats[0].wine +
+                    friendStats[0].shots +
+                    friendStats[0].cocktail) +
+                        (friendStats[1].duce +
+                        friendStats[1].eight_n_up +
+                        friendStats[1].beer_bong +
+                        friendStats[1].shotgun +
+                        friendStats[1].wine_flight +
+                        friendStats[1].beer_flight)
+                )
+            }
+     
        if(profileTotal >= friendTotal){
            compare = profileTotal - friendTotal
        } else if(friendTotal >= profileTotal){
