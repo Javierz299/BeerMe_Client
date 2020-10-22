@@ -10,6 +10,10 @@ class ComparisonStats extends Component {
         let friendStats = this.props.friend_stats
         let friendName = friendStats[0].username
         console.log('comparison stats,friends',friendStats)
+
+        console.log('profileStats',profileStats)
+
+
         let profileTotal = (
             (profileStats.beer +
             profileStats.seltzer +
@@ -17,12 +21,12 @@ class ComparisonStats extends Component {
             profileStats.wine +
             profileStats.shots +
             profileStats.cocktail) +
-            (friendStats[1].duce +
-                friendStats[1].eight_n_up +
-                friendStats[1].beer_bong +
-                friendStats[1].shotgun +
-                friendStats[1].wine_flight +
-                friendStats[1].beer_flight)
+            (friendStats[0].duce +
+                friendStats[0].eight_n_up +
+                friendStats[0].beer_bong +
+                friendStats[0].shotgun +
+                friendStats[0].wine_flight +
+                friendStats[0].beer_flight)
         )
 
         let friendTotal = (
@@ -32,12 +36,12 @@ class ComparisonStats extends Component {
             friendStats[0].wine +
             friendStats[0].shots +
             friendStats[0].cocktail) +
-            (friendStats[1].duce +
-                friendStats[1].eight_n_up +
-                friendStats[1].beer_bong +
-                friendStats[1].shotgun +
-                friendStats[1].wine_flight +
-                friendStats[1].beer_flight)
+            (friendStats[0].duce +
+                friendStats[0].eight_n_up +
+                friendStats[0].beer_bong +
+                friendStats[0].shotgun +
+                friendStats[0].wine_flight +
+                friendStats[0].beer_flight)
         )
 
        let compare
