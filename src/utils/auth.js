@@ -4,7 +4,7 @@ import auth0 from 'auth0-js'
     auth0 = new auth0.WebAuth({
         domain: 'dev-u9j3svni.auth0.com',
         clientID: 'nYqsYc5H4Pqc0THAin0O9wr8CcGTzlhn',//http://localhost:3000/callback'https://beerme-social.vercel.app/callback'
-        redirectUri: 'beerme-social.vercel.app/callback',
+        redirectUri: 'https://beerme-social.vercel.app/callback',
         responseType: 'token id_token',
         scope: 'openid profile email'
     })
