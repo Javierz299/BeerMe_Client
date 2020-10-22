@@ -4,10 +4,11 @@
     grid-template-columns: repeat(6,auto);
     gap: 2px;
 }
-.ranking-tabs-container > div {
+.ranking-tabs-container .global-tab{
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid white;
 }
+
 
 
 @media only screen and (max-width: 800px){

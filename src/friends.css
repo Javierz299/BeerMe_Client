@@ -96,6 +96,7 @@
     padding: 3px;
 }
 
-#global-rankng-container{
+.global-ranking-container{
+    background: darkgray;
     text-align: center;
 }
