@@ -24,7 +24,6 @@ class DetailedStats extends Component {
     }
 
     render() {
-        console.log('friendstats',this.props.friend_stats)
         return (
                  <div id="detailed-stats" onClick={() => this.hide_friend_stats()}>
                     <h3 id="drink-stats">{this.props.friend_stats[0].username}</h3>
