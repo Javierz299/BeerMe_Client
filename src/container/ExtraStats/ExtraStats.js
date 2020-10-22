@@ -4,7 +4,6 @@ import Loading from '../../loading/loading'
 
 const ExtraStats= () => {
     const state = useSelector(state => state.drinktwo_reducer)
-    console.log("state",state)
     return (
         <div>
             {state.profileStatsTwo === null || state.profileStatsTwo === "" ?

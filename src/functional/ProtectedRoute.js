@@ -15,7 +15,6 @@ class ProtectedRoute extends Component {
     static contextType = Context
 
     componentDidMount(){
-        console.log('second form mounted')
         const BeerMeTwo = {
             user_id: this.context.globalProfile.id,
             duce: 0,
