@@ -51,9 +51,8 @@ export class PendingRequest extends Component {
         return (
             <div>
                <div id="pending-requests-container">
-                <h2>Pending friend Requests</h2>
-                {this.props.pending_requests === null ?
-                <h3>no requests yet</h3> :
+                {this.props.pending_requests === null || this.props.pending_requests.length < 1?
+                <h3>No Requests</h3> :
                 <div>{[...this.props.pending_requests].map(user => (
                     <div className="request-box" key={user[1]}>
                         <li>{user[0]}</li>

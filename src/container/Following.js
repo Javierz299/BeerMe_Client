@@ -18,8 +18,8 @@ class Following extends Component {
         return (
             <div id="friends-container">
                 <div>
-                    <h3 id="friends-title">Friends 
-                    <small> - click on friends to see more</small>
+                    <h3 id="friends-title">
+                    <small> - click your friends to see their stats -</small>
                     </h3>
                 </div>
                 <div>

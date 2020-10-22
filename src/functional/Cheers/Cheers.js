@@ -48,7 +48,7 @@ render(){
     return (
         <div id="cheers-container">
             <h2>Cheers</h2>
-            {this.props.get_cheers_names === null ?
+            {this.props.get_cheers_names === null || this.props.get_cheers_names.lenght < 1?
             "no cheers yet" :
             this.props.get_cheers_names.map(name => (
                 <div key={name[0].id}> 
