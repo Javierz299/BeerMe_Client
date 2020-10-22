@@ -46,25 +46,34 @@ class TotalStats extends Component {
                 this.props.friends.map(friend => (
                     
                     <div key={friend[0].id} 
-                    id="friend-card"
-                onClick={() => this.show_friend_stats(friend[0].id)}>
+                    id="friend-card">
                     <div id="friend-name">
                         <li>{friend[0].username}</li>
                     </div>
                     {friend[0].last ? 
                         <div id="friend-time">
-                            <small>Last Posted: {friend[0].last.slice(9,20)}</small>
-                            <small> At: {friend[0].last.slice(0,9)}</small>
+                            <small>Last Post: {friend[0].last.slice(9,20)}</small>
+                            <small> {friend[0].last.slice(0,9)}</small>
                         </div> : 
                             <li>never posted</li>
                     }
                 <div id="friend-total">
                     <li>
-                        Total Drinks: {friend[0].beer + friend[0].seltzer +
+                        Total Drinks: { (friend[1]) ?
+                
+                            (friend[0].beer + friend[0].seltzer +
                             friend[0].craft_beer + friend[0].wine + 
-                            friend[0].shots + friend[0].cocktail}
+                            friend[0].shots + friend[0].cocktail) + (friend[1].duce + friend[1].eight_n_up +
+                            friend[1].beer_bong + friend[1].shotgun +
+                            friend[1].wine_flight + friend[1].beer_flight) :
+
+                            (friend[0].beer + friend[0].seltzer +
+                            friend[0].craft_beer + friend[0].wine + 
+                            friend[0].shots + friend[0].cocktail)
+                            }
                     </li>
                     <span><button id={friend[0].id} type="button" onClick={(e) => this.send_cheers(e.target.id,friend[0].username)}>cheers</button></span>
+                    <span><button id={friend[0].id} type="button" onClick={() => this.show_friend_stats(friend[0].id)}>stats</button></span>
                 </div>
                     </div>
                     ))

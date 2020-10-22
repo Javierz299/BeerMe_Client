@@ -10,7 +10,6 @@ import winePic from '../Favorites/icons8-wine-glass-50.png'
 import shotPic from '../Favorites/icons8-whiskey-50.png'
 import mixedPic from '../Favorites/icons8-cocktail-50.png'
 
-
 import { connect } from 'react-redux'
 
 import {getDateOnly,getDate_Time} from '../utils/date'
@@ -18,8 +17,7 @@ import {getDateOnly,getDate_Time} from '../utils/date'
 import Context from '../context/ProfileContext'
 
 class DrinkForm extends Component{
-
-     static contextType = Context
+    static contextType = Context;
 
      componentDidMount(){
      
@@ -51,20 +49,24 @@ class DrinkForm extends Component{
          //Allows only one type to be incremented at a time per submit
             if(id === "beer" && this.props.beer !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
-                
                this.props.inc_beer(this.props.beer + 1)
+
             } else if(id === "seltzer" && this.props.seltzer !== 1 && this.props.beer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                 this.props.inc_seltzer(this.props.seltzer + 1)
+
              } else if(id === "craft" && this.props.craft !== 1 && this.props.seltzer !== 1 && this.props.beer !== 1
              && this.props.wine !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                 this.props.inc_craft(this.props.craft + 1)
+
              }else if(id === "wine" && this.props.wine !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
              && this.props.beer !== 1 && this.props.shots !== 1 && this.props.cocktail !== 1){
                this.props.inc_wine(this.props.wine + 1)
+
             } else if(id === "shots" && this.props.shots !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.beer !== 1 && this.props.cocktail !== 1){
                 this.props.inc_shots(this.props.shots + 1)
+
             } else if(id === "cocktail" && this.props.cocktail !== 1 && this.props.seltzer !== 1 && this.props.craft !== 1
             && this.props.wine !== 1 && this.props.shots !== 1 && this.props.beer !== 1){
                 this.props.inc_cocktail(this.props.cocktail + 1)
@@ -75,14 +77,19 @@ class DrinkForm extends Component{
          
             if(id === "beer" && this.props.beer !== 0){
                 this.props.dec_beer(this.props.beer - 1)
+
              } else if(id === "seltzer" && this.props.seltzer !== 0){
                 this.props.dec_seltzer(this.props.seltzer - 1)
+
              } else if(id === "craft" && this.props.craft !== 0){
                 this.props.dec_craft(this.props.craft - 1)
+
              }else if(id === "wine" && this.props.wine !== 0){
                 this.props.dec_wine(this.props.wine - 1)
+
              } else if(id === "shots" && this.props.shots !== 0){
                 this.props.dec_shots(this.props.shots - 1)
+
             } else if(id === "cocktail" && this.props.cocktail !== 0){
                 this.props.dec_cocktail(this.props.cocktail - 1)
             }
@@ -131,9 +138,10 @@ class DrinkForm extends Component{
 
     render(){
         return (
-            <div id="drink-form-container">
-                <form id="drink-form" onSubmit={this.openConfirmationModal}>
-                    <div id="drink-form-container">
+            <div>
+                <form className="drink-form" onSubmit={this.openConfirmationModal}>
+                    <legend>Thirsty</legend>
+                <div className="drink-form-container">
                     <div className="drink-box">
                         <h2><img src={beerPic} alt="beer pic" />  {this.props.beer}</h2>
                         <div className="drink-button-container">
@@ -180,17 +188,17 @@ class DrinkForm extends Component{
                     {
                     this.props.submitValue === false ?
                     <div></div> :
-                    <div id="confirmation_box">
-                        <div id="confirmation-buttons">
+                    <div className="confirmation_box">
+                        <div>
                             <div>
-                            <button id="cancel" className="confirmation_buttons" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
-                            <button id="confirm" className="confirmation_buttons" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
+                            <button className="confirmation_buttons cancel" type="button" onClick={this.closeConfirmationWindow} >cancel</button>
+                            <button className="confirmation_buttons confirm" type="submit"  onClick={this.handleBeerMeForm}>confirm</button>
                             </div>
                         </div>
                      </div>
                     }
                     </div>
-                    </div>
+                </div>
                 </form>
                     <br/>
                     <div>

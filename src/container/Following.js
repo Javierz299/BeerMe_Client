@@ -14,19 +14,6 @@ class Following extends Component {
 
     static contextType = Context
 
-    componentDidMount(){
-        // axios.get(`${config.API_ENDPOINT}/get/following/${this.context.globalProfile.id}`)
-        //       .then(res => {
-        //           console.log('get following',res.data)
-        //           if(res.data.length === 0){
-        //               return
-        //           }
-        //           this.props.total_friends(res.data.length)
-        //           this.props.friends(res.data)                  
-        //       })
-    }
-
-
     render() {
         return (
             <div id="friends-container">

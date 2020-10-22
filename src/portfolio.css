@@ -3,7 +3,8 @@ body{
   box-sizing: border-box;
   letter-spacing: 1.3px;
   height: 100%;
-  background: whitesmoke;
+  background: black;
+  color: white
 }
 
 
@@ -117,7 +118,7 @@ span{
   border-bottom: 1px solid black;
 }
 
-#drink_form{
+#drink-form{
   z-index: 2;
 }
 
@@ -126,7 +127,7 @@ span{
   margin-bottom: 5px;
 }
 
- #confirmation_box {
+ .confirmation_box {
    position: absolute;
    top: 0px;
    left: 0px;
@@ -151,6 +152,9 @@ span{
 }
 
 .drink-box{
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
   display: grid;
   justify-content: space-evenly;
 }
@@ -203,7 +207,7 @@ a:hover{
   z-index: 2;
 }
 
-#drink-form-container{
+.drink-form-container{
   position: relative;
   z-index: 2;
   display: grid;
@@ -213,7 +217,7 @@ a:hover{
   justify-items: center;
 }
 
- #drink-form{
+ .drink-form{
   position: relative;
   z-index: 2;
 } 

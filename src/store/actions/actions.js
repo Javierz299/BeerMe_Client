@@ -66,6 +66,13 @@ export const set_profile_stats = (stats) => {
   }
 }
 
+export const set_profile_stats_two = (stats) => {
+  return{
+      type: ACTION_TYPES.SET_PROFILE_STATS_TWO,
+      payload: stats,
+  }
+}
+
 export const remove_db_profile = () => {
   return{
       type: ACTION_TYPES.REMOVE_DB_PROFILE,
@@ -167,6 +174,12 @@ export const submit_drink = (submit) => {
   return {
     type: ACTION_TYPES.SUBMIT_DRINK,
     payload: submit
+  }
+}
+export const submit_drink_two = (submitTwo) => {
+  return {
+    type: ACTION_TYPES.SUBMIT_DRINK_TWO,
+    payload: submitTwo
   }
 }
 
@@ -277,5 +290,89 @@ export const cheers_names = (names) => {
   return {
     type: ACTION_TYPES.CHEERS_NAMES,
     payload: names,
+  }
+}
+
+export const increment_duce = (duce) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_DUCE,
+    payload: duce
+  }
+}
+
+export const increment_eight_n_up = (eight_n_up) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_EIGHT_N_UP,
+    payload: eight_n_up
+  }
+}
+
+export const increment_beer_bong = (beer_bong) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_BONG,
+    payload: beer_bong
+  }
+}
+
+export const increment_shotgun = (shotgun) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SHOTGUN,
+    payload: shotgun
+  }
+}
+
+export const increment_wine_flight = (wine_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_WINE_FLIGHT,
+    payload: wine_flight
+  }
+}
+
+export const increment_beer_flight = (beer_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_FLIGHT,
+    payload: beer_flight
+  }
+}
+
+export const decrement_duce = (duce) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_DUCE,
+    payload: duce
+  }
+}
+
+export const decrement_eight_n_up = (eight_n_up) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_EIGHT_N_UP,
+    payload: eight_n_up
+  }
+}
+
+export const decrement_beer_bong = (beer_bong) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_BONG,
+    payload: beer_bong
+  }
+}
+
+export const decrement_shotgun = (shotgun) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_SHOTGUN,
+    payload: shotgun
+  }
+}
+
+export const decrement_wine_flight = (wine_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_WINE_FLIGHT,
+    payload: wine_flight
+  }
+}
+
+export const decrement_beer_flight = (beer_flight) => {
+  return {
+    type: ACTION_TYPES.INCREMENT_BEER_FLIGHT,
+    payload: beer_flight
   }
 }

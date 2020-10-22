@@ -1,0 +1,17 @@
+.next-form{
+    position: relative;
+    text-align: center;
+    color: whitesmoke;
+    z-index: 2;
+  }
+
+.form-left-hide{
+    display: none;
+}
+.form-left-show{
+    display: show;
+}
+
+  .form-toggle{
+    padding: 5px;
+  }

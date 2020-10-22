@@ -3,30 +3,30 @@ import { Link } from 'react-router-dom'
 
 import './RankingTabs.css'
 
-//stopped re-rendering of this component in globalranking for every list item
+//stopped re-rendering of this component in global-tabranking for every list item
 const RankingTabs = React.memo(() => {
    
     return (
         <div className="ranking-tabs-container">
-            <div id="global" >
+            <div className="global-tab" >
                 <h4><Link to="/ranking">Global</Link></h4>
             </div>
-            <div id="beer-tab">
+            <div className="global-tab">
                 <h4><Link to="/beerTab">Beer</Link></h4>
             </div>
-            <div id="global" onClick={() => console.log('seltzerclicked')} >
+            <div className="global-tab">
                 <h4><Link to="/seltzerTab">Seltzer</Link></h4>
             </div>
-            <div id="global" onClick={() => console.log('craftclicked')} >
+            <div className="global-tab">
                 <h4><Link to="/craftTab">Craft</Link></h4>
             </div>
-            <div id="global" onClick={() => console.log('wineclicked')} >
+            <div className="global-tab">
                 <h4><Link to="/wineTab">Wine</Link></h4>
             </div>
-            <div id="global" onClick={() => console.log('shotsclicked')} >
+            <div className="global-tab">
                 <h4><Link to="/shotsTab">Shots</Link></h4>
             </div>
-            <div id="global" onClick={() => console.log('mixedclicked')} >
+            <div className="global-tab">
                 <h4><Link to="/mixedTab">Mixed</Link></h4>
             </div>
         </div>
