@@ -32,13 +32,12 @@ class GlobalRanking extends Component {
                             wine_flight: user.wine_flight, beer_flight: user.beer_flight,
                         }])
                     })
-                this.props.rankUsers(users.sort((a,b) => b[1] - a[1]))
+                this.props.rankUsers(users.sort((a,b) => b[2] - a[2]))
                 })
     }
 
 
     render() {
-        console.log('global ranking',this.props.ranking)
         return (
             <div className="global-rankng-container">
                 <RankingTabs />
