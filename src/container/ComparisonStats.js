@@ -11,7 +11,7 @@ class ComparisonStats extends Component {
         let friendName = friendStats[0].username
         console.log('comparison stats,friends',friendStats)
 
-        console.log('profileStats',profileStats)
+        console.log('profileStats2',profileStatsTwo)
 
 
         let profileTotal = (
@@ -76,10 +76,11 @@ class ComparisonStats extends Component {
     }
 }
 
-function mapStatToProps(state){
+function mapStateToProps(state){
     return {
+        profileStatsTwo: state.drinktwo_reducer.profileStatsTwo,
         friend_stats: state.user_reducer.show_friend_stats,
     }
 }
 
-export default connect(mapStatToProps)(ComparisonStats)
+export default connect(mapStateToProps)(ComparisonStats)
