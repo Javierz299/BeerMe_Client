@@ -14,7 +14,7 @@ const NextStats = () => {
                 </span>
                 <span onClick={() => setToggle(!toggle)} 
                       className={"form-right-show"}>
-                      {">"}
+                      {"stats >"}
                 </span>
            {!toggle ? <InitialStats /> : <ExtraStats />}
         </div>
