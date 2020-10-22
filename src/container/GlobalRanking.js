@@ -18,12 +18,18 @@ class GlobalRanking extends Component {
                 res.data.forEach(user => {
                     let total = (user.beer + 
                         user.seltzer + user.craft_beer + 
-                        user.wine + user.shots + user.cocktail)
+                        user.wine + user.shots + user.cocktail +
+                        user.duce + user.eight_n_up + user.beer_bong + 
+                        user.wine_flight + user.beer_flight
+                        )
 
                         users.push([user.username,total,{
                             beer: user.beer, seltzer: user.seltzer,
                             craft: user.craft_beer, wine: user.wine,
                             shots: user.shots, mixed: user.cocktail,
+                            duce: user.duce, eight: user.eight_n_up,
+                            beer_bong: user.beer_bong, shotgun: user.shotgun,
+                            wine_flight: user.wine_flight, beer_flight: user.beer_flight,
                         }])
                     })
                 this.props.rankUsers(users.sort((a,b) => b[1] - a[1]))
@@ -32,6 +38,7 @@ class GlobalRanking extends Component {
 
 
     render() {
+        console.log('ranking',this.props.ranking)
         return (
             <div className="global-rankng-container">
                 <RankingTabs />
