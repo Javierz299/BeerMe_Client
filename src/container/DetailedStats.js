@@ -37,7 +37,7 @@ class DetailedStats extends Component {
                         <div><h4 className="friend-stat"><img src={shotPic} alt="shot pic" /> {this.props.friend_stats[0].shots}</h4></div>
                         <div><h4 className="friend-stat"><img src={mixedPic} alt="mixed pic" /> {this.props.friend_stats[0].cocktail}</h4></div>
 
-                    {!this.props.friend_stats[1] ? 
+                    {!this.props.friend_stats[1].duce ? 
                     null :
                         <Fragment>
                         <div><h4 className="friend-stat"><img src={Duce} alt="duce" /> {this.props.friend_stats[1].duce}</h4></div>
