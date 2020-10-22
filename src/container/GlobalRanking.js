@@ -38,6 +38,7 @@ class GlobalRanking extends Component {
 
 
     render() {
+        console.log('global ranking',this.props.ranking)
         return (
             <div className="global-rankng-container">
                 <RankingTabs />
