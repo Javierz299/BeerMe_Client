@@ -44,9 +44,8 @@ class TotalStats extends Component {
                 {this.props.friends === null ?
                 <div id="no-friends-yet">no friends yet</div> :
                 this.props.friends.map(friend => (
-                    
                     <div key={friend[0].id} 
-                    id="friend-card">
+                    id="friend-card"> {console.log("total stats friends ",friend[0])}
                     <div id="friend-name">
                         <li>{friend[0].username}</li>
                     </div>
