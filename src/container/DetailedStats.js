@@ -12,7 +12,7 @@ import shotPic from '../Favorites/icons8-whiskey-50.png'
 import mixedPic from '../Favorites/icons8-cocktail-50.png'
 
 import Duce from '../Favorites/DrinkForm2/icons8-2-of-hearts-50.png'
-import Eight from '../Favorites/DrinkForm2/icons8-8-c-100.png'
+import Eight from '../Favorites/DrinkForm2/icons8-9-c-100.png'
 import BeerBong from '../Favorites/DrinkForm2/icons8-filter-48.png'
 import Shotgun from '../Favorites/DrinkForm2/icons8-shotgun-48.png'
 import WineFlight from '../Favorites/DrinkForm2/icons8-aircraft-40.png'
