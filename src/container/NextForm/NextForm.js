@@ -13,11 +13,11 @@ const NextForm = () => {
             <div className="next-form">
                 <span onClick={() => {setToggle(!toggle)}}
                       className={!toggle ? "form-left-hide" : "form-left-show"}>
-                      {"<"}
+                      {"<prev"}
                 </span>
                 <span onClick={() => setToggle(!toggle)} 
                       className={"form-right-show"}>
-                      {">"}
+                      {"next>"}
                 </span>
             {!toggle ? <DrinkForm /> : <DrinkForm2 />}
             </div>

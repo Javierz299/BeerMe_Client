@@ -10,11 +10,11 @@ const NextStats = () => {
         <div className="next-form">
             <span onClick={() => {setToggle(!toggle)}}
                       className={!toggle ? "form-left-hide" : "form-left-show"}>
-                      {"<"}
+                      {"<prev"}
                 </span>
                 <span onClick={() => setToggle(!toggle)} 
                       className={"form-right-show"}>
-                      {"stats >"}
+                      {"next>"}
                 </span>
            {!toggle ? <InitialStats /> : <ExtraStats />}
         </div>
